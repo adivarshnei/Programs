@@ -1,0 +1,52 @@
+﻿Practical Questions
+1. WAP to create a class account that stores account no,
+customer’s name and balance. Also include required member
+functions to accept and display the details. Create another class
+transaction and privately derive this class from account. The
+transaction class should have type (deposit/withdrawal), amount
+and member functions to display and accept details. Also
+include member functions to update the balance and in case of
+withdrawal also check for the minimum balance.
+
+
+2. WAP to create 3 classes person, employee and manager with
+the following members. Represent multilevel inheritance by
+deriving employee class from person protectedly and manager
+class from employee publicly and display all details.
+Class Person - name, address, age as data members
+- getdata() – To get all details
+- and showdata() to display all details
+
+Class employee - emp_no, basic, gross salary as data members
+- getempdata() – To get all details
+- and showempdata() to display all details
+
+Class manager- deptt, no. of employees and designation as Data members
+- getmgrdata() – To get all details
+- showmgrdata() to display all details
+
+3. WAP to create a class Regular that stores schoolcode, sname(to
+store school name), saddress, no_of_rstud(to store no of regular
+students). Also include member functions getdata() to accept
+details of data member and showdata() to display the details of the
+data member. Create another class Correspondence which has
+centercode, centername, no_of_cstud(to store number of students
+in correspondence course) as data members. Also include its
+member functions getd() to input details of data members and
+showd() to display the details of data members. Create a third class
+Course that has code, fees, duration(no of months) as data
+members. Include its member functions havedata() which accepts
+the details of code and assigns the value of fees according to the
+following criteria:
+Duration 		fees
+>=12	 	10000
+>=6 and <12	 8000
+<6		5000
+
+
+Along with this another function display() to display the details
+of the data members. Represent multiple inheritance by deriving
+Course class from Regular publicly and from Correspondence
+class protectedly.
+
+Questions 1 and 2 to be done practically and 3 in notebook

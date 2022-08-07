@@ -1,0 +1,62 @@
+Q1. Declare a structure having following members � Customerno, 
+name, number of units consumed and bill. The bill is to be 
+calculated according to the following conditions.
+	Unit consumed	Tariff
+	<100 units	Re 0.40 per unit
+	100 - 200		Re 0.50 per unit
+	200 - 300		Re 0.75 per unit
+	>300		Re 1.00 per unit
+Write a program to calculate and print the bill.
+
+Q2. Create a structure having employee data as employee no, 
+employee name, employee designation , employee date of birth 
+(a structure variable with date, month and year) , employee basic 
+and perk (another structure variable with member da=15% of basic, 
+hra=12% of basic, bonus=800). WAP to calculate net salary by 
+adding basic and all the perks and  initialize designation 
+depending on the following criteria. If Net salary >25000, 
+designation is �manager�. If Net salary between 15000 - 25000, 
+designation is �executive� and Net salary <15000, designation is 
+�non executive�. print the payslip with all details.
+
+Q3. Assuming suitable data types, give necessary declaration for 
+an array of 20 people record , each record having data as id-no, 
+name, address, age and nationality. Write a menu driven program 
+to  do the following. For each option, write UDFs which will take 
+the structure array as parameter, 
+	-print the record of all the people allowed to vote in India .
+	-Search for a record by passing the id_no with the array as 
+	parameter. The function should return 1 if the record is 
+	found otherwise it should return 0
+	-Arrange all the records in descending order of id_no
+ 
+Q4. Define a structure with itemno, name, price and category and 
+date_of_purchase (a structure variable with date, month and year). 
+Declare an array of size 10 and do the following operations. 
+Write UDFs for each option.
+	-Display all item details of a given category. The function 
+	should take the structure array and its size  and a category 
+	as parameter 
+	-Arrange it in ascending  order according to price. The 
+	function should  take the structure array and its size as 
+	parameter
+	-Count the no. of items whose price is more than 500. The 
+	function should  take the structure array and its size as 
+	parameter
+	-Count the no. of items which are purchased on a particular 
+	date. The function should  take the structure array and its 
+	size and a date  as parameter
+
+Q5. Create a structure containing students data as rno, name, dob, 
+stream, marks in three sujects , where marks (is an array of size 
+3) and dob is a structure  having date,month and year. Make an 
+array for 10 students.  Write a function to calculate the average 
+marks for each student and print the student details in report 
+card form. The function should take the array as parameter and 
+should return the no. of students who have failed 
+i.e. average < 40%. 
+
+Q6. Write a function to add two complex numbers . The function 
+should take two complex numbers as parameter and should return 
+the calculated result.  Make use of structure to define the 
+complex number(a number having real part and an imaginary part)

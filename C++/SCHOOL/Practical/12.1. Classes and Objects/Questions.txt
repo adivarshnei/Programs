@@ -1,0 +1,118 @@
+﻿Practical Questions
+
+1. Declare a class myfolder with the following specifications.
+Private members - 	Filename an array of strings of size [10][25]
+			to represent all the names of files inside myfolder
+
+			totspace of type long
+			to represent total no. of bytes
+
+			usedspace of type long
+			to represen total no of bytes used
+
+Define public member functions newentry() – to accept data members, showfiles - to display names of all file in myfolder, retspace()- to return value of total available kilobytes.
+
+2. Define a class Student to have the 
+Private data members: 	admno(int),
+			sname(20 characters), 
+			mark[5](float), 
+			total(float) and 
+			a member function calculate()- to calculate average of 5 subjects
+			and returns a float. 
+
+public member: 		takedata() which will accept values for admno, sname, marks in 5 subjects and invoke calculate() to
+			calculate total and
+			showdata() to display all data members.
+
+
+3. Define a class Library with data members - 
+			bookno(int), 
+			bookname(20 characters), 
+			author(20 characters), 
+			price(float), 
+			no_of_copies(int), 
+			no_of_copies_issued(int). 
+
+Include the member functions: 
+			to accept initial values, 
+			issue a book after checking its availability, 
+			to return a book and 
+			to display book information after taking book no from user . 
+
+Write a menu driven interface to apply the above given operations on 5 books.
+
+
+4. Define a class account with the data members - 
+			account no, 
+			name, and 
+			balance amount. 
+
+The class should contain member functions to do the following.
+			- To accept and display data members
+			- For transaction, where the function should take the type of	transaction (d for deposit /w for 					withdrawal) and the transaction amount as parameter and update the balance amount. The function
+			should return 1 if the transaction is successful otherwise for unsuccessful transaction, it should return 0. 				The transaction will be unsuccessful if after withdrawal the balance is less than 1000 and in that case 			balance will not be updated.
+			
+Also display the total withdrawal and total deposit made by all account holders. Use the
+above given operations in an object array of size 5.
+
+
+5. Define a class floppy box with data members: 
+			floppyno (int), 
+			size (int) and
+			name(20 characters). 
+
+Member functions: 	getdata(), 
+			showdata() and a
+			function findsize() - To display the size of the given name of the
+			floppy. 
+
+Write a menu driven program to
+			- search and display the floppy details by taking the floppy no as
+			parameter
+			- Sort the array in descending order of size and display the sorted
+			array
+			- Count the number of floppies of a given floppy name (the floppy
+			name is given as parameter)
+
+
+6. Define a class country with the data members: 
+			country-id(int),
+			countryname(20 characters), 
+			capital(20 characters), 
+			president(structure having lname,fname), 
+			population(long) and
+
+Member functions: 	getdata(), 
+			showdata().
+			search() - to display the information of a country by taking the
+			country name and object array as parameters, and 
+			count() to count and return the number of countries whose
+			population is more than the population given as parameter along
+			with the object array. 
+
+Write a menu driven program to call these functions
+
+
+7. Define a class complexnum with data members: 
+			real(int) and 
+			imaginary(int).
+
+Member functions - 	readdata() to read the complex no, 
+			display() to display the complex no, 
+			addcomplex(complexnum n2) to add two complex no and 
+			subcomplex (complexnum n2) to subtract two complex no. 
+			(Both addcomplex and subcomplex should return resultant complex num
+			object)
+
+
+8. Define a class Time which will have the data members: 
+			hours(int),
+			minutes(int), 
+			second(int) and 
+
+member functions: 	read_time(int h,int m, int s) to initialize data members to h, m
+			and s, 
+			showtime() and 
+			addtime(Time t1,Timet2) to add two tims.
+
+Note : Do Q2, Q3/Q4, Q5, Q6, Q7/Q8 in Practical file

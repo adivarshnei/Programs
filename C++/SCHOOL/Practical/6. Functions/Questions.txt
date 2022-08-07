@@ -1,0 +1,36 @@
+1. Write a menu driven program using user defined functions to do the following operations :
+a. Generate Fibonacci series where first two numbers and n are taken as parameters .
+b. Generate tribonacci series where first three numbers and n are taken as parameters .
+2. Write a menu driven program to accept two integers a and b and do the following options. Write UDF for
+each option.
+- count and return number of all prime numbers between a and b, when a and b are given as
+parameters
+- count and return number of all even numbers between a and b, when a and b are given as
+parameters
+
+3. Write a program using user defined function to calculate sum of the series-
+-3!x 2 + 5!x 4 -…………(2n+1)!x 2n . The function should accept x and n as parameters and
+return the sum.
+4. Write a menu driven program using user defined functions to manipulate a 2-dimensional numeric array
+with following choices.
+- Add two matrices. The function should take two-dimensional arrays as parameters.
+- Print the sum of upper triangular matrix elements . The function should take one two-dimensional array
+as parameter.
+- Print Transpose of a matrix. The function should take one two-dimensional array as parameter.
+5. Write a menu driven program using user defined functions to manipulate a 1-dimensional numeric array
+with following choices.
+- Find the greatest value from the numbers in the array. The function should take one-dimensional array as
+parameter and return the maximum value.
+- Sort the elements of the array in ascending order. The function should take one two-dimensional array as
+parameter.
+- Reverse the array elements. The function should take one one-dimensional array as parameter.
+6. Write a menu driven program to using user defined functions to manipulate a 1-dimensional character
+array with following choices:
+- copy one string to another
+- concatenating 2 strings
+- check if the string is a palindrome or not
+The corresponding functions should take string/strings as parameter.
+7. Write program using function overloading to perform the following operations:
+- count and return number of words in a string when string is passed as parameter
+- count and return number of digits in an integer. The number is passed as parameters
+- count number of prime numbers in an integer array and return the count.

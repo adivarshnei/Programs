@@ -1,0 +1,5 @@
+Lab 1: Introduction to Python Language
+1. Write a python program to print date, time for today and now.
+2. Write a python program to add some days to your present date and print the date added.
+3. Write a python program to print date, time using date and time functions
+4. Write a python program which accepts the radius of a circle from user and computes the area (use math module).

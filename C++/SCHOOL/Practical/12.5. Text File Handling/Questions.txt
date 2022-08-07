@@ -1,0 +1,23 @@
+﻿1. Write a program to create a text file taking data from user. 
+Find and display the total no. of words, vowels, special character 
+and digits present in the text file.
+
+2. Create a text file by taking the user input. Write a function 
+change() which will create another text file new by replacing all 
+alphabet and digits with the next one(z should be replaced with a, 
+9  with 0 and vice versa), each space should be replaced with a -. 
+Display the contents of both file.
+
+3. Write a program to create a text file and write a function to 
+count and display the lines starting with an upper case vowel.
+
+4. Create a text file by entering the string by the user and transfer 
+contents of that text file to another by converting it to uppercase.
+
+5. Create a text file “text1”with some text. Create another text file, 
+which shall contain only those words from the text1 which don’t start 
+with an vowel.
+
+6.  Write a program to create a text file and write a function 
+coun_first() to count and display the lines whose first words are 
+the/The.

@@ -1,0 +1,29 @@
+﻿1.  Write a program in C++ that will create a data file containing 
+object of class FLOPPY BOX containing floppy_id (int), name (char(20)) 
+and size (int).  Write an interactive, menu-driven program to do the 
+following :
+	i) create a file.(by writing as many records as the user wants)
+	ii) read a file.
+	iii) find the total no. of records
+	iv) search and display floppy details by accepting floppy name or 
+	id from the user. 
+
+2. Write a program in C++ that will create a data file containing  
+object of class book containing  book_id (int), name (char 20) and 
+no_of_pages (int).  Write an interactive, menu-driven program to do 
+the following :
+	i) create a file.(by writing as many records as the user wants)
+	ii) read a file.
+	iii) Edit the nth record (accept n from user) position 
+	iv) Insert a record at nth position
+	v) Insert a record after a book_no (accept the book no from user)
+
+3. Write a program in C++ that will create a data file containing  
+object of class EMPLOYEE containing eno(int),ename (char 20) and 
+salary(double)  Write an interactive, menu-driven program to do the 
+following :
+	i) create a file.(by writing as many records as the user wants)
+	ii) read a file.
+	iii) find the total no. of records in the file.
+	iv) Delete the nth record
+	v) Delete the last record

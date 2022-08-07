@@ -1,0 +1,165 @@
+#include<iostream.h>
+#include<conio.h>
+void main()
+{
+	//Algorithm 1
+	//To display the sum total of three numbers
+	clrscr();
+	int x,y,z,tot;aaa
+	cout<<"Enter the First Number: ";
+	cin>>x;
+	cout<<"Enter the Second Number: ";
+	cin>>y;
+	cout<<"Enter the Third Number: ";
+	cin>>z;
+	tot=x+y+z;
+	cout<<"The Total is: "<<tot<<endl;
+	getch();
+}
+#include<iostream.h>
+#include<conio.h>
+#include<math.h>
+void main()
+int p,t,r,si,amt;
+{
+	//Algorithm 2
+	//To calculate simple interest
+	clrscr();
+	cout<<"Enter the Principal: ";
+	cin>>p;
+	cout<<"Enter the Rate of Interest: ";
+	cin>>r;
+	cout<<"Enter the Time Period: ";
+	cin>>t;
+	si=(p*t*r)/100
+	amt=si+p
+	cout<<"The Simple Interest to be paid is: "<<si<<endl;
+	cout<<"The Amount to be paid is: "<<amt<<endl;
+	getch();
+}
+#include<iostream.h>
+#include<conio.h>
+void main()
+{
+	//Algorithm 3
+	//To check for odd/even nos.
+	clrscr();
+	int n;
+	cout<<"Enter the number: ";
+	cin>>n;
+	if (n%2==0)
+		cout<<"The number entered is even";
+	else
+		cout<<"The number entered is odd";
+	getch();
+}
+#include<iostream.h>
+#include<conio.h>
+void main()
+{
+	//Algorithm 4
+	//To find the average of any 'n' numbers
+	clrscr();
+	int n,x,tot,a;
+	float ave;
+	cout<<"Enter the number of values to be added"<<endl;
+	cin>>n;
+	tot=0;
+	for (a=0;a<n;a++)
+		{
+			cout<<"Enter the value of number to be added"<<endl;
+			cin>>x;
+			tot=tot+x;
+		}
+	ave=tot/n;
+	cout<<"The total is:"<<tot<<" and the average is:"<<ave<<endl;
+	getch();
+}
+#include<iostream.h>
+#include<conio.h>
+void main()
+{
+	int x,g,count,m,f,a;
+	clrscr();
+	cout<<"Enter the age of the person"<<endl;
+	cin>>x;
+	cout<<"Enter the gender of the person (1 for female, 2 for male)"<<endl;
+	cin>>g;
+	m=0;
+	f=0;
+	for (count=0;count<5;count++)
+	{
+		if (g==1;x<30)
+			f=f+1;
+			count=count+1;
+		else if (g==1;x>=30)
+			count=count+1;
+		else if (g==2;x<30)
+			m=m+1;
+			count=count+1;
+		else if (g==2;x>=30)
+			count=count+1;
+	}
+	cout<<"No of males under 30="<<m<<endl;
+	cout<<"No of females under 30="<<f<<endl;
+}
+#include<iostream.h>
+#include<conio.h>
+void main()
+{
+	//Algorithm 7
+	//To find the area of a square, circle or rectangle
+	clrscr();
+	int sh;
+	float ar;
+	cout<<"Enter shape code (1=square), (2=circle), (3=rectangle)"<<endl;
+	cin>>sh;
+	switch (sh)
+		{
+			case 1:
+				float a;
+				cout<<"Enter the side of the square"<<endl;
+				cin>>a;
+				ar=a*a;
+				cout<<"Area of the square is:"<<ar<<endl;
+				break;
+			case 2:
+				float pi, r;
+				cout<<"Enter the radius of the circle"<<endl;
+				cin>>r;
+				pi=22/7;
+				ar=pi*(r*r);
+				cout<<"Area of the circle is:"<<ar<<endl;
+				break;
+			case 3:
+				float l,b;
+				cout<<"Enter the length of the rectangle"<<endl;
+				cin>>l;
+				cout<<"Enter the breadth of the rectangle"<<endl;
+				cin>>b;
+				ar=l*b;
+				cout<<"Area of the rectangle is:"<<ar<<endl;
+				break;
+			default:
+				cout<<"Invalid number entered"<<endl;
+				break;
+		}
+	getch();
+}
+#include<iostream.h>
+#include<conio.h>
+void main()
+{
+	clrscr();
+	int n,p,a,tot;
+	cout<<"Enter no. of values"<<endl;
+	cin>>n;
+	a=1;
+	tot=0;
+	for (p=0;p<n;p++,a++)
+		{
+			tot=tot+a;
+		}
+	cout<<"The sum of the first "<<n<<" natural numbers is "<<tot<<endl;
+	getch();
+}

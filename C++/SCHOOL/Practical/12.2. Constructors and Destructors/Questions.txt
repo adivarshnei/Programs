@@ -1,0 +1,44 @@
+﻿Practical Questions
+
+1. Declare a class address to read and store the address of a person with the data
+members : name (character string size 20)
+House no (int)
+Street (character string size 15)
+City (character string size 20)
+Country(character string size 15)
+
+Include constructor functions . One Default Constructor to assign each data
+members to null value (numeric to 0 and string to \0), second one should be a
+parameterized constructor to initialize city to “DELHI” and Country to
+“INDIA” and rest of the data members to user defined parameter values. Also
+include the member function which will display the members.
+
+2. Create a class time that has data members hour, minutes and seconds of int
+data types and two constructor functions. One Default constructor should
+initialize these data to zero and another parameterized constructor should
+initialize these to user supplied values. Also include one member function to
+display the data in the format 11:10:59 and another, which will add two
+objects of time passed as arguments. Display the value of the added object.
+
+3. WAP to generate fibonacci series, using a class fib, which have the following
+data members and member functions:
+Data members : first ,second are the first two terms and n is
+the no. of terms which should be supplied
+into the constructor as parameter.
+fib() : Constructor function to initialize first and
+
+second to 0 and 1 and n to 10
+
+fib() : A parameterized constructor which takes
+value of first, second and n from user
+gen_fib() : Is the function that generates the series for
+
+terms
+
+4. A class circle stores as data member - the radius and area of a circle and two
+constructor functions. The first accepts, as argument the radius and calculate
+its area. The second is a copy constructor that increases the area of the circle
+by 1 and calculates its area. Also include another member function to display
+radius and area of the circle
+
+Q 3 and 4 to be done in the practical file

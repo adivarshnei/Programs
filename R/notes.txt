@@ -1,0 +1,77 @@
+Data Types in R
+  Namely:
+    -> Numeric
+    -> Integer
+    -> Logical
+    -> Complex
+    -> Character
+    /i/They are used to represent data in different forms./i/
+    
+Numeric
+    Syntax:
+        <variable> = <value>
+    Example:
+        x = 5
+
+Task 1:
+    Aim:
+        Explore various data types in R.
+    Code:
+        x_numeric = 10.5
+        print(cat(class(x_numeric), "is", x_numeric))
+        x_integer = integer(10)
+        print(cat(class(x_integer), "is", x_integer))
+        x_logical = 5 > 10
+        print(cat(class(x_logical), "is", x_logical))
+        x_complex = 5 + 10i
+        print(cat(class(x_complex), "is", x_complex))
+        x_character = "Hi!"
+        print(cat(class(x_character), "is", x_character))
+
+Task 2:
+    Aim:
+        Find data type of an object.
+    Code:
+        print(class(TRUE))
+        print(class(3L))
+        print(class(1 + 2i))
+        print(class("01-08-2022"))
+
+Task 3:
+    Aim:
+        Verification of Datatype
+    Code:
+        x_test = integer(1)
+        print(is.numeric(x_test))
+        print(is.integer(x_test))
+        print(is.logical(x_test))
+        print(is.complex(x_test))
+        print(is.character(x_test))
+
+Task 4:
+    Aim:
+        Changing Datatype of an object
+    Code:
+        x_change = 1.5
+        print(as.numeric(x_change))
+        print(as.integer(x_change))
+        print(as.logical(x_change))
+        print(as.complex(x_change))
+        print(as.character(x_change))
+
+Task 5:
+    Aim:
+        Exploring Operators in R
+    Code:
+        cat("5 + 6 =", as.character(5 + 6))
+        cat("5 - 6 =", as.character(5 - 6))
+        cat("5 * 6 =", as.character(5 * 6))
+        cat("5 / 6 =", as.character(5 / 6))
+        
+        cat("[TRUE, FALSE] | FALSE =", as.character(c(TRUE, FALSE) | FALSE))
+        cat("[TRUE, FALSE] & FALSE =", as.character(c(TRUE, FALSE) & FALSE))
+        cat("[TRUE, FALSE] || [FALSE, TRUE] =", as.character(c(TRUE, FALSE) | c(FALSE, TRUE)))
+        cat("[TRUE, FALSE] && [FALSE, TRUE] =", as.character(c(TRUE, FALSE) | c(FALSE, TRUE)))
+        
+        ADD RELATIONAL OPERATORS
+        ADD ASSIGNMENT OPERATORS

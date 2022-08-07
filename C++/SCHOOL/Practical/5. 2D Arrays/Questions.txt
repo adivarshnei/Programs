@@ -1,0 +1,33 @@
+﻿1.Write a menu driven program to do the following operations:
+a) Print the product of each column of a two dimensional integer array.
+b) Print the product of each row of a two dimensional integer array.
+2. Write a program which accepts an integer array and assigns the elements into a two dimensional array of integers in the following format :
+If the array is 1,2,3,4,5,6
+The resultant 2D array is given below:
+1 0 0 0 0 0
+1 2 0 0 0 0
+1 2 3 0 0 0
+1 2 3 4 0 0
+1 2 3 4 5 0
+1 2 3 4 5 6
+3. Write a menu driven program to do the following operations :
+a) Find sum of all the elements which lie on either diagonal .
+b) Find the sum of all elements of upper triangular matrix. 
+4. Write a program to input elements in a 1 Dimensional array and transfer them in a 2 Dimensional array.
+5. Write a program which accepts a 2D array of integers and its size from the user and displays the elements of middle row and the elements of middle column.(Assuming the 2D array to be a square matrix with odd dimensions i.e. 3*3, 5*5 etc).
+Example : If the array content is
+3	5   4
+4	7   9
+5	1   8
+Output should be:
+Middle Row: 4  7  9
+Middle column:5  7  1
+
+6.Write a menu driven program to do the following operations :
+a) Print sum of  both the diagonal elements of a matrix
+b) Print upper and lower triangle of a matrix
+c) Print transpose of a matrix
+7.Declare and initialize with user given entry for a 2D array of size 4*4. Accept n and count and display the number of elements which are divisible by n. 
+8 Write a program which accepts a 2D array of integers of size 3*3 . Find transpose of it and store in the same array without using another array.
+
+

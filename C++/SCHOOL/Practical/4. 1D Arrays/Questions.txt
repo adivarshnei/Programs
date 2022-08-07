@@ -1,0 +1,44 @@
+1. Write a program to count the number of employees earning more than Rs. 1 lakh
+per annum. The monthly salaries of 10 employees are to be inputted from the
+user. (Hint : Salary per annum is calculated as 12*monthly salary)
+
+2. Write a program to accept marks in three subjects for 3 students. 
+Calculate total ,percentage and store in different arrays. Decide stream 
+of the student according to the following criteria :
+Percentage Stream
+Perc>=80 Science
+Perc<80 & >=60 Commerce
+Perc<60 & >=40 Humanities
+Perc<40 No stream allotted
+Display all information of the student along with stream.
+
+3. Write a program to reverse the elements of an array and store them in another
+array.
+
+4. Write a program to reverse the elements in an array without using second array.
+
+5. Write a program to input book number, cost of the book , quantity. Calculate
+amount as cost * quantity. Store them in separate arrays . Search for a particular
+book number inputted by the user and display the information for that book , if
+book is found . If the book is not found, display the message �book not present�
+
+6. Write a program to input 5 elements in an array and arrange them in descending
+order.
+
+7. Write a program to declare and accept values into an integer array . Re-arrange
+the array in such a way that the first half side elements are exchanged with second
+half side elements of the array.
+Example if the array contains 3,4,5,6,7,8,9,10,11,12
+Then after re arranging the array should be : 8,9,10,11,12,3,4,5,6,7
+
+8. Write a program to declare and accept values into an integer array . Re-arrange
+the array in such a way that the odd value are replaced with thrice its value and
+even value of the array is replaced with twice its value.
+Example if the array contains 3,4,5,6,7,8,9,10
+Then after re arranging the array should be : 9,8,15,12,21,16,27,20
+
+9. Write a program to declare and accept values into an integer array . Re-arrange
+the array in such a way that all elements in the first half are reversed and all
+elements in the second half of the array are reversed
+Example if the array contains 3,4,5,6,7,8,9,10
+Then after re arranging the array should be : 6,5,4,3,10,9,8,7
