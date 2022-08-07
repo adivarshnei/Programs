@@ -1,0 +1,16 @@
+message = 'Hello World'
+
+print(message)
+print(message.count('H'))
+print(len(message))
+print(message[6])
+print(message[2:7])
+print(message[:2])
+print(message[6:])
+print(message.replace('World', 'Hello'))
+print('Hello' + ' ' + 'World')
+print('{}, {}'.format('Hello', 'World'))
+print(f'{message.upper()}, {message.lower()}')
+print(dir(message))
+#print('\n\n' + help(str))
+#print(help.lower)
