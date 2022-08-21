@@ -92,7 +92,7 @@ gen_rand_arr(int* array, int len) {
 void
 print_arr(int* array, int len) {
     for ( int i = 0; i < len; i++ ) {
-        fprintf(stdout, "%3d ", array[i]);
+        fprintf(stdout, "%3d", array[i]);
     }
 
     fprintf(stdout, "\n");

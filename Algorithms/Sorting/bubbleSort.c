@@ -7,11 +7,11 @@
 #define ELEM_LIMIT 10
 
 typedef unsigned int LoopVar;
-typedef char BufferClear;
+typedef char         BufferClear;
 
 enum Bool {
-   TRUE = 1,
-   FALSE = 0
+    TRUE  = 1,
+    FALSE = 0
 };
 
 void initArrayValues(int*);
@@ -19,49 +19,53 @@ void printArray(int*, int);
 void insertElement(int*, int);
 
 BufferClear temp;
-enum Bool shouldRepeat;
+enum Bool   shouldRepeat;
 
-int main(void) {
-   static int array[ARRAY_SIZE] = { 0 };
+int
+main(void) {
+    static int array[ARRAY_SIZE] = { 0 };
 
-   // system("cls");
+    // system("cls");
 
-   initArrayValues(array);
+    initArrayValues(array);
 
-   printf("\nRepeat Program? (1 = YES): ");
-   scanf("%d", &shouldRepeat);
-   scanf("%c", &temp);
+    printf("\nRepeat Program? (1 = YES): ");
+    scanf("%d", &shouldRepeat);
+    scanf("%c", &temp);
 
-   (shouldRepeat == TRUE) ? main() : printf("\nEND");
+    (shouldRepeat == TRUE) ? main() : printf("\nEND");
 }
 
-void initArrayValues(int* array) {
-   LoopVar i;
+void
+initArrayValues(int* array) {
+    LoopVar i;
 
-   srand(time(NULL));
+    srand(time(NULL));
 
-   for (i = 0; i < ARRAY_SIZE; i++) {
-      array[i] = rand() % ELEM_LIMIT;
-   }
+    for ( i = 0; i < ARRAY_SIZE; i++ ) {
+        array[i] = rand() % ELEM_LIMIT;
+    }
 }
 
-void printArray(int* array, int size) {
-   LoopVar i;
+void
+printArray(int* array, int size) {
+    LoopVar i;
 
-   for (i = 0; i < size; i++) {
-      printf("%-4d", array[i]);
-   }
+    for ( i = 0; i < size; i++ ) {
+        printf("%-4d", array[i]);
+    }
 }
 
-void insertElement(int* array, int size) {
-   int element;
-   int index;
+void
+insertElement(int* array, int size) {
+    int element;
+    int index;
 
-   printf("Enter element: ");
-   scanf("%d", &element);
+    printf("Enter element: ");
+    scanf("%d", &element);
 
-   printf("Enter index: ");
-   scanf("%d", &index);
+    printf("Enter index: ");
+    scanf("%d", &index);
 }
 
 // #include <stdio.h>

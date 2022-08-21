@@ -1,0 +1,12 @@
+vscode
+vimrc
+init.vim
+helix
+.clang-format
+java-format.xml
+.gitignore
+windows terminal
+sublime text
+lite-xl
+.bashrc
+cmd-args
