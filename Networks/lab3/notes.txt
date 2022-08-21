@@ -1,0 +1,26 @@
+Aim: Configuration of Switches using Cisco IOS
+
+Earlier connection done with only hub.
+Switches are more intelligent.
+Hub is a broadcast device, it does not know the destination of the data.
+Switches know the destination of the data and send the data to the destination only.
+
+Switches' FastEthernet links are up at the start.
+Routers' FastEthernet links are down at the start and need to be configured.
+
+By default, a device is in user execution mode (Denoted by [DEVICENAME]>). This is a non configuration mode. Data and statistics about the device and its configuration can still be viewed.
+
+To get access to privileged commands from user mode, use `enable`.
+A device in privileged mode (Denoted by [DEVICENAME]#) has access to more elevated commands.
+
+To get access to configuration mode from privileged mode, use `config terminal`.
+A device in global configuration mode (Denoted by [DEVICENAME](config)#) has access to configuration options.
+
+To Do:
+	Change Hostname of Device
+	Set password via enable secret class to priv mode.
+	Save config.
+	Config IP Address.
+
+
+SWITCH OUTPUT:
