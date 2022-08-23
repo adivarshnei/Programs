@@ -13,26 +13,25 @@ print("Declaration of Several Values")
 cat("a = ", a)
 
 
-# Task 3:
+# Task 3: Multiplication
 b <- a * a
 print("Multiplication")
 cat(a, " * ", a, " = ", b)
 
 
-# Task 4:
+# Task 4: Reciprocation
 b <- 1 / a
 print("Reciprocation")
 cat("1 / ", a, " = ", b)
 
 
-# Task 5:
+# Task 5: Subtraction
 b <- a - 1
 print("Subtraction")
 cat(a, " - 1 = ", b)
 
 
-# Task 6:
-# Sequences
+# Task 6: Sequences
 seq1 <- 2:10
 seq2 <- seq(from = 0, to = 20, by = 5)
 seq3 <- seq(0, 100, 20)
@@ -43,8 +42,7 @@ cat("seq(from = 0, to = 20, by = 5) = ", seq2, "\n")
 cat("seq(0, 100, 20) = ", seq3, "\n")
 
 
-# Task 7:
-# Trying incompatible dimensions
+# Task 7: Trying incompatible dimensions
 a1 <- c(1, 2, 5)
 a2 <- c(1, 2, 3, 4)
 
@@ -56,8 +54,7 @@ a2 <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 cat("c(1, 2, 3, 4, 5) + c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) = ", (a1 + a2))
 
 
-# Task 8:
-# Removing of variables
+# Task 8: Removing of variables
 ls()
 rm(a1)
 ls()
@@ -75,8 +72,7 @@ logicals <- c(TRUE, FALSE, TRUE, FALSE, TRUE)
 cat("c(TRUE, FALSE, TRUE, FALSE, TRUE) = ", logicals)
 
 
-# Task 11:
-# Sorting Vectors
+# Task 11: Sorting Vectors
 strings <- c(
   "the",
   "quick",
@@ -95,8 +91,7 @@ nums <- c(7, 3, 5, 7, 8, 2, 1, 25, 15, 72, 32)
 sort(nums)
 
 
-# Task 12:
-# Accessing Vectors
+# Task 12: Accessing Vectors
 a <- c("Dark", "was", "the", "Night,", "Cold", "was", "the", "Ground")
 # Access by position via value
 print(a[1])
@@ -106,7 +101,6 @@ print(a[c(1, 3)])
 print(a[c(-2, -3)])
 print(a[c(TRUE, FALSE, TRUE, FALSE, TRUE, FALSE, TRUE, FALSE)])
 
-# Task 13:
-# Changing Vector Items:
+# Task 13: Changing Vector Items:
 a[1] <- "123"
 print(a)

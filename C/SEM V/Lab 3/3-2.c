@@ -115,7 +115,7 @@ merge_sort(int*      array,
 
         (*pass) += 1;
 
-        fprintf(stdout, "Pass %3d: ", *pass);
+        fprintf(stdout, "Pass %2d:", *pass);
         print_arr(array, len);
     }
 }
