@@ -1,12 +1,12 @@
 \! cls
-DROP DATABASE p1;
+DROP DATABASE p3;
 
-CREATE DATABASE p1;
+CREATE DATABASE p3;
 
-USE p1;
+USE p3;
 
 CREATE TABLE student(
-    ADM_NO		INTEGER		NOT NULL	UNIQUE	PRIMARY KEY,
+	ADM_NO		INTEGER		NOT NULL	UNIQUE	PRIMARY KEY,
 	NAME		VARCHAR(20)	NOT NULL,
 	MARKS		FLOAT(5,2)	CHECK (MARKS <= 100 AND MARKS >= 0),
 	FEE_STATUS  CHAR(8)
@@ -15,221 +15,76 @@ CREATE TABLE student(
 DESC student;
 
 INSERT INTO student(ADM_NO, NAME, MARKS, FEE_STATUS) VALUES
-	(3988, "TOR", 3.69, "PAID"), 
-	(6937, "KVI", 68.44, "NOT PAID"), 
-	(5713, "XJH", 48.53, "NOT PAID"), 
-	(1209, "WHE", 48.08, "PAID"), 
-	(3244, "VTV", 79.82, "PAID"), 
-	(2112, "QFJ", 35.43, "PAID"), 
-	(5755, "RTL", 51.97, "PAID"), 
-	(7531, "FTQ", 42.90, "PAID"), 
-	(5579, "DPO", 48.83, "PAID"), 
-	(8200, "UBH", 52.25, "NOT PAID"), 
-	(4122, "WTE", 12.57, "PAID"), 
-	(7878, "GGV", 47.76, "PAID"), 
-	(8283, "SUJ", 93.27, "PAID"), 
-	(2132, "ULK", 14.45, "PAID"), 
-	(1297, "AKM", 70.12, "PAID"), 
-	(8082, "SGS", 1.22, "PAID"), 
-	(7423, "XIR", 63.02, "PAID"), 
-	(1824, "WRO", 26.82, "NOT PAID"), 
-	(5527, "LZZ", 3.30, "PAID"), 
-	(1676, "ZGU", 80.75, "PAID"), 
-	(5649, "III", 78.67, "PAID"), 
-	(0729, "KWK", 82.98, "PAID"), 
-	(6859, "AGV", 35.49, "PAID"), 
-	(0130, "EBY", 60.73, "PAID"), 
-	(4077, "ECP", 36.82, "PAID"), 
-	(1510, "QNE", 6.71, "PAID"), 
-	(8370, "QHT", 57.95, "NOT PAID"), 
-	(3296, "EHJ", 46.53, "PAID"), 
-	(0966, "EFZ", 63.42, "PAID"), 
-	(3790, "XHO", 21.14, "PAID"), 
-	(2862, "BER", 96.57, "PAID"), 
-	(5387, "UYQ", 35.24, "NOT PAID"), 
-	(1175, "FNZ", 8.72, "PAID"), 
-	(5467, "XDJ", 3.09, "NOT PAID"), 
-	(6441, "CHL", 57.67, "NOT PAID"), 
-	(2812, "ZHT", 70.11, "PAID"), 
-	(7163, "RYC", 18.47, "PAID"), 
-	(4263, "WFI", 88.36, "NOT PAID"), 
-	(1482, "NER", 68.88, "PAID"), 
-	(1344, "LIF", 91.56, "NOT PAID"), 
-	(7993, "HGB", 33.90, "PAID"), 
-	(1564, "UUE", 98.45, "PAID"), 
-	(2143, "WCZ", 65.20, "NOT PAID"), 
-	(8319, "ORW", 11.41, "PAID"), 
-	(7250, "KDL", 96.98, "PAID"), 
-	(4929, "IAF", 63.65, "NOT PAID"), 
-	(4731, "JTM", 9.96, "PAID"), 
-	(6906, "BRY", 81.12, "PAID"), 
-	(3189, "ZWD", 57.70, "NOT PAID"), 
-	(1962, "QJX", 45.70, "PAID"), 
-	(1922, "ZHO", 53.65, "PAID"), 
-	(5658, "TIY", 73.27, "PAID"), 
-	(5405, "YGC", 27.32, "PAID"), 
-	(0055, "YZN", 23.78, "PAID"), 
-	(6562, "PBK", 30.33, "PAID"), 
-	(5069, "AEY", 20.03, "NOT PAID"), 
-	(1792, "JEY", 32.86, "PAID"), 
-	(7529, "CMX", 96.39, "PAID"), 
-	(3116, "YMU", 21.18, "PAID"), 
-	(5554, "OSC", 44.71, "PAID"), 
-	(7635, "VQC", 88.96, "NOT PAID"), 
-	(1738, "RAQ", 46.09, "PAID"), 
-	(5979, "AIN", 69.04, "PAID"), 
-	(1440, "XFW", 25.25, "PAID"), 
-	(8596, "HJZ", 25.27, "PAID"), 
-	(3827, "GWI", 32.16, "PAID"), 
-	(6580, "ZWA", 94.25, "PAID"), 
-	(2091, "JSX", 60.51, "PAID"), 
-	(7672, "RQL", 80.66, "PAID"), 
-	(8506, "KIQ", 75.62, "PAID"), 
-	(3263, "EJA", 92.91, "PAID"), 
-	(7024, "WDW", 63.27, "PAID"), 
-	(0111, "KMC", 96.52, "NOT PAID"), 
-	(2484, "UWS", 82.53, "PAID"), 
-	(2028, "UZO", 28.25, "PAID"), 
-	(1481, "FFO", 5.46, "PAID"), 
-	(6748, "OGE", 29.38, "PAID"), 
-	(8488, "IDF", 80.84, "PAID"), 
-	(0737, "DEE", 57.57, "PAID"), 
-	(2251, "GVA", 79.82, "NOT PAID"), 
-	(3841, "UMO", 83.18, "PAID"), 
-	(2910, "LPO", 43.56, "NOT PAID"), 
-	(4315, "UGV", 95.09, "NOT PAID"), 
-	(4895, "GJT", 95.42, "PAID"), 
-	(5842, "UEK", 16.63, "NOT PAID"), 
-	(6279, "BYC", 86.00, "PAID"), 
-	(0027, "RUX", 76.13, "PAID"), 
-	(5031, "NII", 99.16, "PAID"), 
-	(4200, "AHI", 19.55, "PAID"), 
-	(6556, "JEF", 60.24, "PAID"), 
-	(1970, "UUA", 56.96, "PAID"), 
-	(1122, "NLH", 41.60, "NOT PAID"), 
-	(4561, "IUN", 78.67, "PAID"), 
-	(6596, "PFY", 50.10, "PAID"), 
-	(3408, "FMI", 66.34, "PAID"), 
-	(6971, "JWS", 57.69, "PAID"), 
-	(8053, "CEH", 38.30, "NOT PAID"), 
-	(1593, "PGI", 32.10, "PAID"), 
-	(8137, "ZYK", 31.57, "PAID"), 
-	(4429, "LIB", 27.14, "PAID"), 
-	(5508, "RVR", 93.44, "PAID"), 
-	(8971, "ZUP", 89.25, "PAID"), 
-	(3097, "NUR", 42.46, "NOT PAID"), 
-	(2082, "GTU", 79.50, "PAID"), 
-	(1982, "WRB", 12.43, "NOT PAID"), 
-	(0825, "CZJ", 28.81, "PAID"), 
-	(4370, "VIB", 36.10, "PAID"), 
-	(7877, "CJQ", 62.94, "PAID"), 
-	(4051, "WJA", 99.66, "NOT PAID"), 
-	(2131, "MGM", 78.78, "PAID"), 
-	(3722, "CFT", 54.17, "PAID"), 
-	(5733, "KSY", 11.90, "PAID"), 
-	(8020, "SLS", 25.73, "PAID"), 
-	(6860, "VUW", 68.35, "PAID"), 
-	(3690, "BZF", 36.79, "PAID"), 
-	(5604, "MQE", 45.90, "PAID"), 
-	(0881, "PLP", 44.06, "PAID"), 
-	(2183, "LCK", 76.22, "PAID"), 
-	(7573, "HRD", 72.93, "PAID"), 
-	(2240, "REE", 90.23, "PAID"), 
-	(4108, "PHF", 92.50, "PAID"), 
-	(1688, "VHA", 77.93, "PAID"), 
-	(8349, "DPU", 80.74, "PAID"), 
-	(3265, "IQO", 80.62, "PAID"), 
-	(1814, "TCT", 65.35, "PAID"), 
-	(7654, "VOX", 7.03, "PAID"), 
-	(0260, "WNJ", 60.42, "PAID"), 
-	(0850, "JQQ", 99.59, "PAID"), 
-	(2793, "ZPM", 27.80, "PAID"), 
-	(1038, "EES", 60.06, "PAID"), 
-	(3305, "PNW", 79.70, "NOT PAID"), 
-	(1412, "SKP", 99.90, "PAID"), 
-	(3237, "YUH", 62.33, "PAID"), 
-	(7330, "LQA", 12.41, "PAID"), 
-	(1393, "JVJ", 99.89, "NOT PAID"), 
-	(8383, "QVH", 31.30, "PAID"), 
-	(3638, "AYD", 95.40, "NOT PAID"), 
-	(4610, "GVE", 70.97, "PAID"), 
-	(5712, "SRT", 98.91, "NOT PAID"), 
-	(0755, "WEK", 38.34, "PAID"), 
-	(7261, "BXL", 61.87, "PAID"), 
-	(3954, "LBR", 28.07, "PAID"), 
-	(3735, "LTR", 99.87, "PAID"), 
-	(5248, "ZQI", 28.84, "PAID"), 
-	(5582, "JTI", 63.41, "NOT PAID"), 
-	(7165, "TGM", 45.37, "NOT PAID"), 
-	(4288, "QYI", 25.06, "NOT PAID"), 
-	(5970, "KSD", 48.16, "PAID"), 
-	(1739, "PTU", 90.59, "NOT PAID"), 
-	(1865, "AVT", 28.22, "PAID"), 
-	(3928, "KQT", 47.05, "PAID"), 
-	(1503, "DPO", 81.90, "PAID"), 
-	(4238, "HIC", 74.35, "PAID"), 
-	(5180, "CLB", 71.78, "PAID"), 
-	(7997, "KLD", 89.03, "PAID"), 
-	(4980, "QWS", 58.26, "PAID"), 
-	(5532, "FYA", 30.31, "PAID"), 
-	(6815, "VXO", 57.19, "PAID"), 
-	(1752, "BNR", 42.56, "PAID"), 
-	(3070, "PRC", 22.24, "PAID"), 
-	(2744, "TUF", 72.78, "PAID"), 
-	(7129, "JCA", 80.11, "NOT PAID"), 
-	(5139, "GRB", 22.17, "PAID"), 
-	(0358, "BBO", 24.75, "PAID"), 
-	(2725, "PYT", 9.76, "PAID"), 
-	(0565, "USA", 62.79, "PAID"), 
-	(6966, "PWX", 2.17, "PAID"), 
-	(1447, "OFW", 43.30, "PAID"), 
-	(1793, "WEB", 84.27, "PAID"), 
-	(3327, "MFJ", 90.32, "PAID"), 
-	(5463, "XOH", 97.58, "PAID"), 
-	(5099, "EDL", 73.54, "PAID"), 
-	(5084, "DOH", 57.62, "NOT PAID"), 
-	(3596, "DWY", 31.80, "PAID"), 
-	(8928, "HOQ", 81.76, "PAID"), 
-	(2115, "RQU", 56.06, "PAID"), 
-	(2064, "OQF", 41.20, "PAID"), 
-	(8872, "HXV", 81.57, "PAID"), 
-	(4909, "MXA", 85.30, "PAID"), 
-	(3751, "KFV", 77.03, "PAID"), 
-	(3462, "AVZ", 20.71, "PAID"), 
-	(6429, "SZK", 34.23, "PAID"), 
-	(4997, "ANB", 49.10, "PAID"), 
-	(0518, "QYP", 36.09, "PAID"), 
-	(4293, "EVD", 95.10, "PAID"), 
-	(8217, "NET", 14.11, "PAID"), 
-	(8913, "QAY", 56.83, "PAID"), 
-	(6006, "NGQ", 28.47, "PAID"), 
-	(2450, "AUQ", 35.41, "PAID"), 
-	(7759, "KEC", 58.41, "PAID"), 
-	(6043, "GJD", 33.33, "PAID"), 
-	(2743, "YNM", 68.48, "PAID"), 
-	(5818, "JKY", 53.64, "PAID"), 
-	(6994, "JSY", 66.07, "PAID"), 
-	(4648, "LSD", 22.29, "PAID"), 
-	(8859, "TNO", 69.10, "NOT PAID"), 
-	(1202, "MKP", 39.99, "NOT PAID"), 
-	(4742, "WYC", 79.17, "PAID"), 
-	(4273, "SGX", 44.53, "NOT PAID"), 
-	(4378, "TZV", 78.71, "PAID");
+	(3988, "TOR", 3.69, "PAID"),
+	(6937, "KVI", 68.44, "NOT PAID"),
+	(5713, "XJH", 48.53, "NOT PAID"),
+	(1209, "WHE", 48.08, "PAID"),
+	(3244, "VTV", 79.82, "PAID"),
+	(2112, "QFJ", 35.43, "PAID"),
+	(5755, "RTL", 51.97, "PAID"),
+	(7531, "FTQ", 42.90, "PAID"),
+	(5579, "DPO", 48.83, "PAID"),
+	(8200, "UBH", 52.25, "NOT PAID");
 
+-- Projection (Using WHERE Clause)
+SELECT ADM_NO, MARKS
+FROM student
+WHERE FEE_STATUS = "PAID";
 
-SELECT 
-	MAX(MARKS) AS "MAX", 
-	MIN(MARKS) AS "MIN", 
-	AVG(MARKS) AS "AVG", 
-	COUNT(DISTINCT FEE_STATUS) AS "FEE_COUNT", 
-	COUNT(*) AS "TOTAL_COUNT" 
-FROM 
-	student;
+-- Elimination of Duplicate Rows (Using DISTINCT clause)
+SELECT DISTINCT FEE_STATUS
+FROM student;
 
-SELECT 
-	* 
-FROM 
-	student
-ORDER BY
-	MARKS
-	DESC;
+-- Aliases in SQL
+SELECT
+	ADM_NO AS "Admission Number",
+	NAME AS "Name",
+	MARKS AS "Marks Gained",
+	FEE_STATUS AS "Fee Status"
+FROM student;
+
+-- Text in Query Output
+SELECT NAME AS "Name", "Scored", MARKS AS "Marks"
+FROM student;
+
+-- Aggregate Functions
+SELECT
+	SUM(MARKS) AS "Total Marks",
+	AVG(MARKS) AS "Average Marks",
+	MAX(MARKS) AS "Maximum Marks",
+	MIN(MARKS) AS "Minimum Marks",
+	COUNT(*) AS "Total Rows",
+	COUNT(DISTINCT FEE_STATUS) AS "Fee Status Count"
+FROM student;
+
+-- Ordering in SQL
+SELECT *
+FROM student
+ORDER BY MARKS ASC;
+
+SELECT *
+FROM student
+ORDER BY MARKS DESC;
+
+-- Range in SQL (BETWEEN...AND, NOT BETWEEN...AND)
+SELECT *
+FROM student
+WHERE marks BETWEEN 30.0 AND 60.0;
+
+SELECT *
+FROM student
+WHERE marks NOT BETWEEN 30.0 AND 60.0;
+
+-- List Based Searching (IN, NOT IN)
+SELECT *
+FROM student
+WHERE NAME IN ("TOR", "KVI", "VTV");
+
+SELECT *
+FROM student
+WHERE NAME NOT IN ("TOR", "KVI", "VTV");
+
+-- Pattern Matching (LIKE)
+SELECT *
+FROM student
+WHERE MARKS LIKE "48%";

@@ -1,0 +1,26 @@
+Switch>en
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#vlan 10
+Switch(config-vlan)#name cse
+Switch(config-vlan)#vlan 20 
+Switch(config-vlan)#name me
+Switch(config-vlan)#vlan 30
+Switch(config-vlan)#name ce
+Switch(config-vlan)#vlan 40 
+Switch(config-vlan)#name ee
+Switch(config-vlan)#vlan 50 
+Switch(config-vlan)#name it
+Switch(config-vlan)#exit
+Switch(config)#int fa0/1
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 10
+Switch(config-if)#int fa0/2
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 10
+Switch(config-if)#int fa0/6
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 20
+Switch(config-if)#int fa0/7
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 20
