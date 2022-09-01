@@ -51,22 +51,107 @@ CREATE TABLE Student(
 
 DESC Student;
 
+INSERT INTO Student(S_ADM_NO, S_NAME, S_FEE_STATUS) VALUES
+    (3988, "TOR", "PAID"),
+	(6937, "KVI", "NOT PAID"),
+	(5713, "XJH", "NOT PAID"),
+	(1209, "WHE", "PAID"),
+	(3244, "VTV", "PAID"),
+	(2112, "QFJ", "PAID"),
+	(5755, "RTL", "PAID"),
+	(7531, "FTQ", "PAID"),
+	(5579, "DPO", "PAID"),
+	(8200, "UBH", "NOT PAID");
+
 CREATE TABLE Test(
     S_ADM_NO            INTEGER,
     S_NAME              VARCHAR(20) NOT NULL,
     S_ADMIT_CARD_ID     INTEGER     NOT NULL    UNIQUE  PRIMARY KEY,
-    S_MARKS             INTEGER     DEFAULT 0   CHECK (S_MARKS <= 100),
-    CONSTRAINT FOREIGN KEY(S_ADM_NO) REFERENCES Student(S_ADM_NO)
+    S_MARKS             INTEGER     DEFAULT 0   CHECK (S_MARKS <= 100)
+    -- CONSTRAINT FOREIGN KEY(S_ADM_NO) REFERENCES Student(S_ADM_NO)
 );
 
 DESC Test;
 
+INSERT INTO Test(S_ADM_NO, S_NAME, S_ADMIT_CARD_ID, S_MARKS) VALUES
+    (3988, "TOR", 8119, 03.69),
+	(6937, "KVI", 8120, 68.44),
+	(5713, "XJH", 8121, 48.53),
+	(1209, "WHE", 8122, 48.08),
+	(3244, "VTV", 8123, 79.82),
+	(2112, "QFJ", 8124, 35.43),
+	(5755, "RTL", 8125, 51.97),
+	(7531, "FTQ", 8126, 42.90),
+	(5579, "DPO", 8127, 48.83),
+	(8201, "UBG", 8128, 52.25);
+
 -- Cartesian Product
+SELECT
+    Student.S_ADM_NO,
+    Student.S_NAME,
+    Student.S_FEE_STATUS,
+    Test.S_ADMIT_CARD_ID,
+    Test.S_MARKS
+FROM Student CROSS JOIN Test;
+
 -- Equi Join
---  Inner Join
---  Outer Join
---      Left Join
---      Right Join
+SELECT
+    Student.S_ADM_NO,
+    Student.S_NAME,
+    Student.S_FEE_STATUS,
+    Test.S_ADMIT_CARD_ID,
+    Test.S_MARKS
+FROM Student JOIN Test
+ON Student.S_ADM_NO = Test.S_ADM_NO;
+
+-- Inner Join
+SELECT
+    Student.S_ADM_NO,
+    Student.S_NAME,
+    Student.S_FEE_STATUS,
+    Test.S_ADMIT_CARD_ID,
+    Test.S_MARKS
+FROM Student INNER JOIN Test
+ON Student.S_ADM_NO = Test.S_ADM_NO;
+
+-- Outer Left Join
+SELECT
+    Student.S_ADM_NO,
+    Student.S_NAME,
+    Student.S_FEE_STATUS,
+    Test.S_ADMIT_CARD_ID,
+    Test.S_MARKS
+FROM Student LEFT JOIN Test
+ON Student.S_ADM_NO = Test.S_ADM_NO;
+
+-- Outer Right Join
+SELECT
+    Student.S_ADM_NO,
+    Student.S_NAME,
+    Student.S_FEE_STATUS,
+    Test.S_ADMIT_CARD_ID,
+    Test.S_MARKS
+FROM Student RIGHT JOIN Test
+ON Student.S_ADM_NO = Test.S_ADM_NO;
+
 -- Self Join
+SELECT S1.S_NAME, S2.S_NAME, S1.S_FEE_STATUS
+FROM Student S1, Student S2
+WHERE S1.S_ADM_NO <> S2.S_ADM_NO AND S1.S_FEE_STATUS = S2.S_FEE_STATUS
+ORDER BY S1.S_FEE_STATUS;
+
 -- Non-Equi Join
+SELECT
+    Student.S_ADM_NO AS "Student.S_ADM_NO",
+    Test.S_ADM_NO AS "Test.S_ADM_NO"
+FROM Student JOIN Test
+ON Student.S_ADM_NO < Test.S_ADM_NO;
+
 -- Natural Join
+SELECT
+    Student.S_ADM_NO,
+    Student.S_NAME,
+    Student.S_FEE_STATUS,
+    Test.S_ADMIT_CARD_ID,
+    Test.S_MARKS
+FROM Student NATURAL JOIN Test;
