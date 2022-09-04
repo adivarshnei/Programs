@@ -1,0 +1,151 @@
+Course Numbers:
+BC105
+ES101
+ES107
+ES202
+FREN145
+MATH114
+PHYS132
+BC106
+CHEM136
+ES103
+ES104
+EVS104
+FREN104
+MATH122
+CSE207
+CSIT124
+ES201
+ES203
+ES204
+FREN147
+MATH211
+BS207
+CSE202
+CSE204
+CSE208
+CSE435
+FREN144
+IT201
+MATH242
+MATS201
+BS309
+CSE201
+CSE303
+CSE437
+FREN148
+IT307
+SKE301
+SMO313
+
+Course Names:
+Technical Communication - I
+Engineering Mechanics
+Workshop Practices
+Introduction to Computers and Programming in C
+Introduction to French Culture and Language
+Applied Mathematics - I
+Engineering Physics
+Technical Communication - II
+Engineering Chemistry
+Basic Electrical Engineering
+Engineering Graphics
+Introduction to Environmental Sciences
+French Grammar - I
+Applied Mathematics - II
+Digital Electronics and Computer Organization
+Data Structures Using C
+Basic Electronics Engineering
+Object Oriented Programming Using C++
+Basic Simulation Lab
+Written Expression and Comprehension in French - I
+Applied Mathematics - III
+Self Reliance and Socialization
+Operating System
+Theory of Computation
+Discrete Mathematical Structures
+Introduction to Data Science
+French Through Communicative Approach
+Java Programming
+Applied Mathematics - IV
+Material Science
+Cognitive Skills, Leadership and Decision Making
+Database Management Systems
+Analysis and Design of Algorithms
+R Programming
+Communicative French - II
+Exploring the Networks
+Aptitude and Reasoning Ability
+Machine Learning with Python
+
+
+Names:
+Emílie Shōhei
+Aleksy Toivo
+Norbert Lailoken
+Feidlimid Adrijan
+Virginia Ríghnach
+Aamir Jelka
+Viola Francine
+Gilles Yusuf
+Doireann Gaëlle
+Therapon Ayaz
+Quirino Vivek
+Afi Tessouat
+Susann Chisom
+Martialis Hacî
+Chi Titilayo
+Nicușor Sultan
+Celyn Hilarion
+Úrsula Dermid
+Magni Mehmet
+Robert Shariah
+Nicușor Sultan
+Celyn Hilarion
+Úrsula Dermid
+Magni Mehmet
+Robert Shariah
+Shelach Mateja
+Gerd Kazimierz
+Aaryan Ravi
+Gaetana Onufriy
+Signe Kgosi
+
+5451
+6197
+2470
+4887
+5876
+5359
+5374
+3280
+8701
+0150
+5164
+7828
+3981
+4416
+1633
+5144
+4722
+5709
+8402
+0161
+3628
+1738
+6016
+6698
+7366
+8495
+9345
+8349
+3626
+3663
+2926
+7612
+8098
+3953
+3494
+8381
+9744
+6005

@@ -1,3 +1,5 @@
+# ADD OUTPUTS FOR ALL QUERIES
+
 # CSE201 Lab Assignment
 ---
 ## Q1.
@@ -17,10 +19,10 @@ Student
     name varchar(20)
     address varchar(30)
     phone_no number(11)
-    DOB date
+    D_O_B date
     total_amt number(10, 2)
-    due_dt date
-    paid char(1) (P/U)
+    amt_paid number(10, 2)
+    installment char(1) (I/F)
 Installment
     prospectus_no number(10) (foreign key) on delete cascade
     installment_amt number(10, 2)
@@ -39,7 +41,7 @@ Course_taken
 ```
 
 ```sql
--- Write Table creation and data entry syntax here
+    -- Write Table creation and data entry syntax here
 ```
 
 ### Queries:

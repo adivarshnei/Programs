@@ -10,3 +10,6 @@ sublime text
 lite-xl
 .bashrc
 cmd-args
+.gitconfig
+
+Use symlinks to make the git repo
