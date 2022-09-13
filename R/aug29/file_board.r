@@ -54,3 +54,11 @@ m1_rem_col <- m1[, c(-2)]
 
 print(m1_rem_row)
 print(m1_rem_col)
+
+for (i in 1:10) {
+    if (i > 5) {
+        break
+    }
+
+    print(i)
+}

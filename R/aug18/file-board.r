@@ -46,7 +46,7 @@ cat("seq(0, 100, 20) = ", seq3, "\n")
 a1 <- c(1, 2, 5)
 a2 <- c(1, 2, 3, 4)
 
-cat("c(1, 2, 5) + c(1, 2, 3, 4) = ", (a1 + a2))
+cat("c(1, 2, 5) + c(1, 2, 3, 4) = ", (a1 + a2), "\n")
 
 a1 <- c(1, 2, 3, 4, 5)
 a2 <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
@@ -60,8 +60,7 @@ rm(a1)
 ls()
 
 
-# Task 9:
-# Vector of Strings
+# Task 9: Vector of Strings
 strings <- c("hello", "world")
 cat("c(\"hello\", \"world\") = ", strings)
 
