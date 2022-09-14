@@ -1,6 +1,5 @@
 import pygame
 import pygame.freetype
-# import solver
 import sys
 import copy
 import math
@@ -10,12 +9,12 @@ class screenDefine:
     # Pygame Screen Initialization
     def __init__(self, screenParams):
         pygame.init()
-        self.screen = pygame.display.set_mode(screenParams['dimensions'])
-        pygame.display.set_caption(screenParams['caption'])
-        self.screen.fill(screenParams['bgColor'])
+        self.screen = pygame.display.set_mode(screenParams["dimensions"])
+        pygame.display.set_caption(screenParams["caption"])
+        self.screen.fill(screenParams["bgColor"])
         pygame.freetype.init()
-        self.sudokuNums = pygame.freetype.SysFont('Consolas', 40, bold=True)
-        self.dataFont = pygame.freetype.SysFont('Calibri', 24, bold=False)
+        self.sudokuNums = pygame.freetype.SysFont("Consolas", 40, bold=True)
+        self.dataFont = pygame.freetype.SysFont("Calibri", 24, bold=False)
 
     def returnScreenVar(self):
         return self.screen
@@ -29,39 +28,41 @@ class screenDefine:
 
 class sudoku(screenDefine):
     # Boards available to play
-    baseBoards = [[
-        [0, 6, 0, 3, 0, 0, 8, 0, 4],
-        [5, 3, 7, 0, 9, 0, 0, 0, 0],
-        [0, 4, 0, 0, 0, 6, 3, 0, 7],
-        [0, 9, 0, 0, 5, 1, 2, 3, 8],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [7, 1, 3, 6, 2, 0, 0, 4, 0],
-        [3, 0, 6, 4, 0, 0, 0, 1, 0],
-        [0, 0, 0, 0, 6, 0, 5, 2, 3],
-        [1, 0, 2, 0, 0, 9, 0, 8, 0]
-    ],
+    baseBoards = [
         [
-        [3, 0, 6, 5, 0, 8, 4, 0, 0],
-        [5, 2, 0, 0, 0, 0, 0, 0, 0],
-        [0, 8, 7, 0, 0, 0, 0, 3, 1],
-        [0, 0, 3, 0, 1, 0, 0, 8, 0],
-        [9, 0, 0, 8, 6, 3, 0, 0, 5],
-        [0, 5, 0, 0, 9, 0, 6, 0, 0],
-        [1, 3, 0, 0, 0, 0, 2, 5, 0],
-        [0, 0, 0, 0, 0, 0, 0, 7, 4],
-        [0, 0, 5, 2, 0, 6, 3, 0, 0]
-    ],
+            [0, 6, 0, 3, 0, 0, 8, 0, 4],
+            [5, 3, 7, 0, 9, 0, 0, 0, 0],
+            [0, 4, 0, 0, 0, 6, 3, 0, 7],
+            [0, 9, 0, 0, 5, 1, 2, 3, 8],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [7, 1, 3, 6, 2, 0, 0, 4, 0],
+            [3, 0, 6, 4, 0, 0, 0, 1, 0],
+            [0, 0, 0, 0, 6, 0, 5, 2, 3],
+            [1, 0, 2, 0, 0, 9, 0, 8, 0],
+        ],
         [
-        [1, 2, 3, 4, 5, 6, 7, 8, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [0, 0, 0, 0, 0, 0, 0, 0, 2],
-        [0, 0, 0, 0, 0, 0, 0, 0, 3],
-        [0, 0, 0, 0, 0, 0, 0, 0, 4],
-        [0, 0, 0, 0, 0, 0, 0, 0, 5],
-        [0, 0, 0, 0, 0, 0, 0, 0, 6],
-        [0, 0, 0, 0, 0, 0, 0, 0, 7],
-        [0, 0, 0, 0, 0, 0, 0, 0, 8]
-    ]]
+            [3, 0, 6, 5, 0, 8, 4, 0, 0],
+            [5, 2, 0, 0, 0, 0, 0, 0, 0],
+            [0, 8, 7, 0, 0, 0, 0, 3, 1],
+            [0, 0, 3, 0, 1, 0, 0, 8, 0],
+            [9, 0, 0, 8, 6, 3, 0, 0, 5],
+            [0, 5, 0, 0, 9, 0, 6, 0, 0],
+            [1, 3, 0, 0, 0, 0, 2, 5, 0],
+            [0, 0, 0, 0, 0, 0, 0, 7, 4],
+            [0, 0, 5, 2, 0, 6, 3, 0, 0],
+        ],
+        [
+            [1, 2, 3, 4, 5, 6, 7, 8, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [0, 0, 0, 0, 0, 0, 0, 0, 2],
+            [0, 0, 0, 0, 0, 0, 0, 0, 3],
+            [0, 0, 0, 0, 0, 0, 0, 0, 4],
+            [0, 0, 0, 0, 0, 0, 0, 0, 5],
+            [0, 0, 0, 0, 0, 0, 0, 0, 6],
+            [0, 0, 0, 0, 0, 0, 0, 0, 7],
+            [0, 0, 0, 0, 0, 0, 0, 0, 8],
+        ],
+    ]
 
     # Index of Board Selected
     sel = 0
@@ -72,17 +73,16 @@ class sudoku(screenDefine):
         self.board = copy.deepcopy(self.baseBoards[self.sel])
         self.solvedBoard = copy.deepcopy(self.baseBoards[self.sel])
         self.emptyCell = [0, 0]  # Location of First Cell Which is Empty
-        self.initSolve()  # Outputs to self.solvedBoard, Creates a solved copy of the board
+
+        # Outputs to self.solvedBoard, Creates a solved copy of the board
+        self.initSolve()
 
         # Program mode
         self.entryMode = False
         self.solveMode = False
 
         # Position of the cursor during entry mode
-        self.position = {
-            'row': 0,
-            'col': 0
-        }
+        self.position = {"row": 0, "col": 0}
 
     # Changes the board
     def changeBoard(self, screenParams):
@@ -102,12 +102,10 @@ class sudoku(screenDefine):
                 "(1 - 9): Enter Number",
                 "0: Clear Number",
                 "Lft Mouse Clk: Navigation",
-                "Bksp: Exit Entry Mode"
+                "Bksp: Exit Entry Mode",
             ]
         elif self.solveMode:
-            data = [
-                "Solving"
-            ]
+            data = ["Solving"]
         else:
             data = [
                 "(1 - 9): Highlight Number",
@@ -116,7 +114,7 @@ class sudoku(screenDefine):
                 "S: Solve Mode",
                 "R: Reset Board",
                 "C: Change Board",
-                "Esc: Exit"
+                "Esc: Exit",
             ]
 
         for i in range(len(data)):
@@ -124,23 +122,23 @@ class sudoku(screenDefine):
                 super().returnScreenVar(),
                 (950, 100 + i * 40),
                 data[i],
-                textColor
+                textColor,
             )
 
     # Writes numbers in the grid
     def writeNums(self, screenParams, color):
         for i in range(0, 9):
             for j in range(0, 9):
-                num = ' '
+                num = " "
 
                 # General Case, Highlights active numbers
-                if screenParams['activeNum'] == 0:
-                    textColor = screenParams['activeTextColor']
+                if screenParams["activeNum"] == 0:
+                    textColor = screenParams["activeTextColor"]
                 else:
-                    if self.board[j][i] == screenParams['activeNum']:
-                        textColor = screenParams['activeTextColor']
+                    if self.board[j][i] == screenParams["activeNum"]:
+                        textColor = screenParams["activeTextColor"]
                     else:
-                        textColor = screenParams['inactiveTextColor']
+                        textColor = screenParams["inactiveTextColor"]
 
                 # Gets number to fill cells
                 if self.board[j][i] != 0:
@@ -161,19 +159,19 @@ class sudoku(screenDefine):
 
                 # Guard general case to prevent inconsistencies
                 if not self.boardEmptChk(False):
-                    if screenParams['activeNum'] == 0:
-                        textColor = screenParams['activeTextColor']
+                    if screenParams["activeNum"] == 0:
+                        textColor = screenParams["activeTextColor"]
                     else:
-                        if self.board[j][i] == screenParams['activeNum']:
-                            textColor = screenParams['activeTextColor']
+                        if self.board[j][i] == screenParams["activeNum"]:
+                            textColor = screenParams["activeTextColor"]
                         else:
-                            textColor = screenParams['inactiveTextColor']
+                            textColor = screenParams["inactiveTextColor"]
 
                 super().returnNumFontVar().render_to(
                     super().returnScreenVar(),
                     (66 + (100 * i), 66 + (100 * j)),
                     str(num),
-                    textColor
+                    textColor,
                 )
 
     # def writeEmptyNums(self, screenParams, rowNum, colNum):
@@ -199,21 +197,21 @@ class sudoku(screenDefine):
 
     # Designs board
     def boardDesign(self, screenParams, color):
-        super().returnScreenVar().fill(screenParams['bgColor'])
+        super().returnScreenVar().fill(screenParams["bgColor"])
 
         # Draws gridlines
         for i in range(0, 10):
             if i % 3 == 0:
-                lineCol = screenParams['outLineColor']
+                lineCol = screenParams["outLineColor"]
             else:
-                lineCol = screenParams['inLineColor']
+                lineCol = screenParams["inLineColor"]
 
             pygame.draw.line(
                 super().returnScreenVar(),
                 lineCol,
                 (25, (100 * i + 25)),
                 (925, (100 * i + 25)),
-                7
+                7,
             )
 
             pygame.draw.line(
@@ -221,7 +219,7 @@ class sudoku(screenDefine):
                 lineCol,
                 ((100 * i + 25), 25),
                 ((100 * i + 25), 925),
-                7
+                7,
             )
 
             # Writes numbers and auxiliary data
@@ -229,17 +227,17 @@ class sudoku(screenDefine):
             self.writeData()
 
             # Draws cursorbox during entry mode
-            if self.entryMode == True:
+            if self.entryMode is True:
                 pygame.draw.rect(
                     self.screen,
                     (136, 192, 208),
                     pygame.Rect(
                         # position['col'] * 100,
                         # position['row'] * 100,
-                        (100 * self.position['col']) + 25,
-                        (100 * self.position['row']) + 25,
+                        (100 * self.position["col"]) + 25,
+                        (100 * self.position["row"]) + 25,
                         100,
-                        100
+                        100,
                     ),
                     7,
                 )
@@ -269,8 +267,8 @@ class sudoku(screenDefine):
         for i in range(0, 9):
             for j in range(0, 9):
                 if self.board[i][j] == 0:
-                    self.position['row'] = i
-                    self.position['col'] = j
+                    self.position["row"] = i
+                    self.position["col"] = j
                     break
             else:
                 continue
@@ -285,9 +283,14 @@ class sudoku(screenDefine):
                     rowMousePosition = math.floor(mousePosition[0] / 100)
                     colMousePosition = math.floor(mousePosition[1] / 100)
 
-                    if self.baseBoards[self.sel][colMousePosition][rowMousePosition] == 0:
-                        self.position['col'] = rowMousePosition
-                        self.position['row'] = colMousePosition
+                    if (
+                        self.baseBoards[self.sel][colMousePosition][
+                            rowMousePosition
+                        ]
+                        == 0
+                    ):
+                        self.position["col"] = rowMousePosition
+                        self.position["row"] = colMousePosition
 
                 # Keyboard commands
                 if event.type == pygame.KEYDOWN:
@@ -297,34 +300,54 @@ class sudoku(screenDefine):
 
                     # Number entry
                     if event.key == pygame.K_0:
-                        self.board[self.position['row']][self.position['col']] = 0
+                        self.board[self.position["row"]][
+                            self.position["col"]
+                        ] = 0
                         break
                     if event.key == pygame.K_1:
-                        self.board[self.position['row']][self.position['col']] = 1
+                        self.board[self.position["row"]][
+                            self.position["col"]
+                        ] = 1
                         break
                     if event.key == pygame.K_2:
-                        self.board[self.position['row']][self.position['col']] = 2
+                        self.board[self.position["row"]][
+                            self.position["col"]
+                        ] = 2
                         break
                     if event.key == pygame.K_3:
-                        self.board[self.position['row']][self.position['col']] = 3
+                        self.board[self.position["row"]][
+                            self.position["col"]
+                        ] = 3
                         break
                     if event.key == pygame.K_4:
-                        self.board[self.position['row']][self.position['col']] = 4
+                        self.board[self.position["row"]][
+                            self.position["col"]
+                        ] = 4
                         break
                     if event.key == pygame.K_5:
-                        self.board[self.position['row']][self.position['col']] = 5
+                        self.board[self.position["row"]][
+                            self.position["col"]
+                        ] = 5
                         break
                     if event.key == pygame.K_6:
-                        self.board[self.position['row']][self.position['col']] = 6
+                        self.board[self.position["row"]][
+                            self.position["col"]
+                        ] = 6
                         break
                     if event.key == pygame.K_7:
-                        self.board[self.position['row']][self.position['col']] = 7
+                        self.board[self.position["row"]][
+                            self.position["col"]
+                        ] = 7
                         break
                     if event.key == pygame.K_8:
-                        self.board[self.position['row']][self.position['col']] = 8
+                        self.board[self.position["row"]][
+                            self.position["col"]
+                        ] = 8
                         break
                     if event.key == pygame.K_9:
-                        self.board[self.position['row']][self.position['col']] = 9
+                        self.board[self.position["row"]][
+                            self.position["col"]
+                        ] = 9
                         break
 
                     # Program exit
@@ -426,14 +449,9 @@ class sudoku(screenDefine):
         for i in range(1, 10):
             # Checks if number is not in row, column or 3x3 inBox
             if (
-                not self.inRow(r, i, False) and
-                not self.inCol(c, i, False) and
-                not self.inBox(
-                    r - r % 3,
-                    c - c % 3,
-                    i,
-                    False
-                )
+                not self.inRow(r, i, False)
+                and not self.inCol(c, i, False)
+                and not self.inBox(r - r % 3, c - c % 3, i, False)
             ):
                 keys = pygame.key.get_pressed()
 
@@ -450,7 +468,7 @@ class sudoku(screenDefine):
                 pygame.time.delay(40)
                 pygame.display.update()
 
-                # Recursively checks all numbers remaining according to backtracking
+                # Recursively checks all numbers remaining by backtracking
                 if self.solve(screenParams):
                     return True
 
@@ -472,14 +490,9 @@ class sudoku(screenDefine):
 
         for i in range(1, 10):
             if (
-                not self.inRow(r, i, True) and
-                not self.inCol(c, i, True) and
-                not self.inBox(
-                    r - r % 3,
-                    c - c % 3,
-                    i,
-                    True
-                )
+                not self.inRow(r, i, True)
+                and not self.inCol(c, i, True)
+                and not self.inBox(r - r % 3, c - c % 3, i, True)
             ):
                 self.solvedBoard[r][c] = i
 
@@ -492,6 +505,7 @@ class sudoku(screenDefine):
 
     def returnBoard(self):
         return self.board
+
     # def locSafety(self, rowNum, colNum, numChk):
     #     return (not self.inRow(rowNum, numChk) and
     #             not self.inCol(rowNum, numChk) and
@@ -522,6 +536,7 @@ class sudoku(screenDefine):
 
     #     return False
 
+
 # Main Program
 
 
@@ -529,14 +544,14 @@ def main():
 
     # Parameters needed
     screenParams = {
-        'dimensions':           [1200, 950],
-        'bgColor':              (31, 33, 42),
-        'outLineColor':         (180, 180, 180),
-        'inLineColor':          (120, 120, 120),
-        'caption':              'Sudoku',
-        'activeTextColor':      (200, 200, 200),
-        'inactiveTextColor':    (100, 100, 100),
-        'activeNum':            0
+        "dimensions": [1200, 950],
+        "bgColor": (31, 33, 42),
+        "outLineColor": (180, 180, 180),
+        "inLineColor": (120, 120, 120),
+        "caption": "Sudoku",
+        "activeTextColor": (200, 200, 200),
+        "inactiveTextColor": (100, 100, 100),
+        "activeNum": 0,
     }
 
     # Running variable for pygame
@@ -565,34 +580,34 @@ def main():
 
                 # Active number change
                 if event.key == pygame.K_0:
-                    screenParams['activeNum'] = 0
+                    screenParams["activeNum"] = 0
 
                 if event.key == pygame.K_1:
-                    screenParams['activeNum'] = 1
+                    screenParams["activeNum"] = 1
 
                 if event.key == pygame.K_2:
-                    screenParams['activeNum'] = 2
+                    screenParams["activeNum"] = 2
 
                 if event.key == pygame.K_3:
-                    screenParams['activeNum'] = 3
+                    screenParams["activeNum"] = 3
 
                 if event.key == pygame.K_4:
-                    screenParams['activeNum'] = 4
+                    screenParams["activeNum"] = 4
 
                 if event.key == pygame.K_5:
-                    screenParams['activeNum'] = 5
+                    screenParams["activeNum"] = 5
 
                 if event.key == pygame.K_6:
-                    screenParams['activeNum'] = 6
+                    screenParams["activeNum"] = 6
 
                 if event.key == pygame.K_7:
-                    screenParams['activeNum'] = 7
+                    screenParams["activeNum"] = 7
 
                 if event.key == pygame.K_8:
-                    screenParams['activeNum'] = 8
+                    screenParams["activeNum"] = 8
 
                 if event.key == pygame.K_9:
-                    screenParams['activeNum'] = 9
+                    screenParams["activeNum"] = 9
 
                 # Solve board
                 if event.key == pygame.K_s:
@@ -613,11 +628,11 @@ def main():
                 if event.key == pygame.K_c:
                     s1.changeBoard(screenParams)
 
-         # solver.s1.boardPrint()
+        # solver.s1.boardPrint()
         pygame.display.update()
 
     pygame.quit()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

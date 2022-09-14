@@ -1,3 +1,3 @@
-string = "Hello World!"
+string <- "Hello World!"
 
-print(string)
+print("Hello World")

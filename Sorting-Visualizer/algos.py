@@ -26,7 +26,7 @@ def bubSort(displayType, elementType):
 
             pygame.display.update()
 
-        if swapStat == False:
+        if not swapStat:
             break
 
         if keyboard.is_pressed(("e")):

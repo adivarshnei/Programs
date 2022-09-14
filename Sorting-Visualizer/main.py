@@ -31,7 +31,7 @@ while running:
     ):
         sortExec = True
 
-    if sortExec == False:
+    if not sortExec:
         screen.fill((0, 0, 0))
         drawElem(elemType, nosDict["randNos"], screen)
         pygame.display.update()
