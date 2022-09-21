@@ -76,63 +76,63 @@ FROM Title;
 
 -- Queries
 -- 1. Write an SQL query to fetch FIRST_NAME from Worker table in uppercase.
-SELECT UPPER(FIRST_NAME) AS 'First Name in Uppercase'
-FROM Worker;
+SELECT UPPER(W.FIRST_NAME) AS 'First Name in Uppercase'
+FROM Worker W;
 
 -- 2. Write an SQL query to fetch unique values of DEPARTMENT from Worker table.
-SELECT DEPARTMENT AS 'Department'
-FROM Worker
-GROUP BY DEPARTMENT;
+SELECT W.DEPARTMENT AS 'Department'
+FROM Worker W
+GROUP BY W.DEPARTMENT;
 
 -- 3. Write an SQL query to print the first three characters of FIRST_NAME from
 -- Worker.
-SELECT SUBSTRING(FIRST_NAME, 1, 3) AS 'First Three Characters of First Name'
-FROM Worker;
+SELECT SUBSTRING(W.FIRST_NAME, 1, 3) AS 'First Three Characters of First Name'
+FROM Worker W;
 
 -- 4. Write an SQL query to find the position of the alphabet ('a') in the first
 -- name column 'Amitabh' from Worker table.
 SELECT
-    INSTR(FIRST_NAME, 'a')
+    INSTR(W.FIRST_NAME, 'a')
         AS 'Position of ''a'' in ''Amitabh'' in FIRST_NAME'
-FROM Worker
-WHERE FIRST_NAME = 'Amitabh';
+FROM Worker W
+WHERE W.FIRST_NAME = 'Amitabh';
 
 -- 5. Write an SQL query that fetches the unique values of DEPARTMENT from
 -- Worker table and prints its length.
-SELECT DEPARTMENT AS 'Department', LENGTH(DEPARTMENT) AS 'Name Length'
-FROM Worker
-GROUP BY DEPARTMENT;
+SELECT W.DEPARTMENT AS 'Department', LENGTH(W.DEPARTMENT) AS 'Name Length'
+FROM Worker W
+GROUP BY W.DEPARTMENT;
 
 -- 6. Write an SQL query to print details of the Workers whose FIRST_NAME
 -- contains 'a'.
 SELECT
-    WORKER_ID AS 'Worker ID',
-    FIRST_NAME AS "First Name",
-    LAST_NAME AS "Last Name",
-    SALARY AS "Salary",
-    JOINING_DATE AS "Joining Date",
-    DEPARTMENT AS "Department"
-FROM Worker
-WHERE FIRST_NAME LIKE '%a%';
+    W.WORKER_ID AS 'Worker ID',
+    W.FIRST_NAME AS "First Name",
+    W.LAST_NAME AS "Last Name",
+    W.SALARY AS "Salary",
+    W.JOINING_DATE AS "Joining Date",
+    W.DEPARTMENT AS "Department"
+FROM Worker W
+WHERE W.FIRST_NAME LIKE '%a%';
 
 -- 7. Write an SQL query to print details of the Workers whose FIRST_NAME ends
 -- with 'h' and contains six alphabets.
 SELECT
-    WORKER_ID AS 'Worker ID',
-    FIRST_NAME AS 'First Name',
-    LAST_NAME AS 'Last Name',
-    SALARY AS 'Salary',
-    JOINING_DATE AS 'Joining Date',
-    DEPARTMENT AS 'Department'
-FROM Worker
-WHERE FIRST_NAME LIKE '_____h';
+    W.WORKER_ID AS 'Worker ID',
+    W.FIRST_NAME AS 'First Name',
+    W.LAST_NAME AS 'Last Name',
+    W.SALARY AS 'Salary',
+    W.JOINING_DATE AS 'Joining Date',
+    W.DEPARTMENT AS 'Department'
+FROM Worker W
+WHERE W.FIRST_NAME LIKE '_____h';
 
 -- 8. Write an SQL query to fetch the no. of workers for each department in
 -- descending order.
-SELECT DEPARTMENT AS 'Department', COUNT(DEPARTMENT) AS 'Number of Workers'
-FROM Worker
-GROUP BY DEPARTMENT
-ORDER BY COUNT(DEPARTMENT);
+SELECT W.DEPARTMENT AS 'Department', COUNT(W.DEPARTMENT) AS 'Number of Workers'
+FROM Worker W
+GROUP BY W.DEPARTMENT
+ORDER BY COUNT(W.DEPARTMENT);
 
 -- 9. Write an SQL query to print details of workers who are also managers.
 SELECT
@@ -149,37 +149,121 @@ WHERE W.WORKER_ID = T.WORKER_REF_ID AND T.WORKER_TITLE = "Manager";
 
 -- 10. Write an SQL query to show only odd rows from a table.
 SELECT
-    WORKER_ID AS 'Worker ID',
-    FIRST_NAME AS 'First Name',
-    LAST_NAME AS 'Last Name',
-    SALARY AS 'Salary',
-    JOINING_DATE AS 'Joining Date',
-    DEPARTMENT AS 'Department'
-FROM Worker
-WHERE MOD(WORKER_ID, 2) <> 0;
+    W.WORKER_ID AS 'Worker ID',
+    W.FIRST_NAME AS 'First Name',
+    W.LAST_NAME AS 'Last Name',
+    W.SALARY AS 'Salary',
+    W.JOINING_DATE AS 'Joining Date',
+    W.DEPARTMENT AS 'Department'
+FROM Worker W
+WHERE MOD(W.WORKER_ID, 2) <> 0;
 
 -- 11. Write an SQL query to show only even rows from a table.
 SELECT
-    WORKER_ID AS 'Worker ID',
-    FIRST_NAME AS 'First Name',
-    LAST_NAME AS 'Last Name',
-    SALARY AS 'Salary',
-    JOINING_DATE AS 'Joining Date',
-    DEPARTMENT AS 'Department'
-FROM Worker
-WHERE MOD(WORKER_ID, 2) = 0;
+    W.WORKER_ID AS 'Worker ID',
+    W.FIRST_NAME AS 'First Name',
+    W.LAST_NAME AS 'Last Name',
+    W.SALARY AS 'Salary',
+    W.JOINING_DATE AS 'Joining Date',
+    W.DEPARTMENT AS 'Department'
+FROM Worker W
+WHERE MOD(W.WORKER_ID, 2) = 0;
 
 -- 12. Write an SQL query to show the current date and time.
+SELECT CONCAT(DATE(NOW()), " ", TIME(NOW())) AS "Current Date, Time";
 
 -- 13. Write an SQL query to show the top n (say 10) records of a table.
+SELECT
+    W.WORKER_ID AS 'Worker ID',
+    W.FIRST_NAME AS 'First Name',
+    W.LAST_NAME AS 'Last Name',
+    W.SALARY AS 'Salary',
+    W.JOINING_DATE AS 'Joining Date',
+    W.DEPARTMENT AS 'Department'
+FROM Worker W
+LIMIT 5;
+
 -- 14. Write a SQL query to determine the nth (say n=5) highest salary from a
 -- table.
+SELECT
+    W.WORKER_ID AS 'Worker ID',
+    W.FIRST_NAME AS 'First Name',
+    W.LAST_NAME AS 'Last Name',
+    W.SALARY AS 'Salary',
+    W.JOINING_DATE AS 'Joining Date',
+    W.DEPARTMENT AS 'Department'
+FROM Worker W
+ORDER BY W.SALARY DESC
+LIMIT 1
+OFFSET 4;
+
 -- 15. Write an SQL query to determine the 5th highest salary without using TOP
 -- or limit method.
+SELECT
+    W1.WORKER_ID AS 'Worker ID',
+    W1.FIRST_NAME AS 'First Name',
+    W1.LAST_NAME AS 'Last Name',
+    W1.SALARY AS 'Salary',
+    W1.JOINING_DATE AS 'Joining Date',
+    W1.DEPARTMENT AS 'Department'
+FROM Worker W1
+WHERE 4 = (
+    SELECT COUNT(DISTINCT W2.SALARY)
+    FROM Worker W2
+    WHERE W2.SALARY >= W1.SALARY
+);
+
 -- 16. Write an SQL query to fetch the list of employees with the same salary.
+SELECT 
+    W1.WORKER_ID AS 'Worker ID',
+    W1.FIRST_NAME AS 'First Name',
+    W1.LAST_NAME AS 'Last Name',
+    W1.SALARY AS 'Salary',
+    W1.JOINING_DATE AS 'Joining Date',
+    W1.DEPARTMENT AS 'Department' 
+FROM Worker W1, Worker W2
+WHERE W1.WORKER_ID <> W2.WORKER_ID AND W1.SALARY = W2.SALARY;
+
 -- 17. Write an SQL query to show the second highest salary from a table.
+SELECT MAX(W1.SALARY) AS "2nd Highest Salary"
+FROM Worker W1
+WHERE W1.SALARY NOT IN (
+    SELECT MAX(W2.SALARY)
+    FROM W2.Worker
+);
+
 -- 18. Write an SQL query to fetch the first 50% records from a table.
+DELIMITER &&
+CREATE PROCEDURE selectfifty(IN fiftyperc INT)
+BEGIN
+    SELECT
+        W.WORKER_ID AS 'Worker ID',
+        W.FIRST_NAME AS 'First Name',
+        W.LAST_NAME AS 'Last Name',
+        W.SALARY AS 'Salary',
+        W.JOINING_DATE AS 'Joining Date',
+        W.DEPARTMENT AS 'Department'
+    FROM Worker W
+    LIMIT fiftyperc;
+END &&
+DELIMITER ;
+
+SET @fifty = (
+    SELECT COUNT(W.WORKER_ID) / 2 
+    FROM Worker W
+);
+
+CALL selectfifty(@fifty);
+
 -- 19. Write an SQL query to fetch the departments that have less than 55 people
 -- in it.
+SELECT W.DEPARTMENT AS "Department", COUNT(W.DEPARTMENT) AS "Number of Workers"
+FROM Worker W
+GROUP BY W.DEPARTMENT
+HAVING COUNT(W.DEPARTMENT) < 55;
+
 -- 20. Write an SQL query to print the name of employees having the highest
 -- salary in each department.
+SELECT W.DEPARTMENT AS "Department", MAX(W.SALARY) AS "Maximum Salary"
+FROM Worker W
+GROUP BY W.DEPARTMENT;

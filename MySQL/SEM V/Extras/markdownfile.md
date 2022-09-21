@@ -382,106 +382,363 @@ mysql> SELECT DEPARTMENT AS 'Department', LENGTH(DEPARTMENT) AS 'Name Length'
 
 #### Query:
 ```sql
+SELECT
+    W.WORKER_ID AS 'Worker ID',
+    W.FIRST_NAME AS "First Name",
+    W.LAST_NAME AS "Last Name",
+    W.SALARY AS "Salary",
+    W.JOINING_DATE AS "Joining Date",
+    W.DEPARTMENT AS "Department"
+FROM Worker W
+WHERE W.FIRST_NAME LIKE '%a%';
 ```
 
 #### Output:
 ```
+mysql> SELECT
+    ->     W.WORKER_ID AS 'Worker ID',
+    ->     W.FIRST_NAME AS "First Name",
+    ->     W.LAST_NAME AS "Last Name",
+    ->     W.SALARY AS "Salary",
+    ->     W.JOINING_DATE AS "Joining Date",
+    ->     W.DEPARTMENT AS "Department"
+    -> FROM Worker W
+    -> WHERE W.FIRST_NAME LIKE '%a%';
++-----------+------------+-----------+--------+---------------------+------------+
+| Worker ID | First Name | Last Name | Salary | Joining Date        | Department |
++-----------+------------+-----------+--------+---------------------+------------+
+|         1 | Monika     | Arora     | 100000 | 2014-02-20 09:00:00 | HR         |
+|         2 | Niharika   | Verma     |  80000 | 2014-06-11 09:00:00 | Admin      |
+|         3 | Vishal     | Singhal   | 300000 | 2014-02-20 09:00:00 | HR         |
+|         4 | Amitabh    | Singh     | 500000 | 2014-02-20 09:00:00 | Admin      |
+|         7 | Satish     | Kumar     |  75000 | 2014-01-20 09:00:00 | Account    |
+|         8 | Geetika    | Chauhan   |  90000 | 2014-04-11 09:00:00 | Admin      |
++-----------+------------+-----------+--------+---------------------+------------+
+6 rows in set (0.00 sec)
 ```
 
 ### 7. Write an SQL query to print details of the Workers whose <span style = "font-family:Input">FIRST_NAME</span> ends with <span style = "font-family:Input">'h'</span> and contains six alphabets.
 
 #### Query:
 ```sql
+SELECT
+    W.WORKER_ID AS 'Worker ID',
+    W.FIRST_NAME AS 'First Name',
+    W.LAST_NAME AS 'Last Name',
+    W.SALARY AS 'Salary',
+    W.JOINING_DATE AS 'Joining Date',
+    W.DEPARTMENT AS 'Department'
+FROM Worker W
+WHERE W.FIRST_NAME LIKE '_____h';
 ```
 
 #### Output:
 ```
+mysql> SELECT
+    ->     W.WORKER_ID AS 'Worker ID',
+    ->     W.FIRST_NAME AS 'First Name',
+    ->     W.LAST_NAME AS 'Last Name',
+    ->     W.SALARY AS 'Salary',
+    ->     W.JOINING_DATE AS 'Joining Date',
+    ->     W.DEPARTMENT AS 'Department'
+    -> FROM Worker W
+    -> WHERE W.FIRST_NAME LIKE '_____h';
++-----------+------------+-----------+--------+---------------------+------------+
+| Worker ID | First Name | Last Name | Salary | Joining Date        | Department |
++-----------+------------+-----------+--------+---------------------+------------+
+|         7 | Satish     | Kumar     |  75000 | 2014-01-20 09:00:00 | Account    |
++-----------+------------+-----------+--------+---------------------+------------+
+1 row in set (0.00 sec)
 ```
 
 ### 8. Write an SQL query to fetch the no. of workers for each department in descending order.
 
 #### Query:
 ```sql
+SELECT W.DEPARTMENT AS 'Department', COUNT(W.DEPARTMENT) AS 'Number of Workers'
+FROM Worker W
+GROUP BY W.DEPARTMENT
+ORDER BY COUNT(W.DEPARTMENT);
 ```
 
 #### Output:
 ```
+mysql> SELECT W.DEPARTMENT AS 'Department', COUNT(W.DEPARTMENT) AS 'Number of Workers'
+    -> FROM Worker W
+    -> GROUP BY W.DEPARTMENT
+    -> ORDER BY COUNT(W.DEPARTMENT);
++------------+-------------------+
+| Department | Number of Workers |
++------------+-------------------+
+| HR         |                 2 |
+| Account    |                 2 |
+| Admin      |                 4 |
++------------+-------------------+
+3 rows in set (0.00 sec)
 ```
 
 ### 9. Write an SQL query to print details of workers who are also managers.
 
 #### Query:
 ```sql
+SELECT
+    W.WORKER_ID AS 'Worker ID',
+    W.FIRST_NAME AS 'First Name',
+    W.LAST_NAME AS 'Last Name',
+    W.SALARY AS 'Salary',
+    W.JOINING_DATE AS 'Joining Date',
+    W.DEPARTMENT AS 'Department',
+    T.WORKER_TITLE AS 'Title',
+    T.AFFECTED_FROM AS 'Title Affect Date'
+FROM Worker W, Title T
+WHERE W.WORKER_ID = T.WORKER_REF_ID AND T.WORKER_TITLE = "Manager";
 ```
 
 #### Output:
 ```
+mysql> SELECT
+    ->     W.WORKER_ID AS 'Worker ID',
+    ->     W.FIRST_NAME AS 'First Name',
+    ->     W.LAST_NAME AS 'Last Name',
+    ->     W.SALARY AS 'Salary',
+    ->     W.JOINING_DATE AS 'Joining Date',
+    ->     W.DEPARTMENT AS 'Department',
+    ->     T.WORKER_TITLE AS 'Title',
+    ->     T.AFFECTED_FROM AS 'Title Affect Date'
+    -> FROM Worker W, Title T
+    -> WHERE W.WORKER_ID = T.WORKER_REF_ID AND T.WORKER_TITLE = "Manager";
++-----------+------------+-----------+--------+---------------------+------------+---------+---------------------+
+| Worker ID | First Name | Last Name | Salary | Joining Date        | Department | Title   | Title Affect Date   |
++-----------+------------+-----------+--------+---------------------+------------+---------+---------------------+
+|         1 | Monika     | Arora     | 100000 | 2014-02-20 09:00:00 | HR         | Manager | 2016-02-20 00:00:00 |
+|         5 | Vivek      | Bhati     | 500000 | 2014-06-11 09:00:00 | Admin      | Manager | 2016-06-11 00:00:00 |
++-----------+------------+-----------+--------+---------------------+------------+---------+---------------------+
+2 rows in set (0.00 sec)
 ```
 
 ### 10. Write an SQL query to show only odd rows from a table.
 
 #### Query:
 ```sql
+SELECT
+    W.WORKER_ID AS 'Worker ID',
+    W.FIRST_NAME AS 'First Name',
+    W.LAST_NAME AS 'Last Name',
+    W.SALARY AS 'Salary',
+    W.JOINING_DATE AS 'Joining Date',
+    W.DEPARTMENT AS 'Department'
+FROM Worker W
+WHERE MOD(W.WORKER_ID, 2) <> 0;
 ```
 
 #### Output:
 ```
+mysql> SELECT
+    ->     W.WORKER_ID AS 'Worker ID',
+    ->     W.FIRST_NAME AS 'First Name',
+    ->     W.LAST_NAME AS 'Last Name',
+    ->     W.SALARY AS 'Salary',
+    ->     W.JOINING_DATE AS 'Joining Date',
+    ->     W.DEPARTMENT AS 'Department'
+    -> FROM Worker W
+    -> WHERE MOD(W.WORKER_ID, 2) <> 0;
++-----------+------------+-----------+--------+---------------------+------------+
+| Worker ID | First Name | Last Name | Salary | Joining Date        | Department |
++-----------+------------+-----------+--------+---------------------+------------+
+|         1 | Monika     | Arora     | 100000 | 2014-02-20 09:00:00 | HR         |
+|         3 | Vishal     | Singhal   | 300000 | 2014-02-20 09:00:00 | HR         |
+|         5 | Vivek      | Bhati     | 500000 | 2014-06-11 09:00:00 | Admin      |
+|         7 | Satish     | Kumar     |  75000 | 2014-01-20 09:00:00 | Account    |
++-----------+------------+-----------+--------+---------------------+------------+
+4 rows in set (0.00 sec)
 ```
 
 ### 11. Write an SQL query to show only even rows from a table.
 
 #### Query:
 ```sql
+SELECT
+    W.WORKER_ID AS 'Worker ID',
+    W.FIRST_NAME AS 'First Name',
+    W.LAST_NAME AS 'Last Name',
+    W.SALARY AS 'Salary',
+    W.JOINING_DATE AS 'Joining Date',
+    W.DEPARTMENT AS 'Department'
+FROM Worker W
+WHERE MOD(W.WORKER_ID, 2) = 0;
 ```
 
 #### Output:
 ```
+mysql> SELECT
+    ->     W.WORKER_ID AS 'Worker ID',
+    ->     W.FIRST_NAME AS 'First Name',
+    ->     W.LAST_NAME AS 'Last Name',
+    ->     W.SALARY AS 'Salary',
+    ->     W.JOINING_DATE AS 'Joining Date',
+    ->     W.DEPARTMENT AS 'Department'
+    -> FROM Worker W
+    -> WHERE MOD(W.WORKER_ID, 2) = 0;
++-----------+------------+-----------+--------+---------------------+------------+
+| Worker ID | First Name | Last Name | Salary | Joining Date        | Department |
++-----------+------------+-----------+--------+---------------------+------------+
+|         2 | Niharika   | Verma     |  80000 | 2014-06-11 09:00:00 | Admin      |
+|         4 | Amitabh    | Singh     | 500000 | 2014-02-20 09:00:00 | Admin      |
+|         6 | Vipul      | Diwan     | 200000 | 2014-06-11 09:00:00 | Account    |
+|         8 | Geetika    | Chauhan   |  90000 | 2014-04-11 09:00:00 | Admin      |
++-----------+------------+-----------+--------+---------------------+------------+
+4 rows in set (0.00 sec)
 ```
 
 ### 12. Write an SQL query to show the current date and time.
 
 #### Query:
 ```sql
+SELECT CONCAT(DATE(NOW()), " ", TIME(NOW())) AS "Current Date, Time";
 ```
 
 #### Output:
 ```
+mysql> SELECT CONCAT(DATE(NOW()), " ", TIME(NOW())) AS "Current Date, Time";
++---------------------+
+| Current Date, Time  |
++---------------------+
+| 2022-09-16 12:56:32 |
++---------------------+
+1 row in set (0.00 sec)
 ```
 
 ### 13. Write an SQL query to show the top $n$ (say $10$) records of a table.
 
 #### Query:
 ```sql
+SELECT
+    W.WORKER_ID AS 'Worker ID',
+    W.FIRST_NAME AS 'First Name',
+    W.LAST_NAME AS 'Last Name',
+    W.SALARY AS 'Salary',
+    W.JOINING_DATE AS 'Joining Date',
+    W.DEPARTMENT AS 'Department'
+FROM Worker W
+LIMIT 5;
 ```
 
 #### Output:
 ```
+mysql> SELECT
+    ->     W.WORKER_ID AS 'Worker ID',
+    ->     W.FIRST_NAME AS 'First Name',
+    ->     W.LAST_NAME AS 'Last Name',
+    ->     W.SALARY AS 'Salary',
+    ->     W.JOINING_DATE AS 'Joining Date',
+    ->     W.DEPARTMENT AS 'Department'
+    -> FROM Worker W
+    -> LIMIT 5;
++-----------+------------+-----------+--------+---------------------+------------+
+| Worker ID | First Name | Last Name | Salary | Joining Date        | Department |
++-----------+------------+-----------+--------+---------------------+------------+
+|         1 | Monika     | Arora     | 100000 | 2014-02-20 09:00:00 | HR         |
+|         2 | Niharika   | Verma     |  80000 | 2014-06-11 09:00:00 | Admin      |
+|         3 | Vishal     | Singhal   | 300000 | 2014-02-20 09:00:00 | HR         |
+|         4 | Amitabh    | Singh     | 500000 | 2014-02-20 09:00:00 | Admin      |
+|         5 | Vivek      | Bhati     | 500000 | 2014-06-11 09:00:00 | Admin      |
++-----------+------------+-----------+--------+---------------------+------------+
+5 rows in set (0.00 sec)
 ```
 
 ### 14. Write a SQL query to determine the $n$<sup>th</sup> (say $n=5$) highest salary from a table.
 
 #### Query:
 ```sql
+SELECT
+    W.WORKER_ID AS 'Worker ID',
+    W.FIRST_NAME AS 'First Name',
+    W.LAST_NAME AS 'Last Name',
+    W.SALARY AS 'Salary',
+    W.JOINING_DATE AS 'Joining Date',
+    W.DEPARTMENT AS 'Department'
+FROM Worker W
+ORDER BY W.SALARY DESC
+LIMIT 1
+OFFSET 4;
 ```
 
 #### Output:
 ```
+mysql> SELECT
+    ->     W.WORKER_ID AS 'Worker ID',
+    ->     W.FIRST_NAME AS 'First Name',
+    ->     W.LAST_NAME AS 'Last Name',
+    ->     W.SALARY AS 'Salary',
+    ->     W.JOINING_DATE AS 'Joining Date',
+    ->     W.DEPARTMENT AS 'Department'
+    -> FROM Worker W
+    -> ORDER BY W.SALARY DESC
+    -> LIMIT 1
+    -> OFFSET 4;
++-----------+------------+-----------+--------+---------------------+------------+
+| Worker ID | First Name | Last Name | Salary | Joining Date        | Department |
++-----------+------------+-----------+--------+---------------------+------------+
+|         1 | Monika     | Arora     | 100000 | 2014-02-20 09:00:00 | HR         |
++-----------+------------+-----------+--------+---------------------+------------+
+1 row in set (0.00 sec)
 ```
 
 ### 15. Write an SQL query to determine the $5$<sup>th</sup> highest salary without using <span style = "font-family:Input">TOP</span> or <span style = "font-family:Input">limit</span> method.
 
 #### Query:
 ```sql
+SELECT
+    W1.WORKER_ID AS 'Worker ID',
+    W1.FIRST_NAME AS 'First Name',
+    W1.LAST_NAME AS 'Last Name',
+    W1.SALARY AS 'Salary',
+    W1.JOINING_DATE AS 'Joining Date',
+    W1.DEPARTMENT AS 'Department'
+FROM Worker W1
+WHERE 4 = (
+    SELECT COUNT(DISTINCT W2.SALARY)
+    FROM Worker W2
+    WHERE W2.SALARY >= W1.SALARY
+);
 ```
 
 #### Output:
 ```
+mysql> SELECT
+    ->     W1.WORKER_ID AS 'Worker ID',
+    ->     W1.FIRST_NAME AS 'First Name',
+    ->     W1.LAST_NAME AS 'Last Name',
+    ->     W1.SALARY AS 'Salary',
+    ->     W1.JOINING_DATE AS 'Joining Date',
+    ->     W1.DEPARTMENT AS 'Department'
+    -> FROM Worker W1
+    -> WHERE 4 = (
+    ->     SELECT COUNT(DISTINCT W2.SALARY)
+    ->     FROM Worker W2
+    ->     WHERE W2.SALARY >= W1.SALARY
+    -> );
++-----------+------------+-----------+--------+---------------------+------------+
+| Worker ID | First Name | Last Name | Salary | Joining Date        | Department |
++-----------+------------+-----------+--------+---------------------+------------+
+|         1 | Monika     | Arora     | 100000 | 2014-02-20 09:00:00 | HR         |
++-----------+------------+-----------+--------+---------------------+------------+
+1 row in set (0.00 sec)
 ```
 
 ### 16. Write an SQL query to fetch the list of employees with the same salary.
 
 #### Query:
 ```sql
+SELECT 
+    W1.WORKER_ID AS 'Worker ID',
+    W1.FIRST_NAME AS 'First Name',
+    W1.LAST_NAME AS 'Last Name',
+    W1.SALARY AS 'Salary',
+    W1.JOINING_DATE AS 'Joining Date',
+    W1.DEPARTMENT AS 'Department' 
+FROM Worker W1, Worker W2
+WHERE W1.WORKER_ID <> W2.WORKER_ID AND W1.SALARY = W2.SALARY;
 ```
 
 #### Output:
@@ -492,40 +749,146 @@ mysql> SELECT DEPARTMENT AS 'Department', LENGTH(DEPARTMENT) AS 'Name Length'
 
 #### Query:
 ```sql
+SELECT MAX(W1.SALARY) AS "2nd Highest Salary"
+FROM Worker W1
+WHERE W1.SALARY NOT IN (
+    SELECT MAX(W2.SALARY)
+    FROM Worker W2
+);
 ```
 
 #### Output:
 ```
+mysql> SELECT MAX(W1.SALARY) AS "2nd Highest Salary"
+    -> FROM Worker W1
+    -> WHERE W1.SALARY NOT IN (
+    ->     SELECT MAX(W2.SALARY)
+    ->     FROM Worker W2
+    -> );
++--------------------+
+| 2nd Highest Salary |
++--------------------+
+|             300000 |
++--------------------+
+1 row in set (0.00 sec)
 ```
 
 ### 18. Write an SQL query to fetch the first $50$% records from a table.
 
 #### Query:
 ```sql
+DELIMITER &&
+CREATE PROCEDURE selectfifty(IN fiftyperc INT)
+BEGIN
+    SELECT
+        W.WORKER_ID AS 'Worker ID',
+        W.FIRST_NAME AS 'First Name',
+        W.LAST_NAME AS 'Last Name',
+        W.SALARY AS 'Salary',
+        W.JOINING_DATE AS 'Joining Date',
+        W.DEPARTMENT AS 'Department'
+    FROM Worker W
+    LIMIT fiftyperc;
+END &&
+DELIMITER ;
+
+SET @fifty = (
+    SELECT COUNT(W.WORKER_ID) / 2 
+    FROM Worker W
+);
+
+CALL selectfifty(@fifty);
+
 ```
 
 #### Output:
 ```
+mysql> DELIMITER &&
+mysql> CREATE PROCEDURE selectfifty(IN fiftyperc INT)
+    -> BEGIN
+    ->     SELECT
+    ->         W.WORKER_ID AS 'Worker ID',
+    ->         W.FIRST_NAME AS 'First Name',
+    ->         W.LAST_NAME AS 'Last Name',
+    ->         W.SALARY AS 'Salary',
+    ->         W.JOINING_DATE AS 'Joining Date',
+    ->         W.DEPARTMENT AS 'Department'
+    ->     FROM Worker W
+    ->     LIMIT fiftyperc;
+    -> END &&
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> DELIMITER ;
+mysql>
+mysql> SET @fifty = (
+    ->     SELECT COUNT(W.WORKER_ID) / 2
+    ->     FROM Worker W
+    -> );
+Query OK, 0 rows affected (0.00 sec)
+
+mysql>
+mysql> CALL selectfifty(@fifty);
++-----------+------------+-----------+--------+---------------------+------------+
+| Worker ID | First Name | Last Name | Salary | Joining Date        | Department |
++-----------+------------+-----------+--------+---------------------+------------+
+|         1 | Monika     | Arora     | 100000 | 2014-02-20 09:00:00 | HR         |
+|         2 | Niharika   | Verma     |  80000 | 2014-06-11 09:00:00 | Admin      |
+|         3 | Vishal     | Singhal   | 300000 | 2014-02-20 09:00:00 | HR         |
+|         4 | Amitabh    | Singh     | 500000 | 2014-02-20 09:00:00 | Admin      |
++-----------+------------+-----------+--------+---------------------+------------+
+4 rows in set (0.00 sec)
+
+Query OK, 0 rows affected (0.02 sec)
 ```
 
 ### 19. Write an SQL query to fetch the departments that have less than $5$ people in it.
 
 #### Query:
 ```sql
+SELECT W.DEPARTMENT AS "Department", COUNT(W.DEPARTMENT) AS "Number of Workers"
+FROM Worker W
+GROUP BY W.DEPARTMENT
+HAVING COUNT(W.DEPARTMENT) < 55;
 ```
 
 #### Output:
 ```
+mysql> SELECT W.DEPARTMENT AS "Department", COUNT(W.DEPARTMENT) AS "Number of Workers"
+    -> FROM Worker W
+    -> GROUP BY W.DEPARTMENT
+    -> HAVING COUNT(W.DEPARTMENT) < 55;
++------------+-------------------+
+| Department | Number of Workers |
++------------+-------------------+
+| HR         |                 2 |
+| Admin      |                 4 |
+| Account    |                 2 |
++------------+-------------------+
+3 rows in set (0.00 sec)
 ```
 
 ### 20. Write an SQL query to print the name of employees having the highest salary in each department.
 
 #### Query:
 ```sql
+SELECT W.DEPARTMENT AS "Department", MAX(W.SALARY) AS "Maximum Salary"
+FROM Worker W
+GROUP BY W.DEPARTMENT;
 ```
 
 #### Output:
 ```
+mysql> SELECT W.DEPARTMENT AS "Department", MAX(W.SALARY) AS "Maximum Salary"
+    -> FROM Worker W
+    -> GROUP BY W.DEPARTMENT;
++------------+----------------+
+| Department | Maximum Salary |
++------------+----------------+
+| HR         |         300000 |
+| Admin      |         500000 |
+| Account    |         200000 |
++------------+----------------+
+3 rows in set (0.00 sec)
 ```
 
 </span>

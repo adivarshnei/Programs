@@ -1,0 +1,81 @@
+OSI MODEL
+Physical Layer:
+	- Actual Physical Connection
+	- Information in Bits
+	- Hubs/Cables
+
+Data Link Layer:
+	- Node to Node Delivery
+	- Frames
+	- Switches
+
+Network Layer:
+	- Host to Host Delivery
+	- Packet
+	- Routers
+
+Transport Layer:
+	- Provide Network Layer Services to Application
+	  Layer
+	- Segment
+	- Firewall
+
+Session Layer:
+	- Establish Connections, Maintenance, 
+	  Authentication and Security
+	- Message
+	- Gateway
+
+Presentation Layer:
+	- Data From application layer is formatted and 
+	  encoded for transmission
+	- Message
+
+Application Layer:
+	- Helps in identifiying the client and sync 
+	  communication.
+
+
+TCP/IP MODEL (ATIN)
+Application Layer:
+	- Represents data to user, encoding and dialog 
+	  control
+	- HTTPS, DNS, DHCP, FTP
+
+Transport Layer:
+	- Supports communication between various 
+	  devices across diverse networks
+	- TCP, UDP
+
+Internet Layer:
+	- Determine the best path through the network
+	- IPv4, IPv6
+
+Network Access Layer:
+	- Control the hardware devices and media that 
+	- make up the network
+	- Ethernet, WLAN
+
+
+Comparison
+	- Now, both of these models are layered style 
+	  models, and they certainly are interoperable.
+	In fact:
+		------------------------------------------
+			OSI				|	TCP/IP
+		------------------------------------------
+			Application		|
+			Presentation	|	Application
+			Session			|
+		------------------------------------------
+			Transport		|	Transport
+		------------------------------------------
+			Network			|	Internet
+		------------------------------------------
+			Data Link		|	Network Access
+			Physical		|
+		------------------------------------------
+	
+	We can see there is a direct mapping between 
+	the two models
+	

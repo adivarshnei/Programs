@@ -1,9 +1,10 @@
-// 4. Write a program to implement Kruskal's Algorithm
+// 4-2. Write a program to implement Prim's Algorithm
 
 // Included Libraries
+#include <limits.h>  // INT_MAX
 #include <stdio.h>   // IO and other operations
 #include <stdlib.h>  // Memory operations and atoi()
-#include <string.h>  // memcpy() function
+#include <string.h>  // memcpy()
 
 // Macro Definitions
 #define NOT_FOUND      -1  // Element not found in set
@@ -11,21 +12,7 @@
 #define PRINT_ZEROS    0   // Print zeros to show no edge in adjacency matrix
 #define NODE_COUNT_STR argv[1]  // Command line argument for number of nodes
 #define EDGE_COUNT_STR argv[2]  // Command line argument for number of edges
-/**
- * @brief Macro to Swap Edges
- * @param A First Edge
- * @param B Second Edge
- */
-#define EDGESWAP(A, B)    \
-    struct Edge temp = A; \
-    A                = B; \
-    B                = temp;
-
-/** @brief Structure to implement a set data structure */
-struct Set {
-    int* data;  // Array storing elements in Set
-    int  size;  // Number of elements stored in Set
-};
+#define ROOT_STR       argv[3]  // Command line argument for root node
 
 /** @brief Structure to implement a graph edge */
 struct Edge {
@@ -42,47 +29,19 @@ struct Graph {
     int**        adj;         // Adjacency matrix of graph
 };
 
-/**
- * @brief Searches the @p array for @p query using recursive linear search
- * @param array Array to be searched
- * @param len Length of @p array
- * @param query Element to be searched for
- * @param loc Location currently being searched for
- * @return Location where element is found
- */
-int           linear_search(int const* array,
-                            int const  len,
-                            int const  query,
-                            int const  loc);
-/**
- * @brief Initializes the set data structure with elements in @p array
- * @param array Array of elements being input to the set
- * @param len Length of @p array
- * @return Set containing elements in @p array
- */
-struct Set*   set_init(int const* array, int const len);
-/**
- * @brief Appends @p element to array
- * @param set Set to which @p element is to be appended
- * @param element Element which is appended to @p set
- */
-void          set_append(struct Set* set, int const element);
-/**
- * @brief Displays the specified set
- * @param set Set to be displayed
- */
-void          set_display(struct Set const* set);
-/**
- * @brief Performs union operation on @p set1 and @p set2
- * @param set1 First set
- * @param set2 Second set
- * @return Union of @p set1 and @p set2
- */
-struct Set*   set_union(struct Set const* set1, struct Set const* set2);
+/** @brief Structure to implement a graph vertex */
+struct Vertex {
+    int vertex;   // Name of the current vertex
+    int key;      // Key value of the current vertex
+    int parent;   // Parent of the current vertex
+    int in_list;  // Whether the vertex is in the vertices list
+};
+
 /**
  * @brief Prints a specified square matrix
  * @param matrix Square matrix to be printed
  * @param len Length of @p matrix
+ * @endcode
  */
 void          print_matrix(int** matrix, int const len);
 /**
@@ -106,26 +65,28 @@ void          populate_graph(struct Graph*      graph,
                              struct Edge const* edges,
                              int const          edge_count);
 /**
- * @brief Sorts the edges in non-decreasing order using bubble sort.
- * @param graph Graph whose edges are to be sorted
+ * @brief Extracts the minimum vertex from @p vertices
+ * @param vertices Vertex array from which minimum vertex is extracted
+ * @param len Length of @p vertices
+ * @return Minimum vertex from @p vertices
  */
-void          edge_sort(struct Graph* graph);
+int           vertex_extract_min(struct Vertex const* vertices, int const len);
 /**
- * @brief Finds the minimum spanning tree of the @p graph using Kruskal's
- * algorithm
+ * @brief Finds the minimum spanning tree of the @p graph using Prim's algorithm
  * @param graph Graph whose minimum spanning tree is to be found
  */
-void          mst_kruskal(struct Graph const* graph);
+void          mst_prim(struct Graph const* graph, struct Vertex const* root);
 
 int
 main(int argc, char** argv) {
     // If no nodes or edges are mentioned, skip execution of program
-    if ( ! NODE_COUNT_STR || ! EDGE_COUNT_STR ) {
+    if ( ! NODE_COUNT_STR || ! EDGE_COUNT_STR || ! ROOT_STR ) {
         return 0;
     }
 
     // Initialize and populate graph
-    struct Graph*     graph   = graph_init(atoi(NODE_COUNT_STR));
+    struct Graph*     graph = graph_init(atoi(NODE_COUNT_STR));
+    struct Vertex*    root  = ( struct Vertex* ) malloc(sizeof(struct Vertex));
     const struct Edge edges[] = {
         {.start = 0, .end = 1,  .weight = 4},
         {.start = 0, .end = 7,  .weight = 8},
@@ -146,13 +107,16 @@ main(int argc, char** argv) {
     fprintf(stdout, "Adjacency Matrix of Graph:\n");
     print_matrix(graph->adj, graph->node_count);
 
-    edge_sort(graph);
-
-    fprintf(stdout, "Edges: \n");
+    fprintf(stdout, "Edges:\n");
     print_edges(graph);
 
+    // Initialize root vertex
+    root->vertex = atoi(ROOT_STR);
+    root->parent = -1;
+    root->key    = INT_MAX;
+
     // Execute Prim's Algorithm and print Minimum Spanning Tree
-    mst_kruskal(graph);
+    mst_prim(graph, root);
 
     {  // Free memory occupied by graph
         free(graph->edges);
@@ -163,77 +127,10 @@ main(int argc, char** argv) {
 
         free(graph->adj);
         free(graph);
+        free(root);
     }
 
     return 0;
-}
-
-int
-linear_search(int const* array, int const len, int const query, int const loc) {
-    if ( loc < 0 ) {  // If the location being searched for goes out of bounds,
-                      // this means that the element does not exist
-        return NOT_FOUND;
-    } else if ( array[loc] == query ) {
-        return loc;
-    }
-
-    return linear_search(array, len, query, loc - 1);
-}
-
-struct Set*
-set_init(int const* array, int const len) {
-    // Allocate and define an empty set
-    struct Set* set = ( struct Set* ) malloc(sizeof(struct Set));
-    set->data       = NULL;
-    set->size       = 0;
-
-    // If elements are specified in initialization
-    if ( array != NULL ) {
-        // Allocate and define set elements
-        set->data = ( int* ) malloc(sizeof(int));
-
-        for ( int i = 0; i < len; i++ ) {
-            set_append(set, array[i]);
-        }
-    }
-
-    return set;
-}
-
-void
-set_append(struct Set* set, int const element) {
-    // If element does not already exist in set, increase the size of the set,
-    // reallocate it to more memory and define it to include the element
-    if ( linear_search(set->data, set->size, element, set->size - 1) == -1 ) {
-        set->size++;
-
-        set->data = ( int* ) realloc(set->data, set->size * sizeof(int));
-        set->data[set->size - 1] = element;
-    }
-}
-
-void
-set_display(struct Set const* set) {
-    fprintf(stdout, "%d: ", set->size);
-
-    for ( int i = 0; i < set->size; i++ ) {
-        fprintf(stdout, "%d\t", set->data[i]);
-    }
-
-    fprintf(stdout, "\n");
-}
-
-struct Set*
-set_union(struct Set const* set1, struct Set const* set2) {
-    // Create result array as duplicate of set1, and then append all elements of
-    // set2 to it
-    struct Set* result = set_init(set1->data, set1->size);
-
-    for ( int i = 0; i < set2->size; i++ ) {
-        set_append(result, set2->data[i]);
-    }
-
-    return result;
 }
 
 void
@@ -354,23 +251,30 @@ populate_graph(struct Graph*      graph,
     }
 }
 
-void
-edge_sort(struct Graph* graph) {
-    for ( int i = 0; i < graph->edge_count; i++ ) {
-        for ( int j = 0; j < graph->edge_count - i - 1; j++ ) {
-            if ( graph->edges[j].weight > graph->edges[j + 1].weight ) {
-                EDGESWAP(graph->edges[j], graph->edges[j + 1]);
+int
+vertex_extract_min(struct Vertex const* vertices, int const len) {
+    struct Vertex min_vertex;
+    int           min_vertex_index = -1;
+
+    min_vertex.key = INT_MAX;
+
+    for ( int i = 0; i < len; i++ ) {
+        if ( vertices[i].in_list == 1 ) {
+            if ( min_vertex.key > vertices[i].key ) {
+                min_vertex       = vertices[i];
+                min_vertex_index = i;
             }
         }
     }
+
+    return min_vertex_index;
 }
 
 void
-mst_kruskal(struct Graph const* graph) {
+mst_prim(struct Graph const* graph, struct Vertex const* root) {
     // Allocate an empty adjacency matrix to represent an empty minimum spanning
     // tree
     int** min_span_tree = ( int** ) malloc(graph->node_count * sizeof(int*));
-    int   sum           = 0;
 
     for ( int i = 0; i < graph->node_count; i++ ) {
         min_span_tree[i] = ( int* ) malloc(graph->node_count * sizeof(int));
@@ -380,99 +284,105 @@ mst_kruskal(struct Graph const* graph) {
         }
     }
 
-    // Create sets for each vertex
-    struct Set** vertex_sets =
-        ( struct Set** ) malloc(graph->node_count * sizeof(struct Set*));
+    // Create list of vertices from which minimum is extracted
+    int            vertex_u_index;
+    struct Vertex* vertices =
+        ( struct Vertex* ) malloc(graph->node_count * sizeof(struct Vertex));
 
     for ( int i = 0; i < graph->node_count; i++ ) {
-        vertex_sets[i] = set_init(&i, 1);
+        vertices[i].vertex  = i;
+        vertices[i].key     = INT_MAX;
+        vertices[i].parent  = -1;
+        vertices[i].in_list = 1;
     }
 
-    fprintf(stdout, "\nVertex Sets: \n");
+    vertices[root->vertex].key = 0;
 
-    for ( int i = 0; i < graph->node_count; i++ ) {
-        set_display(vertex_sets[i]);
-    }
+    // Iterate through the vertices in the list, and keep updating the keys of
+    // the vertices which are adjacent to be lower, and update the parent of the
+    // vertices accordingly. Do until all the vertices in the list are iterated
+    // through. Then use the parents of the vertices to make the Minimum
+    // Spanning Tree.
+    while ( (vertex_u_index =
+                 vertex_extract_min(vertices, graph->node_count)) != -1 ) {
+        fprintf(stdout, "\nVertex under examination: (Name: %2d, Key: %2d, ",
+                vertices[vertex_u_index].vertex, vertices[vertex_u_index].key);
 
-    // Iterate through the edges. If the endpoints are in different sets, make a
-    // union of these sets, and add the edge to the MST. If the endpoints are in
-    // the same set, a cycle will be formed, and this edge should be ignored.
-    // After all the edges are examined, we get the adjacency matrix of the MST.
-    for ( int i = 0; i < graph->edge_count; i++ ) {
-        int start     = graph->edges[i].start;
-        int end       = graph->edges[i].end;
-        int start_set = -1;
-        int end_set   = -1;
-
-        fprintf(stdout, "\nEdge Under Consideration: %d--%d-->%d\n",
-                graph->edges[i].start, graph->edges[i].weight,
-                graph->edges[i].end);
-
-        for ( int j = 0; j < graph->node_count; j++ ) {
-            if ( vertex_sets[j] == NULL ) {
-                continue;
-            }
-
-            start_set =
-                (linear_search(vertex_sets[j]->data, vertex_sets[j]->size,
-                               start, vertex_sets[j]->size - 1) == -1)
-                    ? start_set
-                    : j;
-            end_set = (linear_search(vertex_sets[j]->data, vertex_sets[j]->size,
-                                     end, vertex_sets[j]->size - 1) == -1)
-                        ? end_set
-                        : j;
-        }
-
-        if ( start_set != end_set ) {
-            fprintf(stdout,
-                    "Sets containing start and end of edge are different, "
-                    "performing union\n");
-            vertex_sets[start_set] =
-                set_union(vertex_sets[start_set], vertex_sets[end_set]);
-
-            vertex_sets[end_set] = NULL;
-
-            min_span_tree[start_set][end_set] = graph->edges[i].weight;
-            min_span_tree[end_set][start_set] = graph->edges[i].weight;
+        if ( vertices[vertex_u_index].parent == -1 ) {
+            fprintf(stdout, "Parent:  NULL)\n");
         } else {
-            fprintf(stdout,
-                    "Sets containing start and end are the same, continuing\n");
+            fprintf(stdout, "Parent: %2d)\n");
         }
 
-        fprintf(stdout, "\nVertex Sets: \n");
+        fprintf(stdout, "Neighbours of %d: ", vertex_u_index);
 
-        for ( int j = 0; j < graph->node_count; j++ ) {
-            if ( vertex_sets[j] != NULL ) {
-                set_display(vertex_sets[j]);
+        for ( int i = 0; i < graph->node_count; i++ ) {
+            if ( graph->adj[i][vertex_u_index] != 0 ) {
+                fprintf(stdout, "%d ", i);
+            }
+        }
+
+        fprintf(stdout, "\n");
+
+        for ( int i = 0; i < graph->node_count; i++ ) {
+            if ( graph->adj[vertices[vertex_u_index].vertex][i] != 0 ) {
+                int weight_u_v = graph->adj[vertices[vertex_u_index].vertex][i];
+
+                if ( vertices[i].key > weight_u_v &&
+                     vertices[i].in_list == 1 ) {
+                    vertices[i].parent = vertices[vertex_u_index].vertex;
+                    vertices[i].key    = weight_u_v;
+
+                    fprintf(
+                        stdout,
+                        "Vertex Updated: (Name: %2d, Key: %2d, Parent: %2d)\n",
+                        vertices[i].vertex, vertices[i].key,
+                        vertices[i].parent);
+                }
+
+                vertices[vertex_u_index].in_list = 0;
             }
         }
     }
 
-    fprintf(stdout, "\nAdjacency Matrix of Minimum Spanning Tree: \n");
+    fprintf(stdout, "\nFinal Vertices:\n");
+
+    for ( int i = 0; i < graph->node_count; i++ ) {
+        fprintf(stdout, "Name: %2d, Key: %2d, ", vertices[i].vertex,
+                vertices[i].key);
+
+        if ( vertices[i].parent == -1 ) {
+            fprintf(stdout, "Parent:  NULL\n");
+        } else {
+            fprintf(stdout, "Parent: %2d\n");
+        }
+    }
+
+    int sum = 0;
+
+    for ( int i = 0; i < graph->node_count; i++ ) {
+        sum += vertices[i].key;
+    }
+
+    for ( int i = 0; i < graph->node_count; i++ ) {
+        if ( vertices[i].parent != -1 ) {
+            min_span_tree[vertices[i].vertex][vertices[i].parent] =
+                graph->adj[vertices[i].vertex][vertices[i].parent];
+            min_span_tree[vertices[i].parent][vertices[i].vertex] =
+                graph->adj[vertices[i].parent][vertices[i].vertex];
+        }
+    }
+
+    fprintf(stdout, "\nAdjacency Matrix of Minimum Spanning Tree:\n");
 
     print_matrix(min_span_tree, graph->node_count);
 
-    for ( int i = 0; i < graph->node_count; i++ ) {
-        for ( int j = 0; j < graph->node_count; j++ ) {
-            sum += min_span_tree[i][j];
-        }
-    }
-
-    sum /= 2;
-
-    fprintf(stdout, "Total Weight: %d\n", sum);
-
-    for ( int i = 0; i < graph->node_count; i++ ) {
-        free(vertex_sets[i]->data);
-        free(vertex_sets[i]);
-    }
-
-    free(vertex_sets);
+    fprintf(stdout, "Sum: %d", sum);
 
     for ( int i = 0; i < graph->node_count; i++ ) {
         free(min_span_tree[i]);
     }
 
     free(min_span_tree);
+    free(vertices);
 }
