@@ -128,36 +128,46 @@ INSERT INTO SPJ_0129 (SNO, PNO, JNO, QTY) VALUES
 	(17100, 26749, 37650, 16),
 	(15739, 23187, 35151, 7),
 	(15525, 26383, 37114, 17),
-	(19187, 20876, 33604, 9);
+	(19187, 20876, 33604, 9),
+    (18900, 26383, 35986, 13),
+    (18900, 26383, 31438, 1),
+    (18900, 26383, 39299, 18),
+    (18900, 26383, 37650, 1),
+    (18900, 26383, 35151, 19),
+    (18900, 26383, 37114, 11),
+    (18900, 26383, 37474, 7),
+    (18900, 26383, 34872, 1),
+    (18900, 26383, 33604, 9),
+    (18900, 26383, 33104, 16);
 
 -- Queries
 -- 1. Get SNO values for suppliers who supply project j1.
-SELECT SPJ.SNO
+SELECT SPJ.SNO AS "Supplier Number"
 FROM PROJECT_0129 J, SPJ_0129 SPJ
 WHERE SPJ.JNO = J.JNO AND J.JNAME="j1";
 
 -- 2. Get SNO values for suppliers who supply project j1 with part p1.
-SELECT SPJ.SNO
+SELECT SPJ.SNO AS "Supplier Number"
 FROM PARTS_0129 P, PROJECT_0129 J, SPJ_0129 SPJ
 WHERE SPJ.PNO = P.PNO AND SPJ.JNO = J.JNO AND P.PNAME = "p1" AND J.JNAME = "j1";
 
 -- 3. Get JNAME values for projects supplied by supplier s1.
-SELECT J.JNAME
+SELECT J.JNAME AS "Project Name"
 FROM SUPPLIER_0129 S, PROJECT_0129 J, SPJ_0129 SPJ
 WHERE S.SNAME = "s1" AND SPJ.SNO = S.SNO AND SPJ.JNO = J.JNO;
 
 -- 4. Get COLOR values for parts supplied by supplier s1.
-SELECT P.COLOR
+SELECT P.COLOR AS "Part Color"
 FROM SUPPLIER_0129 S, PARTS_0129 P, SPJ_0129 SPJ
 WHERE S.SNAME = "s1" AND SPJ.PNO = P.PNO AND SPJ.SNO = S.SNO;
 
 -- 5. Get PNO values for parts supplied to any project in London.
-SELECT SPJ.PNO
+SELECT SPJ.PNO AS "Part Number"
 FROM PROJECT_0129 J, SPJ_0129 SPJ
 WHERE J.CITY = "London" AND SPJ.JNO = J.JNO;
 
 -- 6. Get SNO values for supply project j1 with a Red part.
-SELECT SPJ.SNO
+SELECT SPJ.SNO AS "Supplier Number"
 FROM PARTS_0129 P, PROJECT_0129 J, SPJ_0129 SPJ
 WHERE
     P.COLOR = "Red"
@@ -167,7 +177,7 @@ WHERE
 
 -- 7. Get SNO values for suppliers who supply a London or Paris project with a
 -- Red part.
-SELECT SPJ.SNO
+SELECT SPJ.SNO AS "Supplier Number"
 FROM PARTS_0129 P, PROJECT_0129 J, SPJ_0129 SPJ
 WHERE
     P.COLOR = "Red"
@@ -177,7 +187,7 @@ WHERE
 
 -- 8. Get PNO values for parts supplied to any project by a supplier in the same
 -- city.
-SELECT P.PNO
+SELECT P.PNO AS "Part Number"
 FROM SUPPLIER_0129 S, PARTS_0129 P, PROJECT_0129 J, SPJ_0129 SPJ
 WHERE
     S.CITY = J.CITY
@@ -187,7 +197,7 @@ WHERE
 
 -- 9. Get PNO values for parts supplied to any project in London by a supplier
 -- in London.
-SELECT P.PNO
+SELECT P.PNO AS "Part Number"
 FROM SUPPLIER_0129 S, PARTS_0129 P, PROJECT_0129 J, SPJ_0129 SPJ
 WHERE
     S.CITY = J.CITY
@@ -198,7 +208,7 @@ WHERE
 
 -- 10. Get JNO values for projects supplied by at least one supplier not in the
 -- same city.
-SELECT DISTINCT J.JNO
+SELECT DISTINCT J.JNO AS "Project Number"
 FROM SUPPLIER_0129 S, PROJECT_0129 J, SPJ_0129 SPJ
 WHERE
     S.CITY <> J.CITY
@@ -208,7 +218,7 @@ ORDER BY J.JNAME;
 
 -- 11. Get all pairs of CITY values such that a supplier in the first city
 -- supplies a project in the second city.
-SELECT S.CITY, J.CITY
+SELECT S.CITY AS "Supplier City", J.CITY AS "Project City"
 FROM SUPPLIER_0129 S, PROJECT_0129 J, SPJ_0129 SPJ
 WHERE
     SPJ.SNO = S.SNO
@@ -216,23 +226,43 @@ WHERE
 GROUP BY S.CITY, J.CITY;
 
 -- 12. Get SNO values for suppliers who supply the same part to all projects.
-
+SELECT S.SNO AS "Supplier Number"
+FROM SUPPLIER_0129 S
+WHERE EXISTS (
+    SELECT P.*  -- Gives parts which are not included in the next table, therefore giving table with parts which are included in all tables
+    FROM PARTS_0129 P
+    WHERE NOT EXISTS (
+        SELECT J.*      -- Gives projects which are not included in the joined table
+        FROM PROJECT_0129 J
+        WHERE NOT EXISTS (
+            SELECT SPJ.* -- Joins spj, j, p and s, gives all values from spj
+            FROM SPJ_0129 SPJ
+            WHERE
+                SPJ.JNO = J.JNO
+                AND SPJ.PNO = P.PNO
+                AND SPJ.SNO = S.SNO
+        )
+    )
+);
 
 -- 13. Get PNO values for parts supplied to all projects in London.
--- SELECT *
--- FROM PARTS_0129 P, PROJECT_0129 J, SPJ_0129 SPJ
--- WHERE P.CITY = "London" AND SPJ.PNO = P.PNO AND SPJ.JNO = J.JNO;
+SELECT SPJ.PNO AS "Part Number"
+FROM PROJECT_0129 J, SPJ_0129 SPJ
+WHERE J.CITY = "London" AND SPJ.JNO = J.JNO;
 
 -- 14. Get SNAME values for suppliers who supply at least one Red part to any
 -- project.
-SELECT S.SNAME, P.COLOR, SPJ.*
+SELECT
+    S.SNAME AS "Supplier Name",
+    P.COLOR AS "Part Color",
+    SPJ.JNO AS "Project Number"
 FROM SUPPLIER_0129 S, PARTS_0129 P, SPJ_0129 SPJ
 WHERE P.COLOR = "Red" AND SPJ.SNO = S.SNO AND SPJ.PNO = P.PNO;
 
 -- 15. Get total quantity of part p1 supplied by supplier s1.
-SELECT SUM(QTY)
+SELECT SUM(S1P1.S1P1QTY) AS "Total Quantity"
 FROM (
-    SELECT QTY
+    SELECT SPJ.QTY AS S1P1QTY
     FROM SUPPLIER_0129 S, PARTS_0129 P, SPJ_0129 SPJ
     WHERE
         S.SNAME = "s1"
@@ -242,7 +272,7 @@ FROM (
 ) S1P1;
 
 -- 16. Get the total number of projects supplied by supplier s3.
-SELECT COUNT(*)
+SELECT COUNT(*) AS "Number of Projects"
 FROM (
     SELECT S.SNAME, P.PNAME
     FROM SUPPLIER_0129 S, PARTS_0129 P, SPJ_0129 SPJ
@@ -253,18 +283,24 @@ FROM (
 ) S3;
 
 -- 17. Change color of all Red parts to Orange.
-SELECT P.*
+SELECT
+    P.PNO AS "Part Number",
+    P.PNAME AS "Part Name",
+    P.COLOR AS "Part Color"
 FROM PARTS_0129 P;
 
 UPDATE PARTS_0129 P
 SET P.COLOR = "Orange"
 WHERE P.COLOR = "Red";
 
-SELECT P.*
+SELECT
+    P.PNO AS "Part Number",
+    P.PNAME AS "Part Name",
+    P.COLOR AS "Part Color"
 FROM PARTS_0129 P;
 
 -- 18. Get SNAME values for suppliers who supply to both projects j1 and j2
-SELECT S1.SNAME
+SELECT S1.SNAME AS "Supplier Name"
 FROM SUPPLIER_0129 S1, PROJECT_0129 J1, SPJ_0129 SPJ1
 WHERE
     S1.SNAME IN (
@@ -280,10 +316,12 @@ WHERE
     AND SPJ1.SNO = S1.SNO
     AND SPJ1.JNO = J1.JNO;
 
-
 -- 19. Get all CITY, PNO, CITY triples such that a supplier in the first city
 -- supplies the specified part to a project in the second city.
-SELECT S.CITY, P.PNO, J.CITY
+SELECT
+    S.CITY AS "Supplier City",
+    P.PNO AS "Project Number",
+    J.CITY AS "Project City"
 FROM SUPPLIER_0129 S, PARTS_0129 P, PROJECT_0129 J, SPJ_0129 SPJ
 WHERE SPJ.SNO = S.SNO AND SPJ.PNO = P.PNO AND SPJ.JNO = J.JNO;
 
@@ -291,7 +329,7 @@ WHERE SPJ.SNO = S.SNO AND SPJ.PNO = P.PNO AND SPJ.JNO = J.JNO;
 DELIMITER &&
 CREATE PROCEDURE JNAMES_GEN (IN SUPPLIER_NAME CHAR(2))
 BEGIN
-    SELECT J.JNAME
+    SELECT J.JNAME AS "Project Name", S.SNAME AS "Supplier Name"
     FROM SUPPLIER_0129 S, PROJECT_0129 J, SPJ_0129 SPJ
     WHERE S.SNAME = SUPPLIER_NAME AND SPJ.SNO = S.SNO AND SPJ.JNO = J.JNO;
 END &&
