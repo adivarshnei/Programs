@@ -351,10 +351,7 @@ HAVING COUNT(*) = (
 SELECT
     S.PROSPECTUS_NO AS "Prospectus No.",
     S.NAME AS "Name",
-    S.ADDRESS AS "Address",
-    S.PHONE_NO AS "Phone No.",
-    S.D_O_B AS "Date of Birth",
-    S.TOTAL_AMT AS "Total Amount to Pay",
+    S.TOTAL_AMT AS "Total Amount",
     S.AMT_PAID AS "Amount Paid",
     S.INSTALLMENT AS "Installment Status"
 FROM Student_0129 S
