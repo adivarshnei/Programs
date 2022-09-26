@@ -55,7 +55,7 @@ void activity_select(struct Activity* activities, int len);
 int
 main(int argc, char** argv) {
     // If no activity is mentioned, skip execution of program
-    if ( ! ACTIVITY_COUNT_STR ) {
+    if ( argc != 2 ) {
         return 0;
     }
 
@@ -158,9 +158,9 @@ activity_select(struct Activity* activities, int len) {
     print_activities(activities, len);
 
     // The number of slots needed is the end time of the last activity
-    int  slot_count          = activities[len - 1].end - 1;
-    int* slots               = ( int* ) malloc(slot_count * sizeof(int));
-    int  activity_index      = 0;
+    int  slot_count     = activities[len - 1].end - 1;
+    int* slots          = ( int* ) malloc(( size_t ) slot_count * sizeof(int));
+    int  activity_index = 0;
     int  activites_completed = 0;
 
     for ( int i = 0; i < slot_count; i++ ) {

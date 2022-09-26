@@ -69,7 +69,7 @@ float fractional_knapsack(struct Item* items, int len, int capacity);
 int
 main(int argc, char** argv) {
     // If no items or bag capacity are mentioned, skip execution of program
-    if ( ! ITEM_COUNT_STR || ! BAG_CAPACITY_STR ) {
+    if ( argc != 3 ) {
         return 0;
     }
 
@@ -151,7 +151,7 @@ print_items(struct Item* items,
                     "%6.2f       |\n",
                     items[i].name, items[i].weight, items[i].value,
                     items[i].price, amounts_in_bag[j],
-                    items[i].price * amounts_in_bag[j]);
+                    items[i].price * ( float ) amounts_in_bag[j]);
         }
 
         fprintf(
@@ -212,18 +212,18 @@ fractional_knapsack(struct Item* items, int len, int capacity) {
         }
 
         items_in_bag = ( struct Item_In_Bag* ) realloc(
-            items_in_bag, (i + 1) * sizeof(struct Item_In_Bag));
+            items_in_bag, ( size_t ) (i + 1) * sizeof(struct Item_In_Bag));
 
         items_in_bag[i].item          = items[i];
         items_in_bag[i].weight_in_bag = amount;
 
         capacity -= amount;
 
-        profit += amount * items[i].price;
+        profit += ( float ) amount * items[i].price;
 
         fprintf(stdout, "Total profit accumulated so far: %.2f + %.2f = %.2f\n",
-                profit - items[i].price * amount, items[i].price * amount,
-                profit);
+                profit - items[i].price * ( float ) amount,
+                items[i].price * ( float ) amount, profit);
 
         i++;
 
@@ -238,7 +238,7 @@ fractional_knapsack(struct Item* items, int len, int capacity) {
 
     fprintf(stdout, "Summary of Items in Bag:\n");
 
-    int* amounts_in_bag = ( int* ) malloc(len * sizeof(int));
+    int* amounts_in_bag = ( int* ) malloc(( size_t ) len * sizeof(int));
 
     for ( int j = 0; j < len; j++ ) {
         amounts_in_bag[j] = 0;

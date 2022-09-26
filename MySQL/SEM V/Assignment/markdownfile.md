@@ -2236,6 +2236,109 @@ INSERT INTO Employee_0129 (
 
 ##### Output:
 ```
+mysql> -- Table Creation
+mysql> CREATE TABLE Department_0129 (
+    ->     DEPT_NO     INTEGER(2)  NOT NULL    UNIQUE  PRIMARY KEY,
+    ->     DEPT_NAME   VARCHAR(10) UNIQUE
+    -> );
+Query OK, 0 rows affected, 1 warning (0.06 sec)
+
+mysql>
+mysql> CREATE TABLE Employee_0129 (
+    ->     E_ID        INTEGER(4)  NOT NULL    UNIQUE  PRIMARY KEY,
+    ->     ENAME       VARCHAR(20),
+    ->     SALARY      INTEGER(12),
+    ->     HIREDATE    DATE,
+    ->     LOC         VARCHAR(20),
+    ->     MGR_E_ID    INTEGER(4),
+    ->     JOB         VARCHAR(10),
+    ->     GRADE       CHAR(10),
+    ->     DEPT_NO     INTEGER(2),
+    ->
+    ->     CONSTRAINT
+    ->         FOREIGN KEY(DEPT_NO)
+    ->         REFERENCES Department_0129(DEPT_NO)
+    ->         ON DELETE CASCADE
+    -> );
+Query OK, 0 rows affected, 4 warnings (0.10 sec)
+
+mysql>
+mysql> -- Data Entry
+mysql> INSERT INTO Department_0129 (DEPT_NO, DEPT_NAME) VALUES
+    ->     (14, "Systems"),
+    ->     (93, "Marketing"),
+    ->     (89, "HR"),
+    ->     (18, "Research"),
+    ->     (37, "Frontend"),
+    ->     (47, "Backend"),
+    ->     (78, "Maint.");
+Query OK, 7 rows affected (0.01 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> INSERT INTO Employee_0129 (
+    ->     E_ID,
+    ->     ENAME,
+    ->     SALARY,
+    ->     HIREDATE,
+    ->     LOC,
+    ->     MGR_E_ID,
+    ->     JOB,
+    ->     GRADE,
+    ->     DEPT_NO
+    -> ) VALUES
+    ->     (8908, "Oscar Reid", 12000, "1984-12-01", "New York", 8908, "Manager", "B", 37),
+    ->     (6267, "Dean Allen", 25000, "1984-12-11", "Boston", 6267, "Manager", "B", 93),
+    ->     (5669, "Sonja Bush", 18000, "1982-06-12", "Seattle", 5669, "Manager", "B", 18),
+    ->     (9488, "Christina Harmon", 12000, "1981-03-30", "Dallas", 8908, "Jr. Emp.", "A", 37),
+    ->     (1318, "Terry Fleming", 15000, "1981-09-08", "Dallas", 8908, "Officer", "B", 37),
+    ->     (6514, "Isabel Taylor", 16000, "1983-07-07", "New York", 5669, "Jr. Emp.", "B", 18),
+    ->     (8038, "Tom Morris", 12000, "1981-04-27", "San Francisco", 6267, "Officer", "B", 93),
+    ->     (7248, "Marta Pierce", 20000, "1981-05-02", "Seattle", 7248, "Manager", "B", 47),
+    ->     (1236, "Amber Howard", 22000, "1982-01-19", "San Francisco", 7248, "Officer", "B", 47),
+    ->     (6485, "Harvey Klein", 19000, "1981-05-29", "Dallas", 5669, "Officer", "B", 18),
+    ->     (2006, "Alexander Barnes", 18000, "1984-10-14", "Boston", 7248, "Officer", "B", 47),
+    ->     (8584, "Vernon Bennett", 12000, "1983-11-30", "Dallas", 6267, "Clerk", "A", 93),
+    ->     (6199, "Beth Jordan", 11000, "1982-12-17", "Boston", 5669, "Jr. Emp.", "C", 18),
+    ->     (6543, "Ramon Russell", 16000, "1984-09-13", "Dallas", 5669, "Officer", "C", 18),
+    ->     (3634, "Chad Bowen", 17000, "1984-11-20", "New Orleans", 8908, "Officer", "A", 37),
+    ->     (5306, "Boyd Watkins", 6000, "1983-11-01", "Dallas", 6267, "Officer", "C", 93),
+    ->     (8468, "Pat Gardner", 10000, "1982-08-21", "Boston", 5669, "Jr. Emp.", "B", 18),
+    ->     (4255, "Wayne Myers", 24000, "1983-03-06", "New Orleans", 6267, "Clerk", "A", 93),
+    ->     (6505, "Donnie Robertson", 23000, "1984-04-05", "San Francisco", 5050, "Jr. Emp.", "B", 89),
+    ->     (9626, "Clarence Hamilton", 9000, "1982-07-19", "Seattle", 8908, "Officer", "A", 37),
+    ->     (5952, "Kristopher Douglas", 11000, "1981-03-31", "San Francisco", 6267, "Jr. Emp.", "B", 93),
+    ->     (4208, "Caroline Evans", 13000, "1984-02-16", "Boston", 5669, "Clerk", "A", 18),
+    ->     (1336, "Stephen Lane", 7000, "1983-01-15", "San Francisco", 8908, "Jr. Emp.", "C", 37),
+    ->     (6982, "Ellis Brady", 14000, "1981-06-22", "San Francisco", 6267, "Officer", "B", 93),
+    ->     (5582, "Victor Boyd", 8000, "1982-06-06", "Boston", 8908, "Jr. Emp.", "A", 37),
+    ->     (3733, "Bertha Pearson", 7000, "1981-11-20", "Seattle", 3151, "Jr. Emp.", "A", 14),
+    ->     (7827, "Jill Powers", 16000, "1981-04-25", "New Orleans", 3151, "Jr. Emp.", "C", 14),
+    ->     (1990, "Sophia Spencer", 21000, "1982-01-14", "Boston", 5050, "Clerk", "B", 89),
+    ->     (3074, "Jose Santos", 16000, "1984-12-20", "Dallas", 6267, "Officer", "C", 93),
+    ->     (5142, "Gloria Peterson", 8000, "1983-04-03", "Boston", 6267, "Clerk", "C", 93),
+    ->     (8593, "Bruce Mitchell", 14000, "1981-09-09", "Seattle", 7248, "Jr. Emp.", "C", 47),
+    ->     (5344, "Lee Robbins", 19000, "1982-05-10", "Boston", 6267, "Officer", "B", 93),
+    ->     (1242, "Yvette Mcbride", 21000, "1982-03-22", "New York", 3151, "Officer", "A", 14),
+    ->     (9845, "Cecilia Hammond", 20000, "1982-12-26", "Seattle", 5669, "Jr. Emp.", "A", 18),
+    ->     (6028, "Lyle Daniel", 21000, "1982-01-18", "New York", 6267, "Clerk", "A", 93),
+    ->     (7424, "Adrian Long", 8000, "1982-05-30", "Seattle", 7248, "Officer", "C", 47),
+    ->     (2846, "Eddie Greer", 8000, "1981-02-27", "New York", 5669, "Clerk", "C", 18),
+    ->     (3151, "Roger Mccormick", 22000, "1983-01-23", "Seattle", 3151, "Manager", "C", 14),
+    ->     (5050, "Emanuel Barker", 10000, "1982-04-06", "San Francisco", 5050, "Manager", "B", 89),
+    ->     (4269, "Henry Barber", 19000, "1983-03-18", "San Francisco", 7248, "Jr. Emp.", "B", 47),
+    ->     (7962, "Carolyn Graves", 16000, "1981-11-08", "Dallas", 7248, "Officer", "B", 47),
+    ->     (7754, "Marian Lucas", 20000, "1981-09-29", "Seattle", 5050, "Jr. Emp.", "B", 89),
+    ->     (9546, "Wilma Wilkins", 14000, "1982-04-15", "New Orleans", 6267, "Jr. Emp.", "B", 93),
+    ->     (7061, "Bryant Stevens", 13000, "1984-04-06", "Seattle", 3151, "Clerk", "B", 14),
+    ->     (5891, "Angelina Maxwell", 9000, "1982-05-22", "Dallas", 5669, "Officer", "A", 18),
+    ->     (5056, "Darin Alexander", 10000, "1983-03-24", "San Francisco", 5050, "Manager", "B", 89),
+    ->     (1022, "Carlos Wise", 11000, "1983-04-20", "New York", 8908, "Jr. Emp.", "C", 37),
+    ->     (4704, "Traci Jones", 20000, "1984-07-05", "Dallas", 8908, "Officer", "C", 37),
+    ->     (4528, "Whitney Collier", 12000, "1981-11-17", "New Orleans", 6267, "Officer", "C", 93),
+    ->     (7655, "Beverly Holt", 22000, "1982-07-04", "Dallas", 5669, "Officer", "A", 18);
+Query OK, 50 rows affected (0.01 sec)
+Records: 50  Duplicates: 0  Warnings: 0
 ```
 
 ### Queries:
@@ -2253,6 +2356,23 @@ WHERE E.DEPT_NO = D.DEPT_NO AND D.DEPT_NAME = "Systems";
 
 ##### Output:
 ```
+mysql> -- 1. Display each employee and hire date of systems department
+mysql> SELECT
+    ->     E.ENAME AS "Employee Name",
+    ->     E.HIREDATE AS "Hiring Date",
+    ->     D.DEPT_NAME AS "Department Name"
+    -> FROM Employee_0129 E, Department_0129 D
+    -> WHERE E.DEPT_NO = D.DEPT_NO AND D.DEPT_NAME = "Systems";
++-----------------+-------------+-----------------+
+| Employee Name   | Hiring Date | Department Name |
++-----------------+-------------+-----------------+
+| Yvette Mcbride  | 1982-03-22  | Systems         |
+| Roger Mccormick | 1983-01-23  | Systems         |
+| Bertha Pearson  | 1981-11-20  | Systems         |
+| Bryant Stevens  | 1984-04-06  | Systems         |
+| Jill Powers     | 1981-04-25  | Systems         |
++-----------------+-------------+-----------------+
+5 rows in set (0.00 sec)
 ```
 
 #### 2. Write query to calculate length of service of each employee.
@@ -2275,6 +2395,73 @@ FROM Employee_0129 E;
 
 ##### Output:
 ```
+mysql> SELECT
+    ->     E.ENAME AS "Employee Name",
+    ->     E.HIREDATE AS "Hire Date",
+    ->     CONCAT(
+    ->         YEAR(FROM_DAYS(DATEDIFF(DATE(NOW()), E.HIREDATE))),
+    ->         " Years, ",
+    ->         MONTH(FROM_DAYS(DATEDIFF(DATE(NOW()), E.HIREDATE))),
+    ->         " Months, ",
+    ->         DAY(FROM_DAYS(DATEDIFF(DATE(NOW()), E.HIREDATE))),
+    ->         " Days"
+    ->     ) AS "Length of Service"
+    -> FROM Employee_0129 E;
++--------------------+------------+------------------------------+
+| Employee Name      | Hire Date  | Length of Service            |
++--------------------+------------+------------------------------+
+| Carlos Wise        | 1983-04-20 | 39 Years, 6 Months, 6 Days   |
+| Amber Howard       | 1982-01-19 | 40 Years, 9 Months, 4 Days   |
+| Yvette Mcbride     | 1982-03-22 | 40 Years, 7 Months, 4 Days   |
+| Terry Fleming      | 1981-09-08 | 41 Years, 1 Months, 15 Days  |
+| Stephen Lane       | 1983-01-15 | 39 Years, 9 Months, 9 Days   |
+| Sophia Spencer     | 1982-01-14 | 40 Years, 9 Months, 9 Days   |
+| Alexander Barnes   | 1984-10-14 | 37 Years, 12 Months, 10 Days |
+| Eddie Greer        | 1981-02-27 | 41 Years, 7 Months, 27 Days  |
+| Jose Santos        | 1984-12-20 | 37 Years, 10 Months, 4 Days  |
+| Roger Mccormick    | 1983-01-23 | 39 Years, 9 Months, 1 Days   |
+| Chad Bowen         | 1984-11-20 | 37 Years, 11 Months, 3 Days  |
+| Bertha Pearson     | 1981-11-20 | 40 Years, 11 Months, 3 Days  |
+| Caroline Evans     | 1984-02-16 | 38 Years, 8 Months, 8 Days   |
+| Wayne Myers        | 1983-03-06 | 39 Years, 7 Months, 21 Days  |
+| Henry Barber       | 1983-03-18 | 39 Years, 7 Months, 9 Days   |
+| Whitney Collier    | 1981-11-17 | 40 Years, 11 Months, 6 Days  |
+| Traci Jones        | 1984-07-05 | 38 Years, 3 Months, 21 Days  |
+| Emanuel Barker     | 1982-04-06 | 40 Years, 6 Months, 19 Days  |
+| Darin Alexander    | 1983-03-24 | 39 Years, 7 Months, 3 Days   |
+| Gloria Peterson    | 1983-04-03 | 39 Years, 6 Months, 23 Days  |
+| Boyd Watkins       | 1983-11-01 | 38 Years, 11 Months, 23 Days |
+| Lee Robbins        | 1982-05-10 | 40 Years, 5 Months, 16 Days  |
+| Victor Boyd        | 1982-06-06 | 40 Years, 4 Months, 19 Days  |
+| Sonja Bush         | 1982-06-12 | 40 Years, 4 Months, 13 Days  |
+| Angelina Maxwell   | 1982-05-22 | 40 Years, 5 Months, 4 Days   |
+| Kristopher Douglas | 1981-03-31 | 41 Years, 6 Months, 25 Days  |
+| Lyle Daniel        | 1982-01-18 | 40 Years, 9 Months, 5 Days   |
+| Beth Jordan        | 1982-12-17 | 39 Years, 10 Months, 8 Days  |
+| Dean Allen         | 1984-12-11 | 37 Years, 10 Months, 13 Days |
+| Harvey Klein       | 1981-05-29 | 41 Years, 4 Months, 27 Days  |
+| Donnie Robertson   | 1984-04-05 | 38 Years, 6 Months, 20 Days  |
+| Isabel Taylor      | 1983-07-07 | 39 Years, 3 Months, 20 Days  |
+| Ramon Russell      | 1984-09-13 | 38 Years, 1 Months, 10 Days  |
+| Ellis Brady        | 1981-06-22 | 41 Years, 4 Months, 3 Days   |
+| Bryant Stevens     | 1984-04-06 | 38 Years, 6 Months, 19 Days  |
+| Marta Pierce       | 1981-05-02 | 41 Years, 5 Months, 24 Days  |
+| Adrian Long        | 1982-05-30 | 40 Years, 4 Months, 26 Days  |
+| Beverly Holt       | 1982-07-04 | 40 Years, 3 Months, 22 Days  |
+| Marian Lucas       | 1981-09-29 | 40 Years, 12 Months, 25 Days |
+| Jill Powers        | 1981-04-25 | 41 Years, 5 Months, 31 Days  |
+| Carolyn Graves     | 1981-11-08 | 40 Years, 11 Months, 15 Days |
+| Tom Morris         | 1981-04-27 | 41 Years, 5 Months, 29 Days  |
+| Pat Gardner        | 1982-08-21 | 40 Years, 2 Months, 3 Days   |
+| Vernon Bennett     | 1983-11-30 | 38 Years, 10 Months, 25 Days |
+| Bruce Mitchell     | 1981-09-09 | 41 Years, 1 Months, 14 Days  |
+| Oscar Reid         | 1984-12-01 | 37 Years, 10 Months, 23 Days |
+| Christina Harmon   | 1981-03-30 | 41 Years, 6 Months, 26 Days  |
+| Wilma Wilkins      | 1982-04-15 | 40 Years, 6 Months, 10 Days  |
+| Clarence Hamilton  | 1982-07-19 | 40 Years, 3 Months, 7 Days   |
+| Cecilia Hammond    | 1982-12-26 | 39 Years, 9 Months, 29 Days  |
++--------------------+------------+------------------------------+
+50 rows in set (0.00 sec)
 ```
 
 #### 3. Find the second maximum salary of all employees.
@@ -2292,6 +2479,19 @@ WHERE
 
 ##### Output:
 ```
+mysql> SELECT E2.ENAME AS "Employee Name", MAX(E2.SALARY) AS "Second Highest Salary"
+    -> FROM Employee_0129 E2
+    -> WHERE
+    ->     E2.SALARY NOT IN (
+    ->     SELECT MAX(E1.SALARY)
+    ->     FROM Employee_0129 E1
+    -> );
++---------------+-----------------------+
+| Employee Name | Second Highest Salary |
++---------------+-----------------------+
+| Carlos Wise   |                 24000 |
++---------------+-----------------------+
+1 row in set (0.00 sec)
 ```
 
 #### 4. Display all employee name and department name in department name order.
@@ -2306,6 +2506,65 @@ ORDER BY D.DEPT_NAME;
 
 ##### Output:
 ```
+mysql> SELECT E.ENAME AS "Employee Name", D.DEPT_NAME AS "Department Name"
+    -> FROM Employee_0129 E, Department_0129 D
+    -> WHERE E.DEPT_NO = D.DEPT_NO
+    -> ORDER BY D.DEPT_NAME;
++--------------------+-----------------+
+| Employee Name      | Department Name |
++--------------------+-----------------+
+| Alexander Barnes   | Backend         |
+| Amber Howard       | Backend         |
+| Bruce Mitchell     | Backend         |
+| Carolyn Graves     | Backend         |
+| Adrian Long        | Backend         |
+| Marta Pierce       | Backend         |
+| Henry Barber       | Backend         |
+| Oscar Reid         | Frontend        |
+| Terry Fleming      | Frontend        |
+| Stephen Lane       | Frontend        |
+| Carlos Wise        | Frontend        |
+| Victor Boyd        | Frontend        |
+| Chad Bowen         | Frontend        |
+| Traci Jones        | Frontend        |
+| Christina Harmon   | Frontend        |
+| Clarence Hamilton  | Frontend        |
+| Sophia Spencer     | HR              |
+| Marian Lucas       | HR              |
+| Donnie Robertson   | HR              |
+| Emanuel Barker     | HR              |
+| Darin Alexander    | HR              |
+| Whitney Collier    | Marketing       |
+| Gloria Peterson    | Marketing       |
+| Boyd Watkins       | Marketing       |
+| Lee Robbins        | Marketing       |
+| Kristopher Douglas | Marketing       |
+| Lyle Daniel        | Marketing       |
+| Dean Allen         | Marketing       |
+| Ellis Brady        | Marketing       |
+| Vernon Bennett     | Marketing       |
+| Tom Morris         | Marketing       |
+| Jose Santos        | Marketing       |
+| Wilma Wilkins      | Marketing       |
+| Wayne Myers        | Marketing       |
+| Sonja Bush         | Research        |
+| Caroline Evans     | Research        |
+| Harvey Klein       | Research        |
+| Angelina Maxwell   | Research        |
+| Pat Gardner        | Research        |
+| Beverly Holt       | Research        |
+| Eddie Greer        | Research        |
+| Isabel Taylor      | Research        |
+| Ramon Russell      | Research        |
+| Beth Jordan        | Research        |
+| Cecilia Hammond    | Research        |
+| Bryant Stevens     | Systems         |
+| Bertha Pearson     | Systems         |
+| Jill Powers        | Systems         |
+| Roger Mccormick    | Systems         |
+| Yvette Mcbride     | Systems         |
++--------------------+-----------------+
+50 rows in set (0.00 sec)
 ```
 
 #### 5. Find the name of lowest paid employee for each manager.
@@ -2322,6 +2581,23 @@ GROUP BY E.MGR_E_ID;
 
 ##### Output:
 ```
+mysql> SELECT
+    ->     E.ENAME AS "Employee Name",
+    ->     MIN(E.SALARY) AS "Minimum Salary",
+    ->     E.MGR_E_ID AS "Manager Name"
+    -> FROM Employee_0129 E
+    -> GROUP BY E.MGR_E_ID;
++----------------+----------------+--------------+
+| Employee Name  | Minimum Salary | Manager Name |
++----------------+----------------+--------------+
+| Carlos Wise    |           7000 |         8908 |
+| Amber Howard   |           8000 |         7248 |
+| Yvette Mcbride |           7000 |         3151 |
+| Sophia Spencer |          10000 |         5050 |
+| Eddie Greer    |           8000 |         5669 |
+| Jose Santos    |           6000 |         6267 |
++----------------+----------------+--------------+
+6 rows in set (0.00 sec)
 ```
 
 #### 6. Display the department that has no employee.
@@ -2339,6 +2615,19 @@ WHERE
 
 ##### Output:
 ```
+mysql> SELECT D.DEPT_NO AS "Department Number", D.DEPT_NAME AS "Department Name"
+    -> FROM Department_0129 D
+    -> WHERE
+    ->     D.DEPT_NO NOT IN (
+    ->         SELECT E.DEPT_NO
+    ->         FROM Employee_0129 E
+    ->     );
++-------------------+-----------------+
+| Department Number | Department Name |
++-------------------+-----------------+
+|                78 | Maint.          |
++-------------------+-----------------+
+1 row in set (0.00 sec)
 ```
 
 #### 7. Find the employees who earn the maximum salary in each job type. Sort in descending order of salary.
@@ -2359,6 +2648,25 @@ ORDER BY MAXSAL.MAXSALARIES DESC;
 
 ##### Output:
 ```
+mysql> SELECT
+    ->     MAXSAL.ENAME AS "Employee Name",
+    ->     MAXSAL.MAXSALARIES AS "Maximum Salary",
+    ->     MAXSAL.JOB AS "Job Type"
+    -> FROM (
+    ->     SELECT E.ENAME, MAX(E.SALARY) AS MAXSALARIES, E.JOB
+    ->     FROM Employee_0129 E
+    ->     GROUP BY E.JOB
+    -> ) MAXSAL
+    -> ORDER BY MAXSAL.MAXSALARIES DESC;
++-----------------+----------------+----------+
+| Employee Name   | Maximum Salary | Job Type |
++-----------------+----------------+----------+
+| Roger Mccormick |          25000 | Manager  |
+| Sophia Spencer  |          24000 | Clerk    |
+| Carlos Wise     |          23000 | Jr. Emp. |
+| Amber Howard    |          22000 | Officer  |
++-----------------+----------------+----------+
+4 rows in set (0.00 sec)
 ```
 
 #### 8. In which year did most people join the company? Display the year and number of employees.
@@ -2383,6 +2691,26 @@ HAVING
 
 ##### Output:
 ```
+mysql> SELECT
+    ->     COUNT(E1.E_ID) AS "Maximum Number of Employees",
+    ->     YEAR(E1.HIREDATE) AS "Year"
+    -> FROM Employee_0129 E1
+    -> GROUP BY YEAR(E1.HIREDATE)
+    -> HAVING
+    ->     COUNT(E1.E_ID) IN (
+    ->         SELECT MAX(YEAR_COUNTS)
+    ->         FROM (
+    ->             SELECT COUNT(E2.E_ID) AS YEAR_COUNTS
+    ->             FROM Employee_0129 E2
+    ->             GROUP BY YEAR(E2.HIREDATE)
+    ->         ) COUNTS
+    ->     );
++-----------------------------+------+
+| Maximum Number of Employees | Year |
++-----------------------------+------+
+|                          16 | 1982 |
++-----------------------------+------+
+1 row in set (0.00 sec)
 ```
 
 #### 9. Display the details of those employees who earn greater than average of their department.
@@ -2407,6 +2735,49 @@ WHERE
 
 ##### Output:
 ```
+mysql> SELECT
+    ->     E1.E_ID AS "Employee ID",
+    ->     E1.ENAME AS "Employee Name",
+    ->     E1.SALARY AS "Salary",
+    ->     D.DEPT_NAME AS "Department",
+    ->     E1.JOB AS "Job"
+    -> FROM Employee_0129 E1, Department_0129 D
+    -> WHERE
+    ->     D.DEPT_NO = E1.DEPT_NO
+    ->     AND SALARY > (
+    ->         SELECT AVG(E2.SALARY)
+    ->         FROM Employee_0129 E2
+    ->         WHERE E1.DEPT_NO = E2.DEPT_NO
+    ->     );
++-------------+------------------+--------+------------+----------+
+| Employee ID | Employee Name    | Salary | Department | Job      |
++-------------+------------------+--------+------------+----------+
+|        1236 | Amber Howard     |  22000 | Backend    | Officer  |
+|        1242 | Yvette Mcbride   |  21000 | Systems    | Officer  |
+|        1318 | Terry Fleming    |  15000 | Frontend   | Officer  |
+|        1990 | Sophia Spencer   |  21000 | HR         | Clerk    |
+|        2006 | Alexander Barnes |  18000 | Backend    | Officer  |
+|        3074 | Jose Santos      |  16000 | Marketing  | Officer  |
+|        3151 | Roger Mccormick  |  22000 | Systems    | Manager  |
+|        3634 | Chad Bowen       |  17000 | Frontend   | Officer  |
+|        4255 | Wayne Myers      |  24000 | Marketing  | Clerk    |
+|        4269 | Henry Barber     |  19000 | Backend    | Jr. Emp. |
+|        4704 | Traci Jones      |  20000 | Frontend   | Officer  |
+|        5344 | Lee Robbins      |  19000 | Marketing  | Officer  |
+|        5669 | Sonja Bush       |  18000 | Research   | Manager  |
+|        6028 | Lyle Daniel      |  21000 | Marketing  | Clerk    |
+|        6267 | Dean Allen       |  25000 | Marketing  | Manager  |
+|        6485 | Harvey Klein     |  19000 | Research   | Officer  |
+|        6505 | Donnie Robertson |  23000 | HR         | Jr. Emp. |
+|        6514 | Isabel Taylor    |  16000 | Research   | Jr. Emp. |
+|        6543 | Ramon Russell    |  16000 | Research   | Officer  |
+|        7248 | Marta Pierce     |  20000 | Backend    | Manager  |
+|        7655 | Beverly Holt     |  22000 | Research   | Officer  |
+|        7754 | Marian Lucas     |  20000 | HR         | Jr. Emp. |
+|        7827 | Jill Powers      |  16000 | Systems    | Jr. Emp. |
+|        9845 | Cecilia Hammond  |  20000 | Research   | Jr. Emp. |
++-------------+------------------+--------+------------+----------+
+24 rows in set (0.01 sec)
 ```
 
 #### 10. List the employees having salary between $10000$ and $20000$.
@@ -2424,6 +2795,50 @@ WHERE E.SALARY BETWEEN 10000 AND 20000;
 
 ##### Output:
 ```
+mysql> SELECT
+    ->     E.E_ID AS "Employee ID",
+    ->     E.ENAME AS "Employee Name",
+    ->     E.SALARY AS "Salary",
+    ->     E.JOB AS "Job"
+    -> FROM Employee_0129 E
+    -> WHERE E.SALARY BETWEEN 10000 AND 20000;
++-------------+--------------------+--------+----------+
+| Employee ID | Employee Name      | Salary | Job      |
++-------------+--------------------+--------+----------+
+|        1022 | Carlos Wise        |  11000 | Jr. Emp. |
+|        1318 | Terry Fleming      |  15000 | Officer  |
+|        2006 | Alexander Barnes   |  18000 | Officer  |
+|        3074 | Jose Santos        |  16000 | Officer  |
+|        3634 | Chad Bowen         |  17000 | Officer  |
+|        4208 | Caroline Evans     |  13000 | Clerk    |
+|        4269 | Henry Barber       |  19000 | Jr. Emp. |
+|        4528 | Whitney Collier    |  12000 | Officer  |
+|        4704 | Traci Jones        |  20000 | Officer  |
+|        5050 | Emanuel Barker     |  10000 | Manager  |
+|        5056 | Darin Alexander    |  10000 | Manager  |
+|        5344 | Lee Robbins        |  19000 | Officer  |
+|        5669 | Sonja Bush         |  18000 | Manager  |
+|        5952 | Kristopher Douglas |  11000 | Jr. Emp. |
+|        6199 | Beth Jordan        |  11000 | Jr. Emp. |
+|        6485 | Harvey Klein       |  19000 | Officer  |
+|        6514 | Isabel Taylor      |  16000 | Jr. Emp. |
+|        6543 | Ramon Russell      |  16000 | Officer  |
+|        6982 | Ellis Brady        |  14000 | Officer  |
+|        7061 | Bryant Stevens     |  13000 | Clerk    |
+|        7248 | Marta Pierce       |  20000 | Manager  |
+|        7754 | Marian Lucas       |  20000 | Jr. Emp. |
+|        7827 | Jill Powers        |  16000 | Jr. Emp. |
+|        7962 | Carolyn Graves     |  16000 | Officer  |
+|        8038 | Tom Morris         |  12000 | Officer  |
+|        8468 | Pat Gardner        |  10000 | Jr. Emp. |
+|        8584 | Vernon Bennett     |  12000 | Clerk    |
+|        8593 | Bruce Mitchell     |  14000 | Jr. Emp. |
+|        8908 | Oscar Reid         |  12000 | Manager  |
+|        9488 | Christina Harmon   |  12000 | Jr. Emp. |
+|        9546 | Wilma Wilkins      |  14000 | Jr. Emp. |
+|        9845 | Cecilia Hammond    |  20000 | Jr. Emp. |
++-------------+--------------------+--------+----------+
+32 rows in set (0.00 sec)
 ```
 
 #### 11. Display all employees hired during $1983$ and those employees who earn greater than average of their department.
@@ -2449,6 +2864,30 @@ WHERE
 
 ##### Output:
 ```
+mysql> SELECT
+    ->     E1.E_ID AS "Employee ID",
+    ->     E1.ENAME AS "Employee Name",
+    ->     E1.SALARY AS "Salary",
+    ->     D.DEPT_NAME AS "Department",
+    ->     E1.JOB AS "Job"
+    -> FROM Employee_0129 E1, Department_0129 D
+    -> WHERE
+    ->     E1.DEPT_NO = D.DEPT_NO
+    ->     AND YEAR(E1.HIREDATE) = 1983
+    ->     AND E1.SALARY > (
+    ->         SELECT AVG(E2.SALARY)
+    ->         FROM Employee_0129 E2
+    ->         WHERE E1.DEPT_NO = E2.DEPT_NO
+    ->     );
++-------------+-----------------+--------+------------+----------+
+| Employee ID | Employee Name   | Salary | Department | Job      |
++-------------+-----------------+--------+------------+----------+
+|        3151 | Roger Mccormick |  22000 | Systems    | Manager  |
+|        4255 | Wayne Myers     |  24000 | Marketing  | Clerk    |
+|        4269 | Henry Barber    |  19000 | Backend    | Jr. Emp. |
+|        6514 | Isabel Taylor   |  16000 | Research   | Jr. Emp. |
++-------------+-----------------+--------+------------+----------+
+4 rows in set (0.00 sec)
 ```
 
 #### 12. Update the salaries of all employees in marketing department & hike it by $15\%$.
@@ -2475,6 +2914,62 @@ WHERE E.DEPT_NO = D.DEPT_NO AND D.DEPT_NAME = "Marketing";
 
 ##### Output:
 ```
+mysql> SELECT E.ENAME AS "Employee Name", E.SALARY AS "Salary"
+    -> FROM Employee_0129 E, Department_0129 D
+    -> WHERE E.DEPT_NO = D.DEPT_NO AND D.DEPT_NAME = "Marketing";
++--------------------+--------+
+| Employee Name      | Salary |
++--------------------+--------+
+| Jose Santos        |  16000 |
+| Wayne Myers        |  24000 |
+| Whitney Collier    |  12000 |
+| Gloria Peterson    |   8000 |
+| Boyd Watkins       |   6000 |
+| Lee Robbins        |  19000 |
+| Kristopher Douglas |  11000 |
+| Lyle Daniel        |  21000 |
+| Dean Allen         |  25000 |
+| Ellis Brady        |  14000 |
+| Tom Morris         |  12000 |
+| Vernon Bennett     |  12000 |
+| Wilma Wilkins      |  14000 |
++--------------------+--------+
+13 rows in set (0.00 sec)
+
+mysql>
+mysql> UPDATE Employee_0129 E
+    -> SET E.SALARY = E.SALARY * 1.15
+    -> WHERE
+    ->     E.DEPT_NO = (
+    ->         SELECT D.DEPT_NO
+    ->         FROM Department_0129 D
+    ->         WHERE D.DEPT_NAME = "Marketing"
+    ->     );
+Query OK, 13 rows affected (0.01 sec)
+Rows matched: 13  Changed: 13  Warnings: 0
+
+mysql>
+mysql> SELECT E.ENAME AS "Employee Name", E.SALARY AS "Salary"
+    -> FROM Employee_0129 E, Department_0129 D
+    -> WHERE E.DEPT_NO = D.DEPT_NO AND D.DEPT_NAME = "Marketing";
++--------------------+--------+
+| Employee Name      | Salary |
++--------------------+--------+
+| Jose Santos        |  18400 |
+| Wayne Myers        |  27600 |
+| Whitney Collier    |  13800 |
+| Gloria Peterson    |   9200 |
+| Boyd Watkins       |   6900 |
+| Lee Robbins        |  21850 |
+| Kristopher Douglas |  12650 |
+| Lyle Daniel        |  24150 |
+| Dean Allen         |  28750 |
+| Ellis Brady        |  16100 |
+| Tom Morris         |  13800 |
+| Vernon Bennett     |  13800 |
+| Wilma Wilkins      |  16100 |
++--------------------+--------+
+13 rows in set (0.00 sec)
 ```
 
 #### 13. Get the gross salaries of all the employees.
@@ -2487,6 +2982,63 @@ FROM Employee_0129 E;
 
 ##### Output:
 ```
+mysql> SELECT E.ENAME AS "Employee Name", E.SALARY AS "Salary"
+    -> FROM Employee_0129 E;
++--------------------+--------+
+| Employee Name      | Salary |
++--------------------+--------+
+| Carlos Wise        |  11000 |
+| Amber Howard       |  22000 |
+| Yvette Mcbride     |  21000 |
+| Terry Fleming      |  15000 |
+| Stephen Lane       |   7000 |
+| Sophia Spencer     |  21000 |
+| Alexander Barnes   |  18000 |
+| Eddie Greer        |   8000 |
+| Jose Santos        |  18400 |
+| Roger Mccormick    |  22000 |
+| Chad Bowen         |  17000 |
+| Bertha Pearson     |   7000 |
+| Caroline Evans     |  13000 |
+| Wayne Myers        |  27600 |
+| Henry Barber       |  19000 |
+| Whitney Collier    |  13800 |
+| Traci Jones        |  20000 |
+| Emanuel Barker     |  10000 |
+| Darin Alexander    |  10000 |
+| Gloria Peterson    |   9200 |
+| Boyd Watkins       |   6900 |
+| Lee Robbins        |  21850 |
+| Victor Boyd        |   8000 |
+| Sonja Bush         |  18000 |
+| Angelina Maxwell   |   9000 |
+| Kristopher Douglas |  12650 |
+| Lyle Daniel        |  24150 |
+| Beth Jordan        |  11000 |
+| Dean Allen         |  28750 |
+| Harvey Klein       |  19000 |
+| Donnie Robertson   |  23000 |
+| Isabel Taylor      |  16000 |
+| Ramon Russell      |  16000 |
+| Ellis Brady        |  16100 |
+| Bryant Stevens     |  13000 |
+| Marta Pierce       |  20000 |
+| Adrian Long        |   8000 |
+| Beverly Holt       |  22000 |
+| Marian Lucas       |  20000 |
+| Jill Powers        |  16000 |
+| Carolyn Graves     |  16000 |
+| Tom Morris         |  13800 |
+| Pat Gardner        |  10000 |
+| Vernon Bennett     |  13800 |
+| Bruce Mitchell     |  14000 |
+| Oscar Reid         |  12000 |
+| Christina Harmon   |  12000 |
+| Wilma Wilkins      |  16100 |
+| Clarence Hamilton  |   9000 |
+| Cecilia Hammond    |  20000 |
++--------------------+--------+
+50 rows in set (0.00 sec)
 ```
 
 #### 14. Get the names of employees and their manager's name.
@@ -2500,6 +3052,64 @@ WHERE E.MGR_E_ID = M.E_ID;
 
 ##### Output:
 ```
+mysql> SELECT E.ENAME AS "Employee Name", M.ENAME AS "Manager Name"
+    -> FROM Employee_0129 E, Employee_0129 M
+    -> WHERE E.MGR_E_ID = M.E_ID;
++--------------------+-----------------+
+| Employee Name      | Manager Name    |
++--------------------+-----------------+
+| Carlos Wise        | Oscar Reid      |
+| Amber Howard       | Marta Pierce    |
+| Yvette Mcbride     | Roger Mccormick |
+| Terry Fleming      | Oscar Reid      |
+| Stephen Lane       | Oscar Reid      |
+| Sophia Spencer     | Emanuel Barker  |
+| Alexander Barnes   | Marta Pierce    |
+| Eddie Greer        | Sonja Bush      |
+| Jose Santos        | Dean Allen      |
+| Roger Mccormick    | Roger Mccormick |
+| Chad Bowen         | Oscar Reid      |
+| Bertha Pearson     | Roger Mccormick |
+| Caroline Evans     | Sonja Bush      |
+| Wayne Myers        | Dean Allen      |
+| Henry Barber       | Marta Pierce    |
+| Whitney Collier    | Dean Allen      |
+| Traci Jones        | Oscar Reid      |
+| Emanuel Barker     | Emanuel Barker  |
+| Darin Alexander    | Emanuel Barker  |
+| Gloria Peterson    | Dean Allen      |
+| Boyd Watkins       | Dean Allen      |
+| Lee Robbins        | Dean Allen      |
+| Victor Boyd        | Oscar Reid      |
+| Sonja Bush         | Sonja Bush      |
+| Angelina Maxwell   | Sonja Bush      |
+| Kristopher Douglas | Dean Allen      |
+| Lyle Daniel        | Dean Allen      |
+| Beth Jordan        | Sonja Bush      |
+| Dean Allen         | Dean Allen      |
+| Harvey Klein       | Sonja Bush      |
+| Donnie Robertson   | Emanuel Barker  |
+| Isabel Taylor      | Sonja Bush      |
+| Ramon Russell      | Sonja Bush      |
+| Ellis Brady        | Dean Allen      |
+| Bryant Stevens     | Roger Mccormick |
+| Marta Pierce       | Marta Pierce    |
+| Adrian Long        | Marta Pierce    |
+| Beverly Holt       | Sonja Bush      |
+| Marian Lucas       | Emanuel Barker  |
+| Jill Powers        | Roger Mccormick |
+| Carolyn Graves     | Marta Pierce    |
+| Tom Morris         | Dean Allen      |
+| Pat Gardner        | Sonja Bush      |
+| Vernon Bennett     | Dean Allen      |
+| Bruce Mitchell     | Marta Pierce    |
+| Oscar Reid         | Oscar Reid      |
+| Christina Harmon   | Oscar Reid      |
+| Wilma Wilkins      | Dean Allen      |
+| Clarence Hamilton  | Oscar Reid      |
+| Cecilia Hammond    | Sonja Bush      |
++--------------------+-----------------+
+50 rows in set (0.00 sec)
 ```
 
 #### 15. Display the name, location and department name of all the employees earning more than $1500$.
@@ -2516,7 +3126,43 @@ WHERE E.SALARY > 15000 AND E.DEPT_NO = D.DEPT_NO;
 
 ##### Output:
 ```
-
+mysql> SELECT
+    ->     E.ENAME AS "Employee Name",
+    ->     E.LOC AS "Location",
+    ->     D.DEPT_NAME AS "Department"
+    -> FROM Employee_0129 E, Department_0129 D
+    -> WHERE E.SALARY > 15000 AND E.DEPT_NO = D.DEPT_NO;
++------------------+---------------+------------+
+| Employee Name    | Location      | Department |
++------------------+---------------+------------+
+| Amber Howard     | San Francisco | Backend    |
+| Yvette Mcbride   | New York      | Systems    |
+| Sophia Spencer   | Boston        | HR         |
+| Alexander Barnes | Boston        | Backend    |
+| Jose Santos      | Dallas        | Marketing  |
+| Roger Mccormick  | Seattle       | Systems    |
+| Chad Bowen       | New Orleans   | Frontend   |
+| Wayne Myers      | New Orleans   | Marketing  |
+| Henry Barber     | San Francisco | Backend    |
+| Traci Jones      | Dallas        | Frontend   |
+| Lee Robbins      | Boston        | Marketing  |
+| Sonja Bush       | Seattle       | Research   |
+| Lyle Daniel      | New York      | Marketing  |
+| Dean Allen       | Boston        | Marketing  |
+| Harvey Klein     | Dallas        | Research   |
+| Donnie Robertson | San Francisco | HR         |
+| Isabel Taylor    | New York      | Research   |
+| Ramon Russell    | Dallas        | Research   |
+| Ellis Brady      | San Francisco | Marketing  |
+| Marta Pierce     | Seattle       | Backend    |
+| Beverly Holt     | Dallas        | Research   |
+| Marian Lucas     | Seattle       | HR         |
+| Jill Powers      | New Orleans   | Systems    |
+| Carolyn Graves   | Dallas        | Backend    |
+| Wilma Wilkins    | New Orleans   | Marketing  |
+| Cecilia Hammond  | Seattle       | Research   |
++------------------+---------------+------------+
+26 rows in set (0.00 sec)
 ```
 
 #### 16. Show all the employees in <span style = "font-family:Input">Dallas</span>.
@@ -2535,6 +3181,30 @@ WHERE E.LOC = "Dallas";
 
 ##### Output:
 ```
+mysql> SELECT
+    ->     E.E_ID AS "Employee ID",
+    ->     E.ENAME AS "Employee Name",
+    ->     E.SALARY AS "Salary",
+    ->     E.JOB AS "Job",
+    ->     E.LOC AS "Location"
+    -> FROM Employee_0129 E
+    -> WHERE E.LOC = "Dallas";
++-------------+------------------+--------+----------+----------+
+| Employee ID | Employee Name    | Salary | Job      | Location |
++-------------+------------------+--------+----------+----------+
+|        1318 | Terry Fleming    |  15000 | Officer  | Dallas   |
+|        3074 | Jose Santos      |  18400 | Officer  | Dallas   |
+|        4704 | Traci Jones      |  20000 | Officer  | Dallas   |
+|        5306 | Boyd Watkins     |   6900 | Officer  | Dallas   |
+|        5891 | Angelina Maxwell |   9000 | Officer  | Dallas   |
+|        6485 | Harvey Klein     |  19000 | Officer  | Dallas   |
+|        6543 | Ramon Russell    |  16000 | Officer  | Dallas   |
+|        7655 | Beverly Holt     |  22000 | Officer  | Dallas   |
+|        7962 | Carolyn Graves   |  16000 | Officer  | Dallas   |
+|        8584 | Vernon Bennett   |  13800 | Clerk    | Dallas   |
+|        9488 | Christina Harmon |  12000 | Jr. Emp. | Dallas   |
++-------------+------------------+--------+----------+----------+
+11 rows in set (0.00 sec)
 ```
 
 #### 17. List the employees' name, job, salary, grade, and department for employees in the company except clerks. Sort on employee names.
@@ -2554,6 +3224,62 @@ ORDER BY E.ENAME;
 
 ##### Output:
 ```
+mysql> SELECT
+    ->     E.ENAME AS "Employee Name",
+    ->     E.JOB AS "Job",
+    ->     E.SALARY AS "Salary",
+    ->     E.GRADE AS "Grade",
+    ->     D.DEPT_NAME AS "Department"
+    -> FROM Employee_0129 E, Department_0129 D
+    -> WHERE E.DEPT_NO = D.DEPT_NO AND E.JOB NOT LIKE ("Clerk")
+    -> ORDER BY E.ENAME;
++--------------------+----------+--------+-------+------------+
+| Employee Name      | Job      | Salary | Grade | Department |
++--------------------+----------+--------+-------+------------+
+| Adrian Long        | Officer  |   8000 | C     | Backend    |
+| Alexander Barnes   | Officer  |  18000 | B     | Backend    |
+| Amber Howard       | Officer  |  22000 | B     | Backend    |
+| Angelina Maxwell   | Officer  |   9000 | A     | Research   |
+| Bertha Pearson     | Jr. Emp. |   7000 | A     | Systems    |
+| Beth Jordan        | Jr. Emp. |  11000 | C     | Research   |
+| Beverly Holt       | Officer  |  22000 | A     | Research   |
+| Boyd Watkins       | Officer  |   6900 | C     | Marketing  |
+| Bruce Mitchell     | Jr. Emp. |  14000 | C     | Backend    |
+| Carlos Wise        | Jr. Emp. |  11000 | C     | Frontend   |
+| Carolyn Graves     | Officer  |  16000 | B     | Backend    |
+| Cecilia Hammond    | Jr. Emp. |  20000 | A     | Research   |
+| Chad Bowen         | Officer  |  17000 | A     | Frontend   |
+| Christina Harmon   | Jr. Emp. |  12000 | A     | Frontend   |
+| Clarence Hamilton  | Officer  |   9000 | A     | Frontend   |
+| Darin Alexander    | Manager  |  10000 | B     | HR         |
+| Dean Allen         | Manager  |  28750 | B     | Marketing  |
+| Donnie Robertson   | Jr. Emp. |  23000 | B     | HR         |
+| Ellis Brady        | Officer  |  16100 | B     | Marketing  |
+| Emanuel Barker     | Manager  |  10000 | B     | HR         |
+| Harvey Klein       | Officer  |  19000 | B     | Research   |
+| Henry Barber       | Jr. Emp. |  19000 | B     | Backend    |
+| Isabel Taylor      | Jr. Emp. |  16000 | B     | Research   |
+| Jill Powers        | Jr. Emp. |  16000 | C     | Systems    |
+| Jose Santos        | Officer  |  18400 | C     | Marketing  |
+| Kristopher Douglas | Jr. Emp. |  12650 | B     | Marketing  |
+| Lee Robbins        | Officer  |  21850 | B     | Marketing  |
+| Marian Lucas       | Jr. Emp. |  20000 | B     | HR         |
+| Marta Pierce       | Manager  |  20000 | B     | Backend    |
+| Oscar Reid         | Manager  |  12000 | B     | Frontend   |
+| Pat Gardner        | Jr. Emp. |  10000 | B     | Research   |
+| Ramon Russell      | Officer  |  16000 | C     | Research   |
+| Roger Mccormick    | Manager  |  22000 | C     | Systems    |
+| Sonja Bush         | Manager  |  18000 | B     | Research   |
+| Stephen Lane       | Jr. Emp. |   7000 | C     | Frontend   |
+| Terry Fleming      | Officer  |  15000 | B     | Frontend   |
+| Tom Morris         | Officer  |  13800 | B     | Marketing  |
+| Traci Jones        | Officer  |  20000 | C     | Frontend   |
+| Victor Boyd        | Jr. Emp. |   8000 | A     | Frontend   |
+| Whitney Collier    | Officer  |  13800 | C     | Marketing  |
+| Wilma Wilkins      | Jr. Emp. |  16100 | B     | Marketing  |
+| Yvette Mcbride     | Officer  |  21000 | A     | Systems    |
++--------------------+----------+--------+-------+------------+
+42 rows in set (0.00 sec)
 ```
 
 #### 18. Find the employees who earns the minimum salary for their job. Sort in descending order of salary.
@@ -2574,6 +3300,25 @@ ORDER BY MINSAL.MINSALARIES DESC;
 
 ##### Output:
 ```
+mysql> SELECT
+    ->     MINSAL.ENAME AS "Employee Name",
+    ->     MINSAL.MINSALARIES AS "Minimum Salary",
+    ->     MINSAL.JOB AS "Job"
+    -> FROM (
+    ->     SELECT E.ENAME, MIN(E.SALARY) AS MINSALARIES, E.JOB
+    ->     FROM Employee_0129 E
+    ->     GROUP BY E.JOB
+    -> ) MINSAL
+    -> ORDER BY MINSAL.MINSALARIES DESC;
++-----------------+----------------+----------+
+| Employee Name   | Minimum Salary | Job      |
++-----------------+----------------+----------+
+| Roger Mccormick |          10000 | Manager  |
+| Sophia Spencer  |           8000 | Clerk    |
+| Carlos Wise     |           7000 | Jr. Emp. |
+| Amber Howard    |           6900 | Officer  |
++-----------------+----------------+----------+
+4 rows in set (0.00 sec)
 ```
 
 #### 19. Find the most recently hired employees in their department, order by hire date.
@@ -2597,6 +3342,30 @@ ORDER BY E1.HIREDATE;
 
 ##### Output:
 ```
+mysql> SELECT
+    ->     E1.ENAME AS "Employee Name",
+    ->     E1.HIREDATE AS "Hiring Date",
+    ->     D.DEPT_NAME AS "Department"
+    -> FROM Employee_0129 E1, Department_0129 D
+    -> WHERE
+    ->     E1.DEPT_NO = D.DEPT_NO
+    ->     AND E1.HIREDATE IN (
+    ->         SELECT MAX(E2.HIREDATE)
+    ->         FROM Employee_0129 E2
+    ->         GROUP BY E2.DEPT_NO
+    ->     )
+    -> ORDER BY E1.HIREDATE;
++------------------+-------------+------------+
+| Employee Name    | Hiring Date | Department |
++------------------+-------------+------------+
+| Donnie Robertson | 1984-04-05  | HR         |
+| Bryant Stevens   | 1984-04-06  | Systems    |
+| Ramon Russell    | 1984-09-13  | Research   |
+| Alexander Barnes | 1984-10-14  | Backend    |
+| Oscar Reid       | 1984-12-01  | Frontend   |
+| Jose Santos      | 1984-12-20  | Marketing  |
++------------------+-------------+------------+
+6 rows in set (0.00 sec)
 ```
 
 #### 20. Find out the difference between highest and lowest salaries.
@@ -2614,6 +3383,19 @@ FROM Employee_0129 E;
 
 ##### Output:
 ```
+mysql> SELECT
+    ->     MAX(E.SALARY) AS "Maximum Salary",
+    ->     "-",
+    ->     MIN(E.SALARY) AS "Minimum Salary",
+    ->     "=",
+    ->     MAX(E.SALARY) - MIN(E.SALARY) AS "Difference"
+    -> FROM Employee_0129 E;
++----------------+---+----------------+---+------------+
+| Maximum Salary | - | Minimum Salary | = | Difference |
++----------------+---+----------------+---+------------+
+|          28750 | - |           6900 | = |      21850 |
++----------------+---+----------------+---+------------+
+1 row in set (0.00 sec)
 ```
 
 ---

@@ -80,7 +80,7 @@ void          mst_prim(struct Graph const* graph, struct Vertex const* root);
 int
 main(int argc, char** argv) {
     // If no nodes or edges are mentioned, skip execution of program
-    if ( ! NODE_COUNT_STR || ! EDGE_COUNT_STR || ! ROOT_STR ) {
+    if ( argc != 4 ) {
         return 0;
     }
 
@@ -213,12 +213,13 @@ graph_init(int const node_count) {
     // Allocate and define an empty graph with only nodes and no edges
     struct Graph* graph = ( struct Graph* ) malloc(sizeof(struct Graph));
     graph->node_count   = node_count;
-    graph->adj          = ( int** ) malloc(graph->node_count * sizeof(int*));
-    graph->edge_count   = 0;
-    graph->edges        = NULL;
+    graph->adj = ( int** ) malloc(( size_t ) graph->node_count * sizeof(int*));
+    graph->edge_count = 0;
+    graph->edges      = NULL;
 
     for ( int i = 0; i < graph->node_count; i++ ) {
-        graph->adj[i] = ( int* ) malloc(graph->node_count * sizeof(int));
+        graph->adj[i] =
+            ( int* ) malloc(( size_t ) graph->node_count * sizeof(int));
     }
 
     for ( int i = 0; i < graph->node_count; i++ ) {
@@ -238,10 +239,10 @@ populate_graph(struct Graph*      graph,
     // to the graph by updating the adjacency matrix
     graph->edge_count = edge_count;
 
-    graph->edges =
-        ( struct Edge* ) malloc(graph->edge_count * sizeof(struct Edge));
+    graph->edges = ( struct Edge* ) malloc(( size_t ) graph->edge_count *
+                                           sizeof(struct Edge));
 
-    memcpy(graph->edges, edges, edge_count * sizeof(struct Edge));
+    memcpy(graph->edges, edges, ( size_t ) edge_count * sizeof(struct Edge));
 
     for ( int i = 0; i < edge_count; i++ ) {
         graph->adj[graph->edges[i].start][graph->edges[i].end] =
@@ -274,10 +275,12 @@ void
 mst_prim(struct Graph const* graph, struct Vertex const* root) {
     // Allocate an empty adjacency matrix to represent an empty minimum spanning
     // tree
-    int** min_span_tree = ( int** ) malloc(graph->node_count * sizeof(int*));
+    int** min_span_tree =
+        ( int** ) malloc(( size_t ) graph->node_count * sizeof(int*));
 
     for ( int i = 0; i < graph->node_count; i++ ) {
-        min_span_tree[i] = ( int* ) malloc(graph->node_count * sizeof(int));
+        min_span_tree[i] =
+            ( int* ) malloc(( size_t ) graph->node_count * sizeof(int));
 
         for ( int j = 0; j < graph->node_count; j++ ) {
             min_span_tree[i][j] = 0;
@@ -286,8 +289,8 @@ mst_prim(struct Graph const* graph, struct Vertex const* root) {
 
     // Create list of vertices from which minimum is extracted
     int            vertex_u_index;
-    struct Vertex* vertices =
-        ( struct Vertex* ) malloc(graph->node_count * sizeof(struct Vertex));
+    struct Vertex* vertices = ( struct Vertex* ) malloc(
+        ( size_t ) graph->node_count * sizeof(struct Vertex));
 
     for ( int i = 0; i < graph->node_count; i++ ) {
         vertices[i].vertex  = i;
@@ -311,7 +314,7 @@ mst_prim(struct Graph const* graph, struct Vertex const* root) {
         if ( vertices[vertex_u_index].parent == -1 ) {
             fprintf(stdout, "Parent:  NULL)\n");
         } else {
-            fprintf(stdout, "Parent: %2d)\n");
+            fprintf(stdout, "Parent: %2d)\n", vertices[vertex_u_index].parent);
         }
 
         fprintf(stdout, "Neighbours of %d: ", vertex_u_index);
@@ -354,7 +357,7 @@ mst_prim(struct Graph const* graph, struct Vertex const* root) {
         if ( vertices[i].parent == -1 ) {
             fprintf(stdout, "Parent:  NULL\n");
         } else {
-            fprintf(stdout, "Parent: %2d\n");
+            fprintf(stdout, "Parent: %2d\n", vertices[i].parent);
         }
     }
 
