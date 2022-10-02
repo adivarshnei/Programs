@@ -120,7 +120,7 @@ void          mst_kruskal(struct Graph const* graph);
 int
 main(int argc, char** argv) {
     // If no nodes or edges are mentioned, skip execution of program
-    if ( argc != 3 ) {
+    if ( ! NODE_COUNT_STR || ! EDGE_COUNT_STR || argc != 3 ) {
         return 0;
     }
 
@@ -207,8 +207,7 @@ set_append(struct Set* set, int const element) {
     if ( linear_search(set->data, set->size, element, set->size - 1) == -1 ) {
         set->size++;
 
-        set->data =
-            ( int* ) realloc(set->data, ( size_t ) set->size * sizeof(int));
+        set->data = ( int* ) realloc(set->data, set->size * sizeof(int));
         set->data[set->size - 1] = element;
     }
 }
@@ -317,13 +316,12 @@ graph_init(int const node_count) {
     // Allocate and define an empty graph with only nodes and no edges
     struct Graph* graph = ( struct Graph* ) malloc(sizeof(struct Graph));
     graph->node_count   = node_count;
-    graph->adj = ( int** ) malloc(( size_t ) graph->node_count * sizeof(int*));
-    graph->edge_count = 0;
-    graph->edges      = NULL;
+    graph->adj          = ( int** ) malloc(graph->node_count * sizeof(int*));
+    graph->edge_count   = 0;
+    graph->edges        = NULL;
 
     for ( int i = 0; i < graph->node_count; i++ ) {
-        graph->adj[i] =
-            ( int* ) malloc(( size_t ) graph->node_count * sizeof(int));
+        graph->adj[i] = ( int* ) malloc(graph->node_count * sizeof(int));
     }
 
     for ( int i = 0; i < graph->node_count; i++ ) {
@@ -343,10 +341,10 @@ populate_graph(struct Graph*      graph,
     // to the graph by updating the adjacency matrix
     graph->edge_count = edge_count;
 
-    graph->edges = ( struct Edge* ) malloc(( size_t ) graph->edge_count *
-                                           sizeof(struct Edge));
+    graph->edges =
+        ( struct Edge* ) malloc(graph->edge_count * sizeof(struct Edge));
 
-    memcpy(graph->edges, edges, ( size_t ) edge_count * sizeof(struct Edge));
+    memcpy(graph->edges, edges, edge_count * sizeof(struct Edge));
 
     for ( int i = 0; i < edge_count; i++ ) {
         graph->adj[graph->edges[i].start][graph->edges[i].end] =
@@ -371,13 +369,11 @@ void
 mst_kruskal(struct Graph const* graph) {
     // Allocate an empty adjacency matrix to represent an empty minimum spanning
     // tree
-    int** min_span_tree =
-        ( int** ) malloc(( size_t ) graph->node_count * sizeof(int*));
-    int sum = 0;
+    int** min_span_tree = ( int** ) malloc(graph->node_count * sizeof(int*));
+    int   sum           = 0;
 
     for ( int i = 0; i < graph->node_count; i++ ) {
-        min_span_tree[i] =
-            ( int* ) malloc(( size_t ) graph->node_count * sizeof(int));
+        min_span_tree[i] = ( int* ) malloc(graph->node_count * sizeof(int));
 
         for ( int j = 0; j < graph->node_count; j++ ) {
             min_span_tree[i][j] = 0;
@@ -385,8 +381,8 @@ mst_kruskal(struct Graph const* graph) {
     }
 
     // Create sets for each vertex
-    struct Set** vertex_sets = ( struct Set** ) malloc(
-        ( size_t ) graph->node_count * sizeof(struct Set*));
+    struct Set** vertex_sets =
+        ( struct Set** ) malloc(graph->node_count * sizeof(struct Set*));
 
     for ( int i = 0; i < graph->node_count; i++ ) {
         vertex_sets[i] = set_init(&i, 1);

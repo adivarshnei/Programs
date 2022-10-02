@@ -7,6 +7,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 import seaborn as sns
 
+np.vander()
 
 # Gets the steps from the binary and linear text files, returns np arrays with
 # the steps taken for linear search, steps taken for binary search, and an

@@ -69,7 +69,7 @@ float fractional_knapsack(struct Item* items, int len, int capacity);
 int
 main(int argc, char** argv) {
     // If no items or bag capacity are mentioned, skip execution of program
-    if ( argc != 3 ) {
+    if ( ! ITEM_COUNT_STR || ! BAG_CAPACITY_STR || argc != 3 ) {
         return 0;
     }
 

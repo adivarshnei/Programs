@@ -1,7 +1,7 @@
 # DataFrames
 # A DataFrame is a 2D arraylike structure
 
-# DataFrame Creation
+# Creating a Dataframe
 team_names <- c(
   "England",
   "Australia",
@@ -39,28 +39,38 @@ teams_data <- data.frame(
   stringsAsFactors = FALSE
 )
 
-# Dataframe structure and summary
+print(teams_data)
+
+# Printing Dataframe Structure
 str(teams_data)
+
+# Printing Dataframe Summary
 summary(teams_data)
 
-# Accessing rows and columns
-team_captains_data <- teams_data$`Current.Captain`
+# Extracting Rows and Columns of a Dataframe
+print(teams_data[2, ])
+print(teams_data[, 2])
 
-# Adding Column
+print(teams_data$Current.Captain)
+print(teams_data[, "Current.Captain"])
+print(teams_data["Australia", ])
+
+# Adding Column to a Dataframe
 teams_data$`Draws` <- c(354, 215, 220, 124, 164, 168, 169, 92)
 # or
-cbind(teams_data, "Draws" = c(354, 215, 220, 124, 164, 168, 169, 92))
+# cbind(teams_data, "Draws" = c(354, 215, 220, 124, 164, 168, 169, 92))
+print(teams_data)
 
-# Merging Column
+# Merging Columns of a Dataframe
 cbind(
   teams_data,
   data.frame("Draws" = c(354, 215, 220, 124, 164, 168, 169, 92))
 )
 
-# Adding Row
+# Adding Row to a Dataframe
 rbind(teams_data, "Bangladesh" = c("Haque", 16, 100, 16 / 100, 18))
 
-# Merging Row
+# Merging Rows of a Dataframe
 teams_data <- rbind(
   teams_data,
   data.frame(
@@ -74,8 +84,10 @@ teams_data <- rbind(
   )
 )
 
-# Dropping Row
-teams_data[-1, ] # Drops first row
+print(teams_data)
 
-# Dropping Column
-teams_data[, -1] # Drops first col
+# Dropping Row of a Dataframe
+print(teams_data[-1, ]) # Drops first row
+
+# Dropping Column of a Dataframe
+print(teams_data[, -1]) # Drops first col

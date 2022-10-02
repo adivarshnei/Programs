@@ -1,4 +1,4 @@
-// 5-2. Write a program to solve Activitiy Selection Problem using Greedy
+// 5-2. Write a program to solve Activity Selection Problem using Greedy
 // Approach
 
 // Included Libraries
@@ -55,7 +55,7 @@ void activity_select(struct Activity* activities, int len);
 int
 main(int argc, char** argv) {
     // If no activity is mentioned, skip execution of program
-    if ( argc != 2 ) {
+    if ( ! ACTIVITY_COUNT_STR || argc != 2 ) {
         return 0;
     }
 

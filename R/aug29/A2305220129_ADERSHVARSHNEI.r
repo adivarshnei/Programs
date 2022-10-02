@@ -1,4 +1,4 @@
-# 1)Create Blank matrix with r=5,c=6)
+# 1) Create Blank matrix with r=5,c=6)
 m1 <- matrix(, nrow = 5, ncol = 6)
 
 # 2) Write a R program to create a matrix taking a given vector of numbers as

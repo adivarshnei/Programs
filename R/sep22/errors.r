@@ -15,7 +15,6 @@ a <- as.vector(m)
 print("1 dimensional array: ")
 print(a)
 
-
 # Q2.
 # print("Two vectors of different lengths:")
 
@@ -141,7 +140,7 @@ print(mlist)
 # list_data <- list(c("Red","Green","Black"),
 # matrix(c(1,3,5,7,9,11), nrow = 2),
 # list("Python", "PHP", "Java"))
-# print("List:);									# Error, missing "
+# print("List:);									# Error, missing " & trailing ;
 # print(list_data1)								# Error, list_data1 does not exist.
 # print("Number of objects in the said list:)		# Error, missing "
 # length(list_data)

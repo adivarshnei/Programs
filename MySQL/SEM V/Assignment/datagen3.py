@@ -1,4 +1,4 @@
-from __future__ import annotations
+# from __future__ import annotations
 import random
 import typing
 import datetime
@@ -6,20 +6,15 @@ import datetime
 import faker
 
 department: list[dict[str, typing.Any]] = [
-    {"DEPT_NO": 14, "DEPT_NAME": "Systems"},    #3151
-    {"DEPT_NO": 93, "DEPT_NAME": "Marketing"},  #6267
-    {"DEPT_NO": 89, "DEPT_NAME": "HR"},         #5050
-    {"DEPT_NO": 18, "DEPT_NAME": "Research"},   #5669
-    {"DEPT_NO": 37, "DEPT_NAME": "Frontend"},   #8908
-    {"DEPT_NO": 47, "DEPT_NAME": "Backend"},    #7248
+    {"DEPT_NO": 14, "DEPT_NAME": "Systems"},  # 3151
+    {"DEPT_NO": 93, "DEPT_NAME": "Marketing"},  # 6267
+    {"DEPT_NO": 89, "DEPT_NAME": "HR"},  # 5050
+    {"DEPT_NO": 18, "DEPT_NAME": "Research"},  # 5669
+    {"DEPT_NO": 37, "DEPT_NAME": "Frontend"},  # 8908
+    {"DEPT_NO": 47, "DEPT_NAME": "Backend"},  # 7248
 ]
 
-job: list[str] = [
-    "Officer",
-    "Manager",
-    "Jr. Emp.",
-    "Assistant"
-]
+job: list[str] = ["Officer", "Manager", "Jr. Emp.", "Assistant"]
 
 dept_nos = [dept["DEPT_NO"] for dept in department]
 
@@ -102,7 +97,7 @@ for i in range(50):
     )
     print(f'"{random.choice(loc)}", ', end="")
     print(f"{random.randint(1000, 9999)}, ", end="")
-    print(f"\"{random.choice(job)}\", ", end="")
+    print(f'"{random.choice(job)}", ', end="")
     print(f"\"{random.choice(['A','B','C'])}\", ", end="")
     print(f"{random.choice(dept_nos)}", end="")
     print(f"),")
