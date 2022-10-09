@@ -555,42 +555,44 @@ Albums:
 
 
 Artists:
-The 1975
-Zara Larsson
-Foy Vance
-Bon Iver
-The Zombies
-Coldplay
-The Chainsmokers
-Meadows
-Seafret
-Ed Sheeran
-David Guetta
-Kygo
-Kodaline
-Colin & Caroline
-The Naked and Famous
-OneRepublic
-Calvin Harris
-James Bay
-Sum 41
-Youth Lagoon
-Phillip Phillips
-U2
-Ocie Elliott
-Avicii
-Skylar Grey
-Iron & Wine
-Atlas Genius
+the 1975
+zara larsson
+foy vance
+bon iver
+the zombies
+coldplay
+the chainsmokers
+meadows
+seafret
+ed sheeran
+david guetta
+kygo
+kodaline
+colin & caroline
+the naked and famous
+onerepublic
+calvin harris
+james bay
+sum 41
+youth lagoon
+phillip phillips
+u2
+ocie elliott
+avicii
+skylar grey
+iron & wine
+atlas genius
 bulow
-Selena Gomez
-Pearl Jam
-Tom Rosenthal
-Kacey Musgraves
+selena gomez
+pearl jam
+tom rosenthal
+kacey musgraves
+taylor swift
 
 
 
 Links:
-
+https://open.spotify.com/artist/2TSgD6Hm5RT2rUqIGMPKqO?si=i0mQqbojR66MKuxxh3aN4A
 
 Playlists:
+https://open.spotify.com/playlist/4cjWiKYThbyKxarlz4bLnb?si=lZLNu74pQd-VrkeyOoNcBQ

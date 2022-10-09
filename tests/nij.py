@@ -4,6 +4,8 @@ n = 1
 i = 1
 j = 1
 
+print(os.getcwd())
+
 while n <= 100:
     while i <= n:
         while j <= n:
