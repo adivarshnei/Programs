@@ -5,38 +5,70 @@ Aim: To display backtracking programming technique via solving a sudoku game
 
 
 from __future__ import annotations
-import typing
+from typing import TypedDict
+from typing_extensions import Self
 import copy
 import math
+import sys
 
 import pygame
 import pygame.freetype
+
+
+class Options(TypedDict):
+    """
+    Class defining the Options datatype
+    """
+
+    dims: list[int]
+    bg: tuple[int, int, int]
+    outline: tuple[int, int, int]
+    inline: tuple[int, int, int]
+    title: str
+    active_text: tuple[int, int, int]
+    inactive_text: tuple[int, int, int]
+    active_num: int
+
+
+def key_to_number(event_key: int) -> int:
+    key_list = [
+        pygame.K_1,
+        pygame.K_2,
+        pygame.K_3,
+        pygame.K_4,
+        pygame.K_5,
+        pygame.K_6,
+        pygame.K_7,
+        pygame.K_8,
+        pygame.K_9,
+    ]
+
+    if event_key in key_list:
+        return key_list.index(event_key) + 1
+    else:
+        return 0
 
 
 class Setup(object):
     """
     Class defining the base parameters of the pygame window
 
-    Attributes
-    ----------
+    Object Attributes
+    -----------------
     `surface: pygame.surface.Surface`
         Reference to the surface object
     `num_font: pygame.Font`
         Reference to the font object used for numbers
     `aux_font: pygame.Font`
-        Reference to the font object used for other dispalys
+        Reference to the font object used for other displays
 
     Methods
     -------
-    `return_surface()`
-        Returns reference to the surface made
-    `return_num_font()`
-        Returns the font used to display the numbers
-    `return_aux_font()`
-        Returns the font used for other displays
+    `__init__(self: Self, options: Options) -> None`
+        Constructor Function
     """
 
-    def __init__(self, options: dict[str, typing.Any]) -> None:
+    def __init__(self: Self, options: Options) -> None:
         """Constructor Function for Setup Class
 
         Initializes the pygame module, defines the Surface, Caption, and fonts
@@ -44,62 +76,47 @@ class Setup(object):
 
         Parameters
         ----------
-        `options: dict[str, typing.Any]`
+        `options: Options`
             Dictionary containing all basic parameters
-            Dictionary Format:
-                `"dims"`: 2 element list containing the dimensions of the array in width-height format
-                `"bg"`: RGB(A) color tuple of background
-                `"outline"`: RGB(A) color tuple of board outlines
-                `"inline"`: RGB(A) color tuple of board inlines
-                `"caption"`: String for window title
-                `"active_text"`: RGB(A) color tuple of active text
-                `"inactive_text"`: RGB(A) color tuple of inactive text
-                `"active_num"`: Current number being highlighted
         """
 
         pygame.init()
-        self.surface: pygame.surface.Surface = pygame.display.set_mode(
-            size=options["dims"]
-        )
-        pygame.display.set_caption(title=options["title"])
+        self.surface = pygame.display.set_mode(size=options["dims"])
+        pygame.display.set_caption(options["title"])
         self.surface.fill(color=options["bg"])
 
-        self.num_font: pygame.Font = pygame.freetype.SysFont(
+        self.num_font = pygame.freetype.SysFont(
             name="Consolas", size=40, bold=True
         )
-        self.aux_font: pygame.Font = pygame.freetype.SysFont(
+        self.aux_font = pygame.freetype.SysFont(
             name="Calibri", size=24, bold=False
         )
-
-    # def return_surface(self) -> pygame.surface.Surface:
-    #     return self.surface
-
-    # def return_num_font(self) -> pygame.Font:
-    #     return self.num_font
-
-    # def return_aux_font(self) -> pygame.Font:
-    #     return self.aux_font
 
 
 class Sudoku(Setup):
     """
     Class defining the sudoku game.
 
-    Attributes
-    ----------
-    `boards: list[list[list[int]]]`
+    Class Attributes
+    ----------------
+    `boards`
         List of available sudoku boards
-    `selected: int`
+    `selected`
         Index of selected board
-    `self.board: list[list[int]]`
+
+    Object Attributes
+    -----------------
+    `board`
         Current board
-    `self.solved_board: list[list[int]]`
+    `solved_board`
         Current solved board
-    `self.entry_mode: bool`
+    `empty_cell`
+        First empty cell in board
+    `entry_mode`
         Whether in entry mode
-    `self.solve_mode: bool`
+    `solve_mode`
         Whether in solve mode
-    `self.position: dict[str, int]`
+    `position`
         Dictionary containing position of entry
         Dictionary Format:
             `"row"`: Index of row
@@ -107,11 +124,39 @@ class Sudoku(Setup):
 
     Methods
     -------
-
-
+    `__init__(self: Self, options: Options) -> None`
+        Constructor Function
+    `change_board(self: Self, options: Options) -> None`
+        Change board being used
+    `reset(self: Self) -> None`
+        Reset board being used
+    `board_print(self: Self) -> None`
+        Print board to console
+    `write_data(self: Self, options: Options) -> None`
+        Write auxiliary data on canvas
+    `write_nums(self: Self, options: Options, color: tuple[int, int, int]) -> None`
+        Write numbers to sudoku board
+    `board_design(self: Self, options: Options, color: tuple[int, int, int]) -> None`
+        Fill canvas with all elements
+    `entry(self: Self, options: Options, color: tuple[int, int, int]) -> None`
+        TODO
+    `board_empty_check(self: Self, init: bool) -> bool`
+        TODO
+    `in_row(self: Self, row: int, num: int, init: bool) -> bool`
+        TODO
+    `in_col(self: Self, col: int, num: int, init: bool) -> bool`
+        TODO
+    `in_box(self: Self, row: int, col: int, num: int, init: bool) -> bool`
+        TODO
+    `solve(self: Self, options: Options) -> bool`
+        TODO
+    `init_solve(self: Self) -> bool`
+        TODO
+    `return_board(self: Self) -> list[list[int]]`
+        TODO
     """
 
-    boards: list[list[list[int]]] = [
+    boards = [
         [
             [0, 6, 0, 3, 0, 0, 8, 0, 4],
             [5, 3, 7, 0, 9, 0, 0, 0, 0],
@@ -147,93 +192,95 @@ class Sudoku(Setup):
         ],
     ]
 
-    selected: int = 0
+    selected = 0
 
-    def __init__(self, options: dict[str, typing.Any]) -> None:
-        """Constructor Function for Sudoku Class
+    def __init__(self: Self, options: Options) -> None:
+        """Constructor Function
 
-        Calls the Setup constructor, gets the unsolved and solved boards, and
-        variables to set the mode and position.
+        Calls the parent class (Setup) constructor, gets the unsolved and solved
+        boards, and variables to set the mode and position.
 
         Parameters
         ----------
-        `options`: `dict[str, typing.Any]`
+        `options: Options`
             Dictionary containing all basic parameters
-            Dictionary Format:
-                `"dims"`: 2 element list containing the dimensions of the array in width-height format
-                `"bg"`: RGB(A) color tuple of background
-                `"outline"`: RGB(A) color tuple of board outlines
-                `"inline"`: RGB(A) color tuple of board inlines
-                `"caption"`: String for window title
-                `"active_text"`: RGB(A) color tuple of active text
-                `"inactive_text"`: RGB(A) color tuple of inactive text
-                `"active_num"`: Current number being highlighted
         """
 
         super().__init__(options=options)
-        self.board: list[list[int]] = copy.deepcopy(
-            x=Sudoku.boards[Sudoku.selected]
-        )
-        self.solved_board: list[list[int]] = copy.deepcopy(
-            x=Sudoku.boards[Sudoku.selected]
-        )
+        self.board = copy.deepcopy(x=Sudoku.boards[Sudoku.selected])
+        self.solved_board = copy.deepcopy(x=Sudoku.boards[Sudoku.selected])
+
+        self.empty_cell = [0, 0]
 
         self.init_solve()
 
-        self.entry_mode: bool = False
-        self.solve_mode: bool = False
+        self.entry_mode = False
+        self.solve_mode = False
 
-        self.position: dict[str, int] = {"row": 0, "col": 0}
+        self.position = {"row": 0, "col": 0}
 
-    def change_board(self, options: dict[str, typing.Any]) -> None:
+    def change_board(self: Self, options: Options) -> None:
         """
-        Function to Change Board Being Used
+        Change Board Being Used
+
+        Increments the index of the board selected and calls the constructor
+        again to reinitialize the object with the new board.
 
         Args
         ----
-        `options`: `dict[str, typing.Any]`
+        `options: Options`
             Dictionary containing all basic parameters
-            Dictionary Format:
-                `"dims"`: 2 element list containing the dimensions of the array in width-height format
-                `"bg"`: RGB(A) color tuple of background
-                `"outline"`: RGB(A) color tuple of board outlines
-                `"inline"`: RGB(A) color tuple of board inlines
-                `"caption"`: String for window title
-                `"active_text"`: RGB(A) color tuple of active text
-                `"inactive_text"`: RGB(A) color tuple of inactive text
-                `"active_num"`: Current number being highlighted
         """
+
         Sudoku.selected += 1
         Sudoku.selected %= len(Sudoku.boards)
 
         self.__init__(options=options)
 
-    def reset(self) -> None:
-        """"""
-        self.board: list[list[int]] = copy.deepcopy(
-            x=Sudoku.boards[Sudoku.selected]
-        )
+    def reset(self: Self) -> None:
+        """
+        Reset Board Being Used
 
-    def board_print(self) -> None:
+        Copies the initial board to the object's board attribute.
+        """
+
+        self.board = copy.deepcopy(x=Sudoku.boards[Sudoku.selected])
+
+    def board_print(self: Self) -> None:
+        """
+        Prints Board to Console
+        """
+
         for row in self.board:
             print(row)
 
         print()
 
-    def write_data(self, options: dict[str, typing.Any]) -> None:
-        text_color: tuple[int, int, int] = options["active_text"]
+    def write_data(self: Self, options: Options) -> None:
+        """
+        Write auxilliary data on canvas
+
+        Writes different instructions for each mode on the canvas
+
+        Parameters
+        ----------
+        `options: Options`
+            Dictionary containing all basic parameters
+        """
+
+        text_color = options["active_text"]
 
         if self.entry_mode:
-            data: list[str] = [
+            data = [
                 "(1 - 9): Enter Number",
                 "0: Clear Number",
                 "Left Click: Navigation",
                 "Bksp: Exit Entry Mode",
             ]
         elif self.solve_mode:
-            data: list[str] = ["Solving"]
+            data = ["Solving"]
         else:
-            data: list[str] = [
+            data = [
                 "(1 - 9): Highlight Number",
                 "0: Remove Hightlights",
                 "E: Entry Mode",
@@ -246,33 +293,48 @@ class Sudoku(Setup):
         for index, phrase in enumerate(iterable=data):
             self.aux_font.render_to(
                 surf=self.surface,
-                dest=(950, 100 + index * 40),
+                dest=[950, 100 + index * 40],
                 text=phrase,
                 fgcolor=text_color,
             )
 
     def write_nums(
-        self, options: dict[str, typing.Any], color: tuple[int, int, int]
+        self: Self, options: Options, color: tuple[int, int, int]
     ) -> None:
+        """
+        Write numbers to sudoku board
+
+        Picks the color for the number to be written, picks the number to be
+        written, then renders it to its correct position on the board
+
+        Parameters
+        ----------
+        `options: Options`
+            Dictionary containing all basic parameters
+        `color: tuple[int, int, int]`
+            Color to be used for new numbers
+        """
+
         for i in range(len(self.board)):
             for j in range(len(self.board)):
-                num: str = " "
+                num = " "
+                text_color = options["active_text"]
 
+                # Setting base color for active and inactive numbers during
+                # highlighting
                 if options["active_num"] == 0:
-                    text_color: tuple[int, int, int] = options["active_text"]
+                    text_color = options["active_text"]
                 else:
                     if self.board[j][i] == options["active_num"]:
-                        text_color: tuple[int, int, int] = options[
-                            "active_text"
-                        ]
+                        text_color = options["active_text"]
                     else:
-                        text_color: tuple[int, int, int] = options[
-                            "inactive_text"
-                        ]
+                        text_color = options["inactive_text"]
 
+                # Getting number to be written
                 if self.board[j][i] != 0:
                     num = str(object=self.board[j][i])
 
+                # If board has empty cells, pick color for new entries
                 if self.board_empty_check(init=False):
                     if self.boards[self.selected][j][i] != self.board[j][i]:
                         text_color = color
@@ -283,6 +345,7 @@ class Sudoku(Setup):
                                 text_color = (0, 200, 0)
                                 text_color = (200, 0, 0)
 
+                # If board has no empty cells, pick color
                 if not self.board_empty_check(init=False):
                     if options["active_num"] == 0:
                         text_color = options["active_text"]
@@ -294,14 +357,28 @@ class Sudoku(Setup):
 
                 self.num_font.render_to(
                     surf=self.surface,
-                    dest=(66 + (100 * i), 66 + (100 * j)),
+                    dest=[66 + (100 * i), 66 + (100 * j)],
                     text=num,
                     fgcolor=text_color,
                 )
 
     def board_design(
-        self, options: dict[str, typing.Any], color: tuple[int, int, int]
-    ):
+        self: Self, options: Options, color: tuple[int, int, int]
+    ) -> None:
+        """
+        Fill canvas with all elements
+
+        Picks the color for the number to be written, picks the number to be
+        written, then renders it to its correct position on the board
+
+        Parameters
+        ----------
+        `options: Options`
+            Dictionary containing all basic parameters
+        `color: tuple[int, int, int]`
+            Required color to write numbers
+        """
+
         self.surface.fill(color=options["bg"])
 
         for i in range(len(self.board) + 1):
@@ -334,79 +411,173 @@ class Sudoku(Setup):
                     surface=self.surface,
                     color=(136, 192, 208),
                     rect=pygame.Rect(
-                        left=(100 * self.position["col"]) + 25,
-                        top=(100 * self.position["row"]) + 25,
-                        width=100,
-                        height=100,
+                        (100 * self.position["col"]) + 25,
+                        (100 * self.position["row"]) + 25,
+                        100,
+                        100,
                     ),
                     width=7,
                 )
 
-    # TODO
-    # def entry(self,options,color):
+    def entry(
+        self: Self, options: Options, color: tuple[int, int, int]
+    ) -> None:
+        """
+        TODO
+        """
 
-    def board_empty_check(self, init):
-        if init:
-            for i in range(len(self.board)):
-                for j in range(len(self.board)):
-                    if self.solved_board[i][j] == 0:
-                        self.empty_cell[0] = i
-                        self.empty_cell[1] = j
+        self.entry_mode = True
 
-                        return True
-        else:
-            for i in range(len(self.board)):
-                for j in range(len(self.board)):
-                    if self.board[i][j] == 0:
-                        self.empty_cell[0] = i
-                        self.empty_cell[1] = j
+        for i in range(0, 9):
+            for j in range(0, 9):
+                if self.board[i][j] == 0:
+                    self.position["row"], self.position["col"] = i, j
+                    break
+                else:
+                    continue
 
-                        return True
+            break
+
+        while self.entry_mode:
+            for event in pygame.event.get():
+                if event.type == pygame.MOUSEBUTTONUP:
+                    mouse_position = pygame.mouse.get_pos()
+
+                    row_mouse_position = math.floor(mouse_position[0] / 100)
+                    col_mouse_position = math.floor(mouse_position[1] / 100)
+
+                    if (
+                        self.boards[self.selected][col_mouse_position][
+                            row_mouse_position
+                        ]
+                        == 0
+                    ):
+                        self.position["col"], self.position["row"] = (
+                            row_mouse_position,
+                            col_mouse_position,
+                        )
+
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_BACKSPACE:
+                        self.entry_mode = not self.entry_mode
+                    if event.key == pygame.K_ESCAPE:
+                        sys.exit(0)
+
+                    self.board[self.position["row"]][
+                        self.position["col"]
+                    ] = key_to_number(event_key=event.key)
+
+            self.board_design(options=options, color=color)
+
+            pygame.display.update()
+
+    def board_empty_check(self: Self, init: bool) -> bool:
+        """
+        TODO
+        """
+
+        board_to_check = self.solved_board if init else self.board
+
+        for i in range(len(self.board)):
+            for j in range(len(self.board)):
+                if board_to_check[i][j] == 0:
+                    self.empty_cell[0] = i
+                    self.empty_cell[1] = j
+                    return True
 
         return False
 
-    def in_row(self, row, num, init):
-        if init:
-            for i in range(len(self.board)):
-                if self.solved_board[row][i] == num:
-                    return True
-        else:
-            for i in range(len(self.board)):
-                if self.board[row][i] == num:
-                    return True
+    def in_row(self: Self, row: int, num: int, init: bool) -> bool:
+        """
+        TODO
+        """
+
+        board_to_check = self.solved_board if init else self.board
+
+        for i in range(len(self.board)):
+            if board_to_check[row][i] == num:
+                return True
 
         return False
 
-    def in_col(self, col, num, init):
-        if init:
-            for i in range(len(self.board)):
-                if self.solved_board[i][col] == num:
-                    return True
-        else:
-            for i in range(len(self.board)):
-                if self.board[i][col] == num:
-                    return True
+    def in_col(self: Self, col: int, num: int, init: bool) -> bool:
+        """
+        TODO
+        """
+
+        board_to_check = self.solved_board if init else self.board
+
+        for i in range(len(self.board)):
+            if board_to_check[i][col] == num:
+                return True
 
         return False
 
-    def in_box(self, row, col, num, init):
+    def in_box(self: Self, row: int, col: int, num: int, init: bool) -> bool:
+        """
+        TODO
+        """
+
         box_count = int(math.sqrt(len(self.board)))
+        board_to_check = self.solved_board if init else self.board
 
-        if init:
-            for i in range(box_count):
-                for j in range(box_count):
-                    if self.solved_board[i + row][j + col] == num:
-                        return True
-        else:
-            for i in range(box_count):
-                for j in range(box_count):
-                    if self.board[i + row][j + col] == num:
-                        return True
+        for i in range(box_count):
+            for j in range(box_count):
+                if board_to_check[i + row][j + col] == num:
+                    return True
 
         return False
 
-    # def solve(self, options):...
-    def init_solve(self):
+    def solve(self: Self, options: Options) -> bool:
+        """
+        TODO
+        """
+
+        self.solve_mode = True
+
+        if not self.board_empty_check(init=False):
+            self.solve_mode = False
+            return True
+
+        pygame.event.get()
+
+        r, c = self.empty_cell[0], self.empty_cell[1]
+
+        for i in range(1, 10):
+            if (
+                not self.in_row(row=r, num=i, init=False)
+                and not self.in_col(col=c, num=i, init=False)
+                and not self.in_box(
+                    row=(r - r % 3), col=(c - c % 3), num=i, init=False
+                )
+            ):
+                keys = pygame.key.get_pressed()
+
+                if keys[pygame.K_ESCAPE]:
+                    sys.exit(0)
+
+                self.board[r][c] = i
+
+                self.board_design(options=options, color=(0, 200, 0))
+                pygame.time.delay(40)
+                pygame.display.update()
+
+                if self.solve(options=options):
+                    return True
+
+                self.board_design(options=options, color=(200, 0, 0))
+                pygame.time.delay(40)
+                pygame.display.update()
+
+                self.board[r][c] = 0
+
+        return False
+
+    def init_solve(self: Self) -> bool:
+        """
+        TODO
+        """
+
         if not self.board_empty_check(init=True):
             return True
 
@@ -429,13 +600,76 @@ class Sudoku(Setup):
 
         return False
 
-    # TODO
-    # def return_board(self):...
+    def return_board(self: Self) -> list[list[int]]:
+        """
+        TODO
+        """
+
+        return self.board
 
 
-# TODO
-def main():
-    pass
+def main() -> None:
+    """
+    TODO
+    """
+
+    """
+    Dictionary Format:
+               `"dims"`: 2 element list containing the dimensions of the array in width-height format
+               `"bg"`: RGB(A) color tuple of background
+               `"outline"`: RGB(A) color tuple of board outlines
+               `"inline"`: RGB(A) color tuple of board inlines
+               `"caption"`: String for window title
+               `"active_text"`: RGB(A) color tuple of active text
+               `"inactive_text"`: RGB(A) color tuple of inactive text
+               `"active_num"`: Current number being highlighted
+    """
+    options: Options = {
+        "dims": [1200, 950],
+        # "bg": (31, 33, 42),
+        "bg": (0, 0, 0),
+        "outline": (180, 180, 180),
+        "inline": (120, 120, 120),
+        "title": "Sudoku",
+        "active_text": (200, 200, 200),
+        "inactive_text": (100, 100, 100),
+        "active_num": 0,
+    }
+
+    running = True
+
+    s1 = Sudoku(options=options)
+
+    while running:
+        s1.board_design(options=options, color=(0, 0, 0))
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+
+            if event.type == pygame.KEYDOWN:
+
+                if event.key == pygame.K_ESCAPE:
+                    running = not running
+
+                options["active_num"] = key_to_number(event_key=event.key)
+
+                if event.key == pygame.K_s:
+                    s1.reset()
+                    s1.solve(options=options)
+
+                if event.key == pygame.K_e:
+                    s1.entry(options=options, color=(136, 192, 208))
+
+                if event.key == pygame.K_r:
+                    s1.reset()
+
+                if event.key == pygame.K_c:
+                    s1.change_board(options=options)
+
+        pygame.display.update()
+
+    pygame.quit()
 
 
 if __name__ == "__main__":

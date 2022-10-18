@@ -1,13 +1,13 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <windows.h>
+#include <wchar.h>
+
+#define NOMINMAX
+#pragma comment(lib, "user32.lib")
 
 int
 main(void) {
-    int i = 0;
-
-    void* test = ( void* ) malloc(50);
-
-    free(test);
-
-    return 0;
+    int x = GetSystemMetrics(SM_CXSCREEN);
+    int y = GetSystemMetrics(SM_CYSCREEN);
+    wprintf(L"Size: %dx%d", x, y);
+    MessageBox(0, "Blah Blah...", "My Windows App!", MB_SETFOREGROUND);
 }

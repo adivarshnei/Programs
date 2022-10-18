@@ -437,7 +437,8 @@ mst_kruskal(struct Graph const* graph) {
             min_span_tree[end_set][start_set] = graph->edges[i].weight;
         } else {
             fprintf(stdout,
-                    "Sets containing start and end are the same, continuing\n");
+                    "Sets containing start and end are the same, "
+                    "continuing\n");
         }
 
         fprintf(stdout, "\nVertex Sets: \n");

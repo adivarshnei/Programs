@@ -4,6 +4,8 @@ library(package = "R6")
 # Poorly designed class
 human <- R6Class(
   classname = "human",
+
+  # Public Elements
   public = list(
     name = NULL,
     age = NULL,
@@ -13,12 +15,12 @@ human <- R6Class(
 
 # Creating empty object
 h1 <- human$new
-print(h1)
 
 # h1 <- human$new(name = "Test", age = 25, id = "12345")     Commented out as
 #                                                            there is no init
 #                                                            method
 
+# Class with initialize method
 human2 <- R6Class(
   classname = "human",
   public = list(
@@ -35,11 +37,13 @@ human2 <- R6Class(
     }
   ),
 
+  # Private Elements
   private = list(
     test = NULL
   )
 )
 
+# Defining class method outside class
 human2$set("public", "print_vals", function() {
   cat(
     "Name:", self$name,
@@ -49,6 +53,7 @@ human2$set("public", "print_vals", function() {
   )
 })
 
+# Creating Object
 h2 <- human2$new(name = "Test", age = 25, id = "12345")
 print(h2)
 

@@ -213,9 +213,9 @@ graph_init(int const node_count) {
     // Allocate and define an empty graph with only nodes and no edges
     struct Graph* graph = ( struct Graph* ) malloc(sizeof(struct Graph));
     graph->node_count   = node_count;
-    graph->adj = ( int** ) malloc(( size_t ) graph->node_count * sizeof(int*));
-    graph->edge_count = 0;
-    graph->edges      = NULL;
+    graph->adj          = ( int** ) malloc(graph->node_count * sizeof(int*));
+    graph->edge_count   = 0;
+    graph->edges        = NULL;
 
     for ( int i = 0; i < graph->node_count; i++ ) {
         graph->adj[i] =

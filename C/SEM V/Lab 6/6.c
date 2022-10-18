@@ -1,4 +1,4 @@
-// Write a program to solve the Zero-One Knapsack Problem using Dynamic
+// 6. Write a program to solve the Zero-One Knapsack Problem using Dynamic
 // Programming Approach
 
 // Included Libraries
@@ -63,30 +63,33 @@ main(int argc, char** argv) {
         return 0;
     }
 
+    // Number of items and capacity of bag
     int len      = atoi(ITEM_COUNT_STR);
     int capacity = atoi(BAG_CAPACITY_STR);
 
-    struct Item items[] = {
-        {.name = 1, .weight = 5, .value = 10},
-        {.name = 2, .weight = 4, .value = 40},
-        {.name = 3, .weight = 6, .value = 40},
-        {.name = 4, .weight = 3, .value = 50}
-    };
-
+    // Initialize array of items
     // struct Item items[] = {
-    //     {.name = 1, .weight = 1,  .value = 1, .price = 0.0f},
-    //     {.name = 2, .weight = 2,  .value = 6, .price = 0.0f},
-    //     {.name = 3, .weight = 5, .value = 18, .price = 0.0f},
-    //     {.name = 4, .weight = 6, .value = 22, .price = 0.0f},
-    //     {.name = 5, .weight = 7, .value = 28, .price = 0.0f}
+    //     {.name = 1, .weight = 5, .value = 10},
+    //     {.name = 2, .weight = 4, .value = 40},
+    //     {.name = 3, .weight = 6, .value = 40},
+    //     {.name = 4, .weight = 3, .value = 50}
     // };
 
-    fprintf(stdout, "Given Items:\n");
+    struct Item items[] = {
+        {.name = 1, .weight = 1,  .value = 1},
+        {.name = 2, .weight = 2,  .value = 6},
+        {.name = 3, .weight = 5, .value = 18},
+        {.name = 4, .weight = 6, .value = 22},
+        {.name = 5, .weight = 7, .value = 28},
+    };
 
+    fprintf(stdout, "Given Items:\n");
     print_items(items, len);
 
     fprintf(stdout, "\n");
 
+    // Get the maximum profit possible form the list of items by solving the
+    // Zero-One Knapsack Problem
     fprintf(stdout, "\nTotal Profit Earned: %.2f",
             zero_one_knapsack(items, len, capacity));
 
@@ -150,6 +153,7 @@ print_items(struct Item* items, int len) {
 
 float
 zero_one_knapsack(struct Item* items, int len, int capacity) {
+    // Allocating C and Keep Matrices
     struct Solution** solution =
         ( struct Solution** ) malloc((len + 1) * sizeof(struct Solution*));
 
@@ -158,6 +162,7 @@ zero_one_knapsack(struct Item* items, int len, int capacity) {
                                                   sizeof(struct Solution));
     }
 
+    // Initializing C and Keep Matrices
     for ( int i = 0; i < (len + 1); i++ ) {
         for ( int j = 0; j < (capacity + 1); j++ ) {
             if ( i == 0 || j == 0 ) {
@@ -172,6 +177,7 @@ zero_one_knapsack(struct Item* items, int len, int capacity) {
 
     print_matrix(solution, len + 1, capacity + 1);
 
+    // Running Zero-One Knapsack Algorithm on the given item list
     for ( int i = 1; i < (len + 1); i++ ) {
         fprintf(stdout,
                 "Item under consideration:\nName: %2d, Value: %2d, Weight: "
@@ -198,6 +204,7 @@ zero_one_knapsack(struct Item* items, int len, int capacity) {
 
     fprintf(stdout, "Items kept in knapsack: ");
 
+    // Determining Items Kept in Bag
     for ( int i = len; i >= 1; i-- ) {
         if ( solution[i][k].keep == 1 ) {
             fprintf(stdout, "%d ", i);
@@ -205,5 +212,6 @@ zero_one_knapsack(struct Item* items, int len, int capacity) {
         }
     }
 
+    // Returning Total Capacity of Bag
     return solution[len][capacity].C;
 }
