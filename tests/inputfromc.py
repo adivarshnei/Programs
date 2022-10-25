@@ -29,7 +29,7 @@ def tokenize(input: bytes) -> list[list[typing.Any]]:
 
 
 def main() -> None:
-    output: bytes = get_outputs(filename="test.c")
+    output: bytes = get_outputs(filename="test3.c")
     # output: bytes = get_outputs(sys.argv[1])
 
     print(tokenize(output))

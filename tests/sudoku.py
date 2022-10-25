@@ -55,11 +55,11 @@ class Setup(object):
 
     Object Attributes
     -----------------
-    `surface: pygame.surface.Surface`
+    `surface`
         Reference to the surface object
-    `num_font: pygame.Font`
+    `num_font`
         Reference to the font object used for numbers
-    `aux_font: pygame.Font`
+    `aux_font`
         Reference to the font object used for other displays
 
     Methods
@@ -648,7 +648,6 @@ def main() -> None:
                 running = False
 
             if event.type == pygame.KEYDOWN:
-
                 if event.key == pygame.K_ESCAPE:
                     running = not running
 

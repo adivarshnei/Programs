@@ -21,9 +21,8 @@ enum Color {
 
 /** @brief Structure to implement a graph edge */
 struct Edge {
-    int start;   // Source Node of edge
-    int end;     // Destination Node of edge
-    int weight;  // Weight/Cost of edge
+    int start;  // Source Node of edge
+    int end;    // Destination Node of edge
 };
 
 /** @brief Structure to implement a graph vertex */
@@ -45,8 +44,8 @@ struct Graph {
 
 /** @brief Structure to implement a node in a linked queue */
 struct Node {
-    struct Vertex vertex;  // Element at node
-    struct Node*  next;    // Link to next node
+    struct Vertex* vertex;  // Element at node
+    struct Node*   next;    // Link to next node
 };
 
 /** @brief Structure to implement a linked queue */
@@ -60,62 +59,61 @@ struct Queue {
  * @brief Prints a specified square matrix
  * @param matrix Square matrix to be printed
  * @param len length of @p matrix
- * @endcode
  */
-void          print_matrix(int** matrix, int const len);
+void           print_matrix(int** matrix, int const len);
 /**
  * @brief Prints all edges of a specified graph
  * @param graph Graph whose edges are to be printed
  */
-void          print_edges(struct Graph const* graph);
+void           print_edges(struct Graph const* graph);
 /**
  * @brief Prints all vertices with their colors
  * @param graph Graph whose vertices are to be printed
  */
-void          print_vertices(struct Graph const* graph);
+void           print_vertices(struct Graph const* graph);
 /**
  * @brief Initializes a queue
  * @return Empty queue
  */
-struct Queue* queue_init();
+struct Queue*  queue_init();
 /**
  * @brief Enqueue @p vertex to @p queue
  * @param queue Queue to which element is added
  * @param vertex Vertex to enqueue
  */
-void          enqueue(struct Queue* queue, struct Vertex const vertex);
+void           enqueue(struct Queue* queue, struct Vertex* vertex);
 /**
  * @brief Dequeue vertex from @p queue and return it
  * @param queue Queue to which element is added
  * @return Dequeued element
  */
-struct Vertex dequeue(struct Queue* queue);
+struct Vertex* dequeue(struct Queue* queue);
 /**
  * @brief Initializes the graph data structure with @p node_count nodes
  * @param node_count Number of nodes of the graph
  * @return Graph with @p node_count nodes and no edges
  */
-struct Graph* graph_init(int const node_count);
+struct Graph*  graph_init(int const node_count);
 /**
  * @brief Clear the memory allocated for graph
  * @param graph Graph to be cleared
  */
-void          graph_dealloc(struct Graph* graph);
+void           graph_dealloc(struct Graph* graph);
 /**
  * @brief Populates the @p graph using the @p edges between the nodes
  * @param graph Graph to be populated
  * @param edges Collection of edges to be added to @p graph
  * @param edge_count Number of @p edges to be added
  */
-void          graph_populate(struct Graph*      graph,
-                             struct Edge const* edges,
-                             int const          edge_count);
+void           graph_populate(struct Graph*      graph,
+                              struct Edge const* edges,
+                              int const          edge_count);
 /**
  * @brief Perform Breadth First Search on @p graph
  * @param graph Graph to be searched
  * @param source Node to be used as the source for the search
  */
-void          breadth_first_search(struct Graph const* graph, int const source);
+void breadth_first_search(struct Graph const* graph, int const source);
 
 int
 main(int argc, char** argv) {
@@ -127,18 +125,18 @@ main(int argc, char** argv) {
     // Initialize and populate graph
     struct Graph*     graph   = graph_init(atoi(NODE_COUNT_STR));
     struct Edge const edges[] = {
-        {.start = 0, .end = 1,  .weight = 4},
-        {.start = 0, .end = 7,  .weight = 8},
-        {.start = 1, .end = 2,  .weight = 8},
-        {.start = 1, .end = 7, .weight = 11},
-        {.start = 2, .end = 3,  .weight = 7},
-        {.start = 3, .end = 4,  .weight = 9},
-        {.start = 3, .end = 5, .weight = 14},
-        {.start = 4, .end = 5, .weight = 10},
-        {.start = 5, .end = 6,  .weight = 2},
-        {.start = 6, .end = 7,  .weight = 1},
-        {.start = 6, .end = 8,  .weight = 6},
-        {.start = 7, .end = 8,  .weight = 7}
+        {.start = 0, .end = 1},
+        {.start = 0, .end = 7},
+        {.start = 1, .end = 2},
+        {.start = 1, .end = 7},
+        {.start = 2, .end = 3},
+        {.start = 3, .end = 4},
+        {.start = 3, .end = 5},
+        {.start = 4, .end = 5},
+        {.start = 5, .end = 6},
+        {.start = 6, .end = 7},
+        {.start = 6, .end = 8},
+        {.start = 7, .end = 8}
     };
 
     graph_populate(graph, edges, atoi(EDGE_COUNT_STR));
@@ -226,8 +224,8 @@ print_matrix(int** matrix, int const len) {
 void
 print_edges(struct Graph const* graph) {
     for ( int i = 0; i < graph->edge_count; i++ ) {
-        fprintf(stdout, "%d--%d-->%d\n", graph->edges[i].start,
-                graph->edges[i].weight, graph->edges[i].end);
+        fprintf(stdout, "%d--->%d\n", graph->edges[i].start,
+                graph->edges[i].end);
     }
 }
 
@@ -251,7 +249,7 @@ queue_init() {
 }
 
 void
-enqueue(struct Queue* queue, struct Vertex const vertex) {
+enqueue(struct Queue* queue, struct Vertex* vertex) {
     struct Node* new_node = ( struct Node* ) malloc(sizeof(struct Node));
 
     new_node->vertex = vertex;
@@ -268,13 +266,14 @@ enqueue(struct Queue* queue, struct Vertex const vertex) {
     queue->len++;
 }
 
-struct Vertex
+struct Vertex*
 dequeue(struct Queue* queue) {
     struct Node* temp = ( struct Node* ) malloc(sizeof(struct Node));
 
-    assert(queue->front == NULL);
+    // Quit if queue is empty
+    assert(queue->front != NULL);
 
-    struct Vertex vertex = queue->front->vertex;
+    struct Vertex* vertex = queue->front->vertex;
 
     temp         = queue->front;
     queue->front = queue->front->next;
@@ -345,38 +344,57 @@ graph_populate(struct Graph*      graph,
     memcpy(graph->edges, edges, edge_count * sizeof(struct Edge));
 
     for ( int i = 0; i < edge_count; i++ ) {
-        graph->adj[graph->edges[i].start][graph->edges[i].end] =
-            graph->edges[i].weight;
-        graph->adj[graph->edges[i].end][graph->edges[i].start] =
-            graph->edges[i].weight;
+        graph->adj[graph->edges[i].start][graph->edges[i].end] = 1;
+        graph->adj[graph->edges[i].end][graph->edges[i].start] = 1;
     }
 }
 
 void
+print_queue(struct Queue* queue) {
+    struct Node* node = queue->front;
+
+    fprintf(stdout, "%d: ", queue->len);
+
+    while ( node != NULL ) {
+        fprintf(stdout, "%d ", node->vertex->vertex);
+
+        node = node->next;
+    }
+
+    fprintf(stdout, "\n");
+}
+
+void
 breadth_first_search(struct Graph const* graph, int const source) {
+    // Assign node as source
     graph->vertices[source].color    = GRAY;
     graph->vertices[source].distance = 0;
     graph->vertices[source].parent   = NULL;
 
     struct Queue* queue = queue_init();
 
-    enqueue(queue, graph->vertices[source]);
+    // Add node to queue
+    enqueue(queue, &graph->vertices[source]);
 
+    fprintf(stdout, "Queue Status:\n");
+
+    // Until all nodes are encountered, iterate through them using a queue, thus
+    // in a breadth wise manner
     while ( queue->len > 0 ) {
-        struct Vertex u = dequeue(queue);
+        print_queue(queue);
+        struct Vertex* u = dequeue(queue);
 
         for ( int i = 0; i < graph->node_count; i++ ) {
-            if ( graph->adj[u.vertex][i] != 0 ) {
-                graph->vertices[graph->adj[u.vertex][i]].color = WHITE;
-                graph->vertices[graph->adj[u.vertex][i]].distance =
-                    u.distance + 1;
-                graph->vertices[graph->adj[u.vertex][i]].parent = &u;
+            if ( graph->adj[u->vertex][i] != 0 &&
+                 graph->vertices[i].color == WHITE ) {
+                graph->vertices[i].color    = GRAY;
+                graph->vertices[i].distance = u->distance + 1;
+                graph->vertices[i].parent   = u;
 
-                enqueue(queue, graph->vertices[graph->adj[u.vertex][i]]);
+                enqueue(queue, &graph->vertices[i]);
             }
         }
 
-        u.color = BLACK;
-        print_vertices(graph);
+        u->color = BLACK;
     }
 }
