@@ -13,6 +13,7 @@
 #define NODE_COUNT_STR argv[1]  // Command line argument for number of nodes
 #define EDGE_COUNT_STR argv[2]  // Command line argument for number of nodes
 
+/** @brief Available vertex colors */
 enum Color {
     WHITE = 1,
     GRAY  = 2,
@@ -38,7 +39,7 @@ struct Graph {
     int            node_count;  // Number of nodes in graph
     int            edge_count;  // Number of edges in graph
     struct Edge*   edges;       // Array holding all edges associated with graph
-    struct Vertex* vertices;    // Array holding all vertices in with graph
+    struct Vertex* vertices;    // Array holding all vertices in graph
     int**          adj;         // Adjacency matrix of graph
 };
 
@@ -372,6 +373,8 @@ breadth_first_search(struct Graph const* graph, int const source) {
     graph->vertices[source].parent   = NULL;
 
     struct Queue* queue = queue_init();
+    int* visit_order    = ( int* ) malloc(graph->node_count * sizeof(int));
+    int  visit_index    = 0;
 
     // Add node to queue
     enqueue(queue, &graph->vertices[source]);
@@ -396,5 +399,13 @@ breadth_first_search(struct Graph const* graph, int const source) {
         }
 
         u->color = BLACK;
+
+        visit_order[visit_index++] = u->vertex;
+    }
+
+    fprintf(stdout, "\nBreadth First Visit Order:\n");
+
+    for ( int i = 0; i < graph->node_count; i++ ) {
+        fprintf(stdout, "%d\t", visit_order[i]);
     }
 }

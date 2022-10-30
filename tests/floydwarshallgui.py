@@ -1,7 +1,6 @@
-from __future__ import annotations
+# TODO DOCUMENTATION
 
-# from typing_extensions import Self
-# import copy
+from __future__ import annotations
 
 import os
 import math
@@ -78,9 +77,7 @@ def get_outputs(filename: str) -> bytes:
     """
 
     if not os.path.isfile(f"{os.path.splitext(p=filename)}.exe"):
-        os.system(
-            command=f"gcc {filename} -o {os.path.splitext(p=filename)[0]}"
-        )
+        os.system(command=f"gcc {filename} -o {os.path.splitext(p=filename)[0]}")
 
     process = subprocess.Popen(
         args=[f"{os.path.splitext(p=filename)[0]}"], stdout=subprocess.PIPE
@@ -124,8 +121,8 @@ def parse(
 
     Returns
     -------
-    Tuple containting the number of nodes, adjacency matrix, distance matrix and
-    parent matrix
+    Tuple containting the number of nodes, adjacency matrix, distance matrix
+    and parent matrix
     """
 
     length = int(tokens[0][0])
@@ -134,9 +131,7 @@ def parse(
     adj_temp = tokens[0:length]
     del tokens[0:length]
 
-    adj: list[list[typing.Any]] = [
-        [0 for _ in range(length)] for _ in range(length)
-    ]
+    adj: list[list[typing.Any]] = [[0 for _ in range(length)] for _ in range(length)]
 
     distance = tokens[0:length]
     del tokens[0:length]
@@ -159,16 +154,14 @@ def parse(
     return (length, adj, distance, parent)
 
 
-def get_matrices() -> tuple[
-    list[list[typing.Any]], list[list[int]], int, int, int
-]:
+def get_matrices() -> tuple[list[list[typing.Any]], list[list[int]], int, int, int]:
     """
     Get matrices into usable form
 
     Returns
     -------
-    Tuple containing adjacency matrix, parent matrix, node count, maximum weight
-    and minimum weight
+    Tuple containing adjacency matrix, parent matrix, node count, maximum
+    weight and minimum weight
     """
 
     node_count, adj, _, parent = parse(
@@ -314,7 +307,20 @@ def position_from_index(
     index: int, node_count: int, offsets: tuple[int, int] = (0, 0)
 ) -> tuple[float, float]:
     """
-    TODO
+    Returns the cartesian position of the node from its index
+
+    Parameters
+    ----------
+    `index: int`:
+        Index of the node
+    `node_count: int`:
+        Total number of nodes
+    `offsets: tuple[int, int] = (0, 0)`
+        Tuple of cartesian offset of the nodes to be drawn
+
+    Returns
+    -------
+    Tuple containting cartesian position of the node to be drawn on the canvas
     """
 
     return (
@@ -327,7 +333,20 @@ def color_from_weight(
     weight: int, min_weight: int, max_weight: int
 ) -> tuple[int, int, int]:
     """
-    TODO
+    Returns the color of the edge from its weight
+
+    Parameters
+    ----------
+    `weight: int`:
+        Weight of the edge
+    `min_weight: int`:
+        Minimum weight amongst all edges
+    `max_weight: int`:
+        Maximum weight amongst all edges
+
+    Returns
+    -------
+    Tuple containing RGB color of the edge
     """
 
     return (
@@ -341,7 +360,18 @@ def path_from_parent(
     parent: list[list[int]], path: list[int], node1: int, node2: int
 ) -> None:
     """
-    TODO
+    Parse the tokenized output
+
+    Parameters
+    ----------
+    `parent: list[list[int]]`:
+        Parent matrix for the graph
+    `path: list[int]`:
+        List containing path
+    `node1: int`:
+        First node being examined
+    `node2: int`:
+        Second node being examined
     """
 
     if node1 == node2:
@@ -355,9 +385,10 @@ def path_from_parent(
 
 def main() -> None:
     """
-    TODO
+    Driver Code for program
     """
 
+    # Options used in drawing the surface
     options: Options = {
         "dims": [1600, 800],
         "title": "All-Pairs Shortest Path",
@@ -368,6 +399,7 @@ def main() -> None:
         "fontbold": False,
     }
 
+    # Variables to be used in the program
     surface, num_font, aux_font = init(options=options)
     adj, parent, node_count, max_weight, min_weight = get_matrices()
 
@@ -382,7 +414,9 @@ def main() -> None:
         "Press ESC to exit",
     ]
 
+    # Running loop
     while running:
+        # List of nodes
         nodes = []
 
         surface.fill(color=options["bg"])
@@ -393,6 +427,7 @@ def main() -> None:
             for j in range(node_count):
                 if adj[i][j] != 0 and adj[i][j] < math.inf:
                     if first_node is not None and second_node is not None:
+                        # Drawing edges included in path
                         for k in range(len(path) - 1):
                             pygame.draw.line(
                                 surface=surface,
@@ -406,6 +441,7 @@ def main() -> None:
                                 width=3,
                             )
                     else:
+                        # Drawing all edges
                         pygame.draw.line(
                             surface=surface,
                             color=color_from_weight(
@@ -416,12 +452,11 @@ def main() -> None:
                             start_pos=position_from_index(
                                 index=i, node_count=node_count
                             ),
-                            end_pos=position_from_index(
-                                index=j, node_count=node_count
-                            ),
+                            end_pos=position_from_index(index=j, node_count=node_count),
                             width=3,
                         )
 
+        # Drawing all nodes and adding to list of nodes
         for i in range(node_count):
             draw_nodes(
                 surface=surface,
@@ -432,6 +467,7 @@ def main() -> None:
 
             nodes.append(position_from_index(index=i, node_count=node_count))
 
+        # Drawing color key rectangle
         draw_key_rect(
             surface=surface,
             min_weight=min_weight,
@@ -439,13 +475,19 @@ def main() -> None:
             font=aux_font,
         )
 
+        # Event loop
         for event in pygame.event.get():
+            # Exit conditon
             if event.type == pygame.QUIT:
                 running = not running
 
+            # Keypress detection
             if event.type == pygame.KEYDOWN:
+                # Exit
                 if event.key == pygame.K_ESCAPE:
                     running = not running
+
+                # Reset
                 if event.key == pygame.K_r:
                     first_node = None
                     second_node = None
@@ -456,6 +498,7 @@ def main() -> None:
                         "Press ESC to exit",
                     ]
 
+            # Mouse Click Detection
             if event.type == pygame.MOUSEBUTTONUP:
                 mouse_position = pygame.mouse.get_pos()
 
@@ -477,9 +520,7 @@ def main() -> None:
                         elif first_node[0] != nodes[i] and second_node is None:
                             second_node = (nodes[i], i)
                             display_text.pop()
-                            display_text.append(
-                                f"Second Node: {second_node[1]}"
-                            )
+                            display_text.append(f"Second Node: {second_node[1]}")
                         else:
                             second_node = None
                             first_node = (nodes[i], i)
@@ -500,7 +541,7 @@ def main() -> None:
                             )
 
                             if len(path) == 0:
-                                display_text.append(f"No path is possible")
+                                display_text.append("No path is possible")
                             else:
                                 path_text = f"{first_node[1]}"
 
@@ -510,9 +551,7 @@ def main() -> None:
                                 display_text.append(f"Path: {path_text}")
 
                             display_text.append("Press R to reset")
-                            display_text.append(
-                                "Click any node to select it as source"
-                            )
+                            display_text.append("Click any node to select it as source")
 
         pygame.display.update()
 

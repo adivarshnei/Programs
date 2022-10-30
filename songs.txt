@@ -1,7 +1,4 @@
 Songs:
-blindsided                                        - bon iver
-bad karma                                         - miley cyrus
-fall in love                                      - bailey zimmerman
 higher higher                                     - justin timberlake
 for the girls                                     - hayley kiyoko
 forever after all                                 - luke combs
@@ -112,7 +109,6 @@ i would hate you if i could                       - turnover
 eventually                                        - tame impala
 i wish the best for you                           - emerson hart
 dave mason                                        - we just disagree
-chicago                                           - look away
 the good stuff                                    - falcon
 thank you for saying goodbye                      - the glorious sons
 all teh best                                      - zac brown band
@@ -296,25 +292,6 @@ take a chance                                     - jed
 2 of amerikaz most wanted                         - 2pac, snoopp dogg
 i hate the flowers                                - nithing
 song to the siren                                 - wolf alice
-lost in the woods                                 - honey magpie
-21st century wreck                                - lixx
-life change                                       - kalvonix, rebel eye
-kody blu 31                                       - jid
-burden                                            - opeth
-rehab (winter in paris)                           - brent faiyaz
-make a move on me                                 - olivia newton-john
-Hammerschläge, Hinterköpfe                        - muff potter
-haircut                                           - petey
-down the line                                     - beach fossils
-diasterology                                      - pierce the veil
-triumph                                           - wutang clan
-for the departed                                  - shayfer james
-hand me my shovel i'm going in                    - will wood
-necromancin dancin                                - bear ghost
-i'm afraid i'll go to heaven                      - moon walker
-mila degray                                       - purple ribbon
-dark spring                                       - beach house
-reptile                                           - the church
 a wonderful life                                  - brian fallon
 show (hey oh)                                     - red hot chilli peppers
 away from the mire                                - billy strings
@@ -378,16 +355,6 @@ miss being happy                                  - cloudnone
 stained glass                                     - cloudnone
 broken television                                 - mr fijiwiji
 melancholy                                        - mr fijiwiji
-tomorrow                                          - mr fijiwiji
-time to say goodbye                               - mr fijiwiji
-cold ground                                       - direct
-i'll go                                           - direct
-cry all night                                     - d'arcy spiller
-first scar                                        - d'arcy spiller
-guilt trip                                        - rain city
-sad song                                          - we are the kings
-so you wanna be a superhero                       - carissa's wierd
-missing teeth                                     - wishing
 all your woman things                             - smog
 dreams                                            - former ghosts
 between the bars                                  - elliot smith
@@ -425,7 +392,6 @@ lights are on                                     - tom rosenthal
 telescopes                                        - cage the elephant
 no surprises                                      - radiohead
 a different age                                   - current joys
-where is my mind                                  - pixies
 leaving hope                                      - NIИ
 ghosts v: together                                - NIИ
 the worriment waltz                               - NIИ
@@ -522,7 +488,6 @@ he'd be a diamond                                 - the bevis frond
 goodbye earl                                      - dixie chicks
 oh shit                                           - buzzcocks
 kerosene                                          - miranda lambert
-tyrone                                            - erykah badu
 via chicago                                       - wilco
 keep it to yourself                               - amy rigby
 fountain and fairfax                              - afghan whigs
@@ -550,38 +515,38 @@ one more hour                                     - sleater-kinney
 i'd rather go blind                               - etta james
 kim                                               - eminem
 hold on                                           - Naz4r3rth
-soft skin - timmies
-losing interest - tummies
-i'll keep you safe - sagun
-i'm sorry - swell
-falling down - nohidea
-would look perfect - powfu
-every night - zmeyev
-bebop - [bsd.u]
-ascent - cherry blossms ep, serotonin, drift away, dopamine
-gone - ak
-orion - metallica
-night like this - the cure
-everything is embarrasing - sky ferreria
-bon iver - roaslyn
-self control - laura branigan
-genesis - grimes
-if you love me - melody gardot
-unintended - muse
-bridge over troubled water - matt bellamy
-groceries - mallrat
-lovers in a dangerous time - bruce cockburn
-just like heaven - the cure
-drive - gretta ray
-celestial elixir - haken
-your familiar face - native construct
-only you - the flying pickets
-the fighter - keith urban, carrie underwood
-the morning after - nto
-home (the below version) - icarus, aurora
+soft skin                                         - timmies
+losing interest                                   - tummies
+i'll keep you safe                                - sagun
+i'm sorry                                         - swell
+falling down                                      - nohidea
+would look perfect                                - powfu
+every night                                       - zmeyev
+bebop                                             - [bsd.u]
+ascent                                            - cherry blossms ep, serotonin, drift away, dopamine
+gone                                              - ak
+orion                                             - metallica
+night like this                                   - the cure
+everything is embarrasing                         - sky ferreria
+bon iver                                          - roaslyn
+self control                                      - laura branigan
+genesis                                           - grimes
+if you love me                                    - melody gardot
+unintended                                        - muse
+bridge over troubled water                        - matt bellamy
+groceries                                         - mallrat
+lovers in a dangerous time                        - bruce cockburn
+just like heaven                                  - the cure
+drive                                             - gretta ray
+celestial elixir                                  - haken
+your familiar face                                - native construct
+only you                                          - the flying pickets
+the fighter                                       - keith urban, carrie underwood
+the morning after                                 - nto
+home (the below version)                          - icarus, aurora
 aum evren furtuna
-innerbloom - rufus du sol
-blind trust - cabaret nocturne
+innerbloom                                        - rufus du sol
+blind trust                                       - cabaret nocturne
 
 
 

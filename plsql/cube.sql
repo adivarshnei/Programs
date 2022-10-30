@@ -1,0 +1,21 @@
+-- CUBE
+
+DECLARE
+	X NUMBER;
+	Y NUMBER;
+
+PROCEDURE CUBE(X IN OUT NUMBER)
+IS
+BEGIN
+	X := X * X * X;
+END;
+
+BEGIN
+	X := 2;
+	Y := X;
+	
+	CUBE(X);
+	
+	DBMS_OUTPUT.PUT_LINE(X);
+END;
+/
