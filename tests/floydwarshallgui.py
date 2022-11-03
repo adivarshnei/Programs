@@ -1,4 +1,23 @@
-# TODO DOCUMENTATION
+"""
+Open Ended Experiment 2
+
+A road network can be considered as a graph with positive weights. The nodes
+represent road junctions and each edge of the graph is associated with a road
+segment between two junctions. The weight of an edge may correspond to the
+length of the associated road segment, the time needed to traverse the segment
+or the cose of traversing the segment. Using directed edges it is also possible
+to model one-way streets. Such graphs are special in the sense that some edges
+are more important than others for long distance travel (e.g. highways). This
+property has been formalized using the notion of highway dimension. There are a
+great number of algorithms that exploit this property and are therefore able to
+compute the shortest path a lot quicker than would be possible on general
+graphs. Develop a program to find the shortest path from each node to solve the
+road network problem.
+
+The Floyd-Warshall algorithm is used to solve said problem.
+This file gets the parent and distance matrices from the c file and
+graphically simulates the working of the algorithm.
+"""
 
 from __future__ import annotations
 

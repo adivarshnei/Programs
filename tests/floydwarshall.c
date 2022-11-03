@@ -1,11 +1,30 @@
-// TODO DOCUMENTATION
+/**
+ * Open-Ended Experiment 2
+ *
+ * A road network can be considered as a graph with positive weights. The nodes
+ * represent road junctions and each edge of the graph is associated with a road
+ * segment between two junctions. The weight of an edge may correspond to the
+ * length of the associated road segment, the time needed to traverse the
+ * segment or the cose of traversing the segment. Using directed edges it is
+ * also possible to model one-way streets. Such graphs are special in the sense
+ * that some edges are more important than others for long distance travel (e.g.
+ * highways). This property has been formalized using the notion of highway
+ * dimension. There are a great number of algorithms that exploit this property
+ * and are therefore able to compute the shortest path a lot quicker than would
+ * be possible on general graphs. Develop a program to find the shortest path
+ * from each node to solve the road network problem.
+ * 
+ * The Floyd-Warshall algorithm is used to solve said problem.
+ * This file generates the parent and distance matrices and passes them along to
+ * the python file.
+ */
 
+// Included Libraries
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <wctype.h>
 
-#define INFINITY_SYM   (wint_t)(236)
+// Macro definitions
 #define INT_TO_CHAR(A) (A + 48)
 
 /** @brief Whether weight is infinity or not */
@@ -16,8 +35,8 @@ enum Status {
 
 /** @brief Structure containing status and weight of each edge */
 struct Weight {
-    enum Status status; // Whether weight is infinity or not
-    int         weight; // Weight of edge
+    enum Status status;  // Whether weight is infinity or not
+    int         weight;  // Weight of edge
 };
 
 /**
@@ -47,7 +66,8 @@ struct Weight add_element(struct Weight e1, struct Weight e2);
  */
 struct Weight min_element(struct Weight e1, struct Weight e2);
 /**
- * @brief Executes the Floyd-Warshall algorithm on the given @p adj adjacency matrix and prints the final weight and parent matrices
+ * @brief Executes the Floyd-Warshall algorithm on the given @p adj adjacency
+ * matrix and prints the final weight and parent matrices
  * @param adj Adjacency matrix of graph
  * @param len Length of matrix
  */
@@ -55,8 +75,8 @@ void          floyd_warshall(struct Weight** adj, int len);
 
 int
 main(int argc, char** argv) {
-    int            len   = 5;
-    struct Weight* adj[] = {
+    int            node_count   = 5; // Number of nodes
+    struct Weight* adj[] = {         // Adjacency Matrix of graph
         (struct Weight[]) {   { .status = VALUE, .weight = 0 },
                            { .status = VALUE, .weight = 3 },
                            { .status = VALUE, .weight = 8 },
@@ -124,9 +144,9 @@ main(int argc, char** argv) {
     //                        { .status = VALUE, .weight = 0 }   }
     // };
 
-    fprintf(stdout, "%d\n", len);
-    print_weight_matrix(adj, len);
-    floyd_warshall(adj, len);
+    fprintf(stdout, "%d\n", node_count);
+    print_weight_matrix(adj, node_count);
+    floyd_warshall(adj, node_count);
 
     return 0;
 }
@@ -136,7 +156,6 @@ print_weight_matrix(struct Weight** matrix, int len) {
     for ( int i = 0; i < len; i++ ) {
         for ( int j = 0; j < len; j++ ) {
             if ( matrix[i][j].status == INFINITY ) {
-                // fprintf(stdout, "  %lc", INFINITY_SYM);
                 fprintf(stdout, "  %c", 'I');
             } else {
                 fprintf(stdout, "%3d", matrix[i][j].weight);
@@ -183,6 +202,7 @@ min_element(struct Weight w1, struct Weight w2) {
 
 void
 floyd_warshall(struct Weight** adj, int len) {
+    // Allocate and define distance and parent matrices
     struct Weight** D =
         ( struct Weight** ) malloc(len * sizeof(struct Weight*));
     struct Weight** D_new =
@@ -202,10 +222,12 @@ floyd_warshall(struct Weight** adj, int len) {
         }
     }
 
+    // Populate distance matrix
     for ( int i = 0; i < len; i++ ) {
         memcpy(D[i], adj[i], len * sizeof(struct Weight));
     }
 
+    // Populate parent matrix
     for ( int i = 0; i < len; i++ ) {
         for ( int j = 0; j < len; j++ ) {
             if ( i == j ) {
@@ -218,6 +240,8 @@ floyd_warshall(struct Weight** adj, int len) {
         }
     }
 
+    // Running FLoyd-Warshall algorithm to create next successive generations
+    // of distance and parent matrices
     for ( int k = 0; k < len; k++ ) {
         for ( int i = 0; i < len; i++ ) {
             for ( int j = 0; j < len; j++ ) {
@@ -245,9 +269,11 @@ floyd_warshall(struct Weight** adj, int len) {
         }
     }
 
+    // Print distance and parent matrices to STDIN to be read by python file
     print_weight_matrix(D, len);
     print_parent_matrix(parent, len);
 
+    // Deallocate distance and parent matrices
     for ( int i = 0; i < len; i++ ) {
         free(D[i]);
         free(D_new[i]);

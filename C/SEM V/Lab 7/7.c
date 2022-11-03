@@ -1,11 +1,11 @@
 // 7. Write a program to implement Breadth-First Search on a Graph
 
 // Included Libraries
+#include <assert.h>  // assert()
+#include <limits.h>  // INT_MAX
 #include <stdio.h>   // IO and other operations
 #include <stdlib.h>  // Memory operations
 #include <string.h>  // memcpy()
-#include <limits.h>  // INT_MAX
-#include <assert.h>  // assert()
 
 // Macro Definitions
 #define PRINT_ZEROS    0  // Print zeros to show no edge in adjacency matrix

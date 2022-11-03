@@ -1,8 +1,8 @@
-import typing
-import pygame
 
 from __future__ import annotations
 
+import typing
+import pygame
 
 class screenDefine:
     def __init__(self, screenParams) -> None:

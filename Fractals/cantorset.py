@@ -1,7 +1,9 @@
-import typing
-import pygame
-
 from __future__ import annotations
+
+
+import pygame
+import typing
+
 
 
 class screenDefine:
