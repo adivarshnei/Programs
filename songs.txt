@@ -1,38 +1,15 @@
 Songs:
-forever after all                                 - luke combs
-nail tech                                         - jack harlow
-milk                                              - the 1975
-drunk face                                        - machine gun kelly
-oak trees                                         - daniel nunnelee
-medicine                                          - bring me the horizon
-neon eyes                                         - morgan wallen
-false god                                         - ryan hurd
-so it goes...                                     - taylor swift
-my generation                                     - the who
-fergalicious                                      - fergie
-always                                            - tor miller
-this love (taylor's version)                      - taylor swift
-at my best                                        - machine gun kelly
-strawberry lipstick                               - yungblud
-flume                                             - fitness
-cola                                              - lana del rey
 save alive                                        - ashe
-if i believe you                                  - the 1975
 too damn young                                    - luke bryan
 manila                                            - george ezra
 god gave me you                                   - blake shelton
-this side of a dust cloud                         - morgan wallen
-throne                                            - bring me the horizon
 die alone                                         - finneas
 i want it all                                     - arctic monkeys
 purpose                                           - justin bieber
-go for broke                                      - machine gun kelly
-shadown moses                                     - bring me the horizon
 stay awake?                                       - bastille
 outgrown                                          - dermot kennedy
 tompkins square park                              - mumford and sons
-you proof                                         - morgan wallen
-outer space                                       - 5sos
+outer space                                       - 5 seconds of summer
 still                                             - niall horan
 kiwi                                              - harry styles
 the funeral                                       - band of horses
@@ -61,7 +38,6 @@ time of your life                                 - day6
 your ex-lover was dead                            - stars
 someone new                                       - banks
 come out and play                                 - billie eilish
-somebody else                                     - the 1975
 somelone like your                                - adele
 guilty party                                      - the national
 i hope you're happy                               - blue october
@@ -76,7 +52,6 @@ manhattan                                         - sara bareilles
 wish you well                                     - bernard fanning
 wild world                                        - cat stevens
 california                                        - delta spirits
-you could be happy                                - snow patrol
 konstantine                                       - something corporate
 the other side                                    - tonight alive
 anything but me!!                                 - muna
@@ -131,7 +106,6 @@ remember me                                       - diana ross
 drama                                             - years
 wildflowers                                       - trampled by turtles
 no distance left to run                           - blur
-if you see her, say hello                         - bob dylan
 easy                                              - misterwives
 steep                                             - lauren christy
 hold no grudge                                    - lorde
@@ -148,13 +122,10 @@ i'll be around                                    - the spinners
 easy                                              - lionel ritchie
 before i let go                                   - maze, frankie beverly
 before i let go                                   - beyonce
-happiness                                         - taylor swift
 yes i'm changing                                  - tame impala
-champagne problems                                - taylor swift
 are we still friends                              - tyler, the creator
 thank you, next                                   - ariana grande
 kim                                               - eminem
-happiness                                         - taylor swift
 martha                                            - tom waits
 hello it's me                                     - todd rundgren
 songbird                                          - fleetwood mac
@@ -164,9 +135,7 @@ i was wrong                                       - a r i z o n a
 before you gotta go                               - courtney barnett
 no distance left to run                           - blur
 watch how you go                                  - keane
-happiness                                         - taylor swift
 post malone                                       - better now
-the 1                                             - taylor swift
 need a little time                                - courtney barnett
 untogether                                        - courtney barnett
 godspeed                                          - frank ocean
@@ -180,10 +149,8 @@ helmet                                            - steve lacy
 goodbye to you                                    - michelle branch
 cool                                              - gwen stefani
 upside down                                       - the story so far
-don't think twice it's alright                    - bob dylan
 land locked blues                                 - bright eyes
 mexico                                            - cake
-if you see her say hello                          - bob dylan
 kyrstal                                           - matt maltese
 friends                                           - ed sheeran
 moon song                                         - phoebe bridger's
@@ -204,10 +171,8 @@ even if it's a lie                                - matt maltese
 sunburn                                           - ed sheeran
 ilo milo                                          - billie eillish
 eventually                                        - tame impala
-the one                                           - taylor swift
 crash                                             - eden
 it's cool we can still be friends                 - bright eyes
-holy ground                                       - taylor swift
 a lack of color                                   - death cab for cutie
 I was happier with you                            - flatsound
 I get along without you very well                 - Chet Baker
@@ -216,7 +181,6 @@ yes I'm changing                                  - tame impala
 and                                               - eden
 a different age                                   - current joys
 you're somebody else                              - flora cash
-you                                               - the 1975
 your song acoustic                                - mayday parade
 friends                                           - ed sheeran
 wish you were here                                - pink floyd
@@ -233,19 +197,14 @@ go your own way                                   - fleetwood mac
 say goodbye                                       - lindsay buckingham
 eventually                                        - tame impala
 yes i'm changing                                  - tame impala
-happiness                                         - taylor swift
 jealous                                           - labrinth
 close to you                                      - rihanna
-tim mcgraw                                        - taylor swift
 hate to see your heart break                      - paramore
 i love you'd                                      - hailee steinfeld
-holy ground                                       - taylor swift
 nashville                                         - david mead
 walking in the wind                               - one direction
 happier                                           - olivia rodrigo
 i will always love you                            - dolly parton
-don't think twice it's alright                    - bob dylan
-shooting star                                     - bob dylan
 all the best                                      - john prine
 night shift                                       - lucy dacus
 leaving hope                                      - nine inch nails
@@ -253,7 +212,6 @@ on sight                                          - kanye west
 she                                               - tyler, the creator
 she                                               - misfits
 brooklyin bridge to chorus                        - the strokes
-she's lost control                                - joy division
 no time for caution                               - hans zimmer
 bloodshot eyes                                    - lamb of god
 the warning or somewhat damaged                   - nine inch nails
@@ -294,7 +252,6 @@ a wonderful life                                  - brian fallon
 show (hey oh)                                     - red hot chilli peppers
 away from the mire                                - billy strings
 heartbeat of america                              - billy strings
-unconditional ii                                  - arcade fire
 gigantic                                          - the pixies
 red desert                                        - 5 seconds of summer
 shadowminds                                       - the halo effect
@@ -307,13 +264,11 @@ everlong                                          - foo fighters
 sat in your lap                                   - kate bush
 white mountain                                    - genesis
 11th hour                                         - lamb of god
-wake up                                           - arcade fire
 dayvan cowboy                                     - boards of canada
 three                                             - sleeping at last
 saturation                                        - zoot woman
 particles                                         - nothing but thieves
 after dark                                        - mr. kitty
-sossboy                                           - pi'erre bourne
 26 dogs                                           - spice
 dog days are over                                 - florence + the machine
 phish                                             - izabella 12/30/97
@@ -326,7 +281,6 @@ one day                                           - lovejoy
 saturn                                            - sleeping at last
 one with the mountain                             - firewoodisland
 ditty                                             - freddie dredd
-strange powers                                    - the magnetic fields
 are you there                                     - the violet sunsets
 you couldn't save me                              - enterprise earth
 copacabana                                        - barry manilow
@@ -345,7 +299,6 @@ lucky man                                         - the verve
 1979                                              - smashing pumpkins
 melancholy hill                                   - gorillaz
 dust it off                                       - the do
-the past is the prey                              - raised by swans
 the labyrinth song                                - asaf avidan
 from here                                         - cloudnone
 juliet                                            - cloudnone
@@ -366,7 +319,6 @@ how to disappear completely                       - radiohead
 the cure                                          - disintegration
 last night on earth                               - green day
 no surprises                                      - radiohead
-one more light                                    - linkin park
 we are not what we say we are                     - versa
 burning red                                       - machine head
 again                                             - archive
@@ -430,15 +382,12 @@ give me a smile                                   - sibylle baier
 caramel                                           - blur
 i'm not falling asleep                            - andy shauf
 ocean                                             - the velvet underground
-god damn the sun                                  - swans
 falling                                           - harry styles
 what does your soul look like pt. 2               - dj shadow
 pyramid song                                      - radiohead
 you want it darker                                - leonard cohen
-legacy                                            - manson
 listen to nude                                    - radiohead
 the final cut                                     - pink floyd
-river of deceit                                   - mad season
 doll                                              - foo fighters
 galapagos and mayonnaise                          - smashing pumpkins
 nutshell                                          - alice in chains
@@ -455,8 +404,6 @@ bad blood                                         - radical face
 save yourself                                     - sadistik
 the best of times                                 - sage francis
 cardinals                                         - the republik of wolves
-by the throat                                     - eyedea, abilities
-bottle dreams                                     - eyedea
 whiskey waters                                    - tiny moving parts
 against all odds                                  - phil collins
 exit music                                        - radiohead
@@ -474,8 +421,6 @@ human sadness                                     - the voidz
 mind the wires                                    - tears run rings
 fear                                              - current joys
 rosemary                                          - deftones
-medicine                                          - the 1975
-watercolor eyes                                   - lana del rey
 pull                                              - spooky black
 back pack                                         - ajj
 cry                                               - cigarettes after sex
@@ -550,92 +495,14 @@ adam's song                                       - blink-182
 some say                                          - sum 41
 the kids aren't alright                           - the offspring
 carry me ohio                                     - sun kil moon
-galleon ship (alexandra palace)                   - nick cave and the bad seeds
 when i'm gone                                     - phil ochs
 pain remains                                      - lorna shore
-leave out all the rest                            - linkin park
-easier to run                                     - linkin park
-given up                                          - linkin park
-shadow of the day                                 - linkin park
-crawling                                          - linkin park
-breaking the habit                                - linkin park
-heavy                                             - linkin park
-wating for the end                                - linkin park
 poison oak                                        - bright eyes
 it's easier now                                   - jason molina
 it ain't easy (sad mix)                           - we destroy tokyo
 
 
 Albums:
-a crow looked at me                     - mount eerie
-either/or                               - elliott smith
-some rap songs                          - earl sweatshirt
-a moon shaped pool                      - radiohead
-hospice                                 - the antlers
-burst apart                             - the antlers
-benji                                   - sun kil moon
-giles corey                             - giles corey
-hinterkaifeck                           - giles corey
-painting of a panic attack              - frightened rabbit
-the midnight organ fight                - frightened rabbit
-punisher                                - phoebe bridgers
-sea champagne                           - beck
-carrie & lowell                         - sufjan stevens
-elliott smith                           - elliott smith
-leprosy                                 - death
-the black album                         - metallica
-petals for armor                        - hayley williams
-angelic 2 the core                      - corey feldman
-5am                                     - amber run
-re: stacks                              - bon iver
-o                                       - damien rice
-watching from a distance                - warning
-for emma, forever ago                   - bon iver
-new beginning                           - tracy chapman
-tapestry                                - don mclean
-grace                                   - jeff buckley
-milk & scissors                         - the handsome family
-automatic for the people                - r.e.m.
-in the aeroplane over the sea           - neutral milk hotel
-above                                   - mad season
-jar of flies                            - alice in chains
-pink moon                               - nick drake
-the burgh island ep                     - ben howard
-the will to death                       - john frusciante
-kid a                                   - radiohead
-mono                                    - rm
-illuminate                              - lydia
-transatlantacism                        - death cab for cutie
-stranger in the alps                    - phoebe bridgers
-all our gods have abandoned us          - architects
-forever                                 - midwife
-everywhere at the end of time           - the caretaker
-skeleton tree                           - nick cave and the bad seeds
-ghosteen                                - nick cave and the bad seeds
-hand cannot erase                       - steven wilson
-little earthquakes                      - tori amos
-the wind                                - warren zevon
-oar                                     - skip spence
-wildness                                - snow patrol
-euphoria morning                        - chris cornell
-above                                   - mad season
-i will not be sad in this world         - divan gasparyan
-purple mountains                        - purple mountains
-the lioness                             - songs:ohia
-up                                      - peter gabirel
-damnation                               - opeth
-the reminder                            - feist
-slow riot for new zero kanada           - godspeed you! black emperor
-time out of mind                        - bob dylan
-ruminations                             - conor oberst
-perils from the sea                     - jimmy lavalle and mark kozelek
-the high country                        - richmond fontaine
-i see a darkness                        - bonnie prince billy
-one more light                          - linkin park
-everything i long for                   - hayden
-iii                                     - the lumineers
-six lethargies                          - keaton henson
-unknown pleasures                       - joy division
 songs about leaving                     - carissa's wierd
 disintegration                          - the cure
 depression cherry                       - beach house
@@ -645,9 +512,7 @@ the ooz                                 - king krule
 fri                                     - make a change... kill yourself
 iv                                      - make a change... kill yourself
 oblivion omitted                        - make a change... kill yourself
-nights that won't happen                - purple mountains
 a crying light                          - anthony and the johnson's
-dear                                    - keaton henson
 workbook                                - bob mould
 stage four                              - touche amore
 x&y                                     - coldplay
@@ -672,7 +537,6 @@ yume                                    - helios
 the shaming of the true                 - kevin gilbert
 idol's plague                           - transgender lain clones
 the seldom seen kid                     - elbow
-everything i long for                   - hayden
 downward spiral                         - nine inch nails
 astro lounge                            - smash mouth
 your city gave me asthma                - wilbur soot
@@ -693,7 +557,6 @@ sky on fire                             - mehro
 
 
 Artists:
-the 1975
 zara larsson
 foy vance
 bon iver
@@ -725,8 +588,6 @@ selena gomez
 pearl jam
 tom rosenthal
 kacey musgraves
-taylor swift
-arcade fire
 radiohead
 blink-182
 avril lavigne
@@ -734,6 +595,8 @@ fink
 
 
 Links:
+https://www.reddit.com/r/spotify/comments/yqrdo7/i_need_a_sad_playlist_because_i_got_a_buzzcut_and/?%24deep_link=true&correlation_id=81140235-70d6-41f4-9d46-3b72a6589656&post_fullname=t3_yqrdo7&post_index=4&ref=email_digest&ref_campaign=email_digest&ref_source=email&utm_content=post_title&%243p=e_as&_branch_match_id=1097601144043864136&utm_medium=Email%20Amazon%20SES&_branch_referrer=H4sIAAAAAAAAA22Q0WrDMAxFvyZ7S9rGbtoOyhiM%2FYZwbSUVdWzPlunar5%2Byrm8DGw7nIl%2FhM3Mqr6tVRueIO5NS5ylcViq9Nb1W6YhgyotgzDRRMB5q9sfzMtWo96b%2FlHO9Xru%2FeRtnEVluSZFpvAmJmzFwEbx9ZRd3AgQB0YGBYhwkb26eCsMJrakFgWCKLOGp3u%2B2CgW3NCkp0w4xwbJioz44V2z6wcac0RumGICc%2BP1mo9e92ra7tRtavRl1e3B6aNVp15thuz8M20HmUpTOsXofzIzLcwqeCz4yCg6%2FJdAiMo5COBvy4GjCwg8J1szJ0BT%2BT0us2eIzE1l5BhsDy4%2BI%2Fa1hYo8%2Fp%2Fw4jokBAAA%3D
 
 
 Playlists:
+https://open.spotify.com/playlist/6rxB81KbtnZKkg2IKDdLIM?si=bfb2a608293e4dae

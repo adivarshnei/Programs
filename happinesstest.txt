@@ -1,0 +1,62 @@
+1. I don’t feel particularly pleased with the way I am. (R)_
+2. I am intensely interested in other people._
+3. I feel that life is very rewarding._
+4. I have very warm feelings towards almost everyone._
+5. I rarely wake up feeling rested. (R)_
+6. I am not particularly optimistic about the future. (R)_
+7. I find most things amusing._
+8. I am always committed and involved._
+9. Life is good._
+10. I do not think that the world is a good place. (R)_
+11. I laugh a lot._
+12. I am well satisfied about everything in my life._
+13. I don’t think I look attractive. (R)_
+14. There is a gap between what I would like to do and what I have done. (R)_
+15. I am very happy._
+16. I find beauty in some things._
+17. I always have a cheerful effect on others._
+18. I can fit in (find time for) everything I want to._
+19. I feel that I am not especially in control of my life. (R)_
+20. I feel able to take anything on._
+21. I feel fully mentally alert._
+22. I often experience joy and elation._
+23. I don’t find it easy to make decisions. (R)_
+24. I don’t have a particular sense of meaning and purpose in my life. (R)_
+25. I feel I have a great deal of energy._
+26. I usually have a good influence on events._
+27. I don’t have fun with other people. (R)_
+28. I don’t feel particularly healthy. (R)_
+29. I don’t have particularly happy memories of the past. (R)_
+
+1:   5 -> 2
+2:   4 -> 4
+3:   2 -> 2
+4:   4 -> 4
+5:   5 -> 2
+6:   6 -> 1
+7:   2 -> 2
+8:   3 -> 3
+9:   2 -> 2
+10:  6 -> 1
+11:  3 -> 3
+12:  2 -> 2
+13:  5 -> 2
+14:  4 -> 3
+15:  2 -> 2
+16:  5 -> 5
+17:  4 -> 4
+18:  3 -> 3
+19:  5 -> 2
+20:  3 -> 3
+21:  4 -> 4
+22:  4 -> 4
+23:  5 -> 2
+24:  5 -> 2
+25:  3 -> 3
+26:  3 -> 3
+27:  4 -> 3
+28:  2 -> 5
+29:  3 -> 4
+
+Total = 82
+Score = 82 / 29 = 2.8275862069

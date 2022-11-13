@@ -104,29 +104,19 @@ main(int argc, char** argv) {
 
     // Initialize and populate graph
     struct Graph*     graph = graph_init(atoi(NODE_COUNT_STR));
-    // struct Edge const edges[] = {
-    //     {.start = 0, .end = 1},
-    //     {.start = 0, .end = 7},
-    //     {.start = 1, .end = 2},
-    //     {.start = 1, .end = 7},
-    //     {.start = 2, .end = 3},
-    //     {.start = 3, .end = 4},
-    //     {.start = 3, .end = 5},
-    //     {.start = 4, .end = 5},
-    //     {.start = 5, .end = 6},
-    //     {.start = 6, .end = 7},
-    //     {.start = 6, .end = 8},
-    //     {.start = 7, .end = 8}
-    // };
     struct Edge const edges[] = {
         {.start = 0, .end = 1},
-        {.start = 0, .end = 3},
-        {.start = 1, .end = 4},
-        {.start = 2, .end = 4},
-        {.start = 2, .end = 5},
-        {.start = 3, .end = 1},
-        {.start = 4, .end = 3},
-        {.start = 5, .end = 5},
+        {.start = 0, .end = 7},
+        {.start = 1, .end = 2},
+        {.start = 1, .end = 7},
+        {.start = 2, .end = 3},
+        {.start = 3, .end = 4},
+        {.start = 3, .end = 5},
+        {.start = 4, .end = 5},
+        {.start = 5, .end = 6},
+        {.start = 6, .end = 7},
+        {.start = 6, .end = 8},
+        {.start = 7, .end = 8}
     };
 
     graph_populate(graph, edges, atoi(EDGE_COUNT_STR));

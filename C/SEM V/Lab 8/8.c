@@ -1,5 +1,5 @@
-// 8. Write a program to solve travelling salesperson problem using branch and
-// bound
+// 8. Write a program to solve Travelling Salesperson Problem using Branch and
+// Bound Approach
 
 #include <limits.h>
 #include <stdbool.h>
@@ -43,11 +43,6 @@ main(int argc, char** argv) {
     };
 
     struct Node* root = node_init(adj, MATRIX_SIZE, 1, MATRIX_SIZE - 1);
-
-    // matrix_print(root, true);
-    // node_row_col_reduce(root);
-    // node_add_children(root);
-    // matrix_print(root, true);
 
     tsp_branch_and_bound(root);
 
@@ -306,7 +301,7 @@ tsp_branch_and_bound(struct Node* root) {
 
     temp = root;
 
-    fprintf(stdout, "%d ", temp->index);
+    fprintf(stdout, "Closed TSP Path: %d", temp->index);
 
     while ( temp->max_children != 0 ) {
         int min_index = 0;
@@ -319,6 +314,8 @@ tsp_branch_and_bound(struct Node* root) {
 
         temp = temp->children[min_index];
 
-        fprintf(stdout, "%d ", temp->index);
+        fprintf(stdout, " -> %d", temp->index);
     }
+
+    fprintf(stdout, " -> %d", root->index);
 }

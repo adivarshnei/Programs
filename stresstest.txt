@@ -1,0 +1,44 @@
+I’m exhausted by daily demands at work, college, and home.
+My stress is caused by outside forces beyond my control.
+I’m trapped by circumstances that I just have to live with.
+No matter how hard I work to stay on top of my schedule, I can’t get caught up.
+I have financial obligations I can’t seem to meet.
+I dislike my work, but I can’t take the risk of making a career change (or, if not working: I dislike college, but I can’t take the risk of dropping out).
+I’m dissatisfied with my personal relationships:
+I feel responsible for the happiness of people around me.
+I’m embarrassed to ask for help.
+I do not know what I want out of life.
+I’m disappointed that I have not achieved what I had hoped for.
+No matter how much success I have, I feel empty.
+If the people around me were more competent, I would feel happier.
+People let me down.
+I stew in my anger rather than express it.
+I become enraged and resentful when I am hurt.
+I can’t take criticism.
+I’m afraid I’ll lose my job (or fail out of school).
+I don’t see the value of expressing sadness or grief.
+I don’t trust that things will work out.
+
+1  -> 3
+2  -> 2
+3  -> 3
+4  -> 4
+5  -> 1
+6  -> 3
+7  -> 2
+8  -> 2
+9  -> 4
+10 -> 4
+11 -> 3
+12 -> 3
+13 -> 3
+14 -> 3
+15 -> 4
+16 -> 4
+17 -> 3
+18 -> 4
+19 -> 3
+20 -> 4
+
+
+Score: 62
