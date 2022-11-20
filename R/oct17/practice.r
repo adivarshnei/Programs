@@ -12,7 +12,7 @@ plot(
 )
 
 #------------------------------------------------------------------------------#
-# Q2. Create a plot using one plot only
+# Q2. Create a plot using one vector only
 
 plot(
   x,

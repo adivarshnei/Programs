@@ -1,28 +1,36 @@
+
 // Abstract Window Toolkit packages 
 // Package required for various components
-import java.awt.*;
-
+import java.awt.Button;
+import java.awt.Frame;
+import java.awt.GridLayout;
+import java.awt.Label;
+import java.awt.Panel;
 // Package required for various events
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
+@SuppressWarnings("serial")
 class ButtonWindow extends Frame {
     // Variable used to keep count of button presses
     private static int buttonPressCounter = 0;
 
     ButtonWindow() {
         // Button to be pressed
-        Button button = new Button("Button");
+        final Button button = new Button("Button");
         button.setSize(100, 50);
 
         // Label to display number of button presses
-        Label label = new Label("Button Pressed 0 times");
+        final Label label = new Label("Button Pressed 0 times");
 
         // Button Panel and adding button Component
-        Panel top = new Panel();
+        final Panel top = new Panel();
         top.add(button);
 
         // Label Panel and adding label Component
-        Panel bottom = new Panel();
+        final Panel bottom = new Panel();
         bottom.add(label);
 
         // ActionListener waiting for button press
@@ -30,7 +38,7 @@ class ButtonWindow extends Frame {
             // actionPerformed is executed when button is pressed, increments
             // the buttonPressCounter and updates the text of the label
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 label.setText("Button Pressed "
                         + ++ButtonWindow.buttonPressCounter + " times");
             }
@@ -41,7 +49,7 @@ class ButtonWindow extends Frame {
             // windowClosing is executed when the close button on the window is
             // pressed, and disposes of the window
             @Override
-            public void windowClosing(WindowEvent e) {
+            public void windowClosing(final WindowEvent e) {
                 dispose();
             }
         });
@@ -60,7 +68,7 @@ class ButtonWindow extends Frame {
 
 // Driver code class
 public class ButtonTester {
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         // Creates new instance of ButtonWindow
         new ButtonWindow();
     }

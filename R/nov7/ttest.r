@@ -1,6 +1,7 @@
 # if we want to test that the volume of a shipment is less than the usual,
 # where the mean is 37000 cu. ft., you will run one sample T-test and don't
 # know the populations, std. dev.
+print("One Sample T-Test")
 
 n_val <- 500000
 mean_val <- 37000
@@ -20,18 +21,19 @@ print(t_test)
 # high blood pressure. mean = 150, sd = 10. we provided that new medicine to
 # them for a month and then observed their blood pressure again. we find that
 # mean blood pressure has decreased to 144, with a standard deviation of 9.
+print("Paired T-Test")
 
 n_samples <- 500000
-mean_avant <- 150
-sd_avant <- 10
-mean_apres <- 144
-sd_apres <- 9
+mean_before <- 150
+sd_before <- 10
+mean_after <- 144
+sd_after <- 9
 
 set.seed(10000)
-avant <- c(rnorm(n = n_samples, mean = mean_avant, sd = sd_avant))
-apres <- c(rnorm(n = n_samples, mean = mean_apres, sd = sd_apres))
+before <- c(rnorm(n = n_samples, mean = mean_before, sd = sd_before))
+after <- c(rnorm(n = n_samples, mean = mean_after, sd = sd_after))
 
-t_test <- t.test(avant, apres, paired = TRUE)
+t_test <- t.test(before, after, paired = TRUE)
 print(t_test)
 
 # anova test
@@ -48,9 +50,3 @@ print(t_test)
 # a continuous outcome variable
 # assumptions: each subject should belong to only one group, there is no
 # relation between the observations in each group.
-
-
-
-# install.packages("tidyverse")
-# install.packages("ggpubr")
-# install.packages("rstatix")

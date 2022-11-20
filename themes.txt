@@ -1,0 +1,7 @@
+C:\Users\Adersh Varshnei\AppData\Local\Programs\oh-my-posh\themes\agnoster.minimal.omp.json
+C:\Users\Adersh Varshnei\AppData\Local\Programs\oh-my-posh\themes\hotstick.minimal.omp.json
+C:\Users\Adersh Varshnei\AppData\Local\Programs\oh-my-posh\themes\onehalf.minimal.omp.json
+C:\Users\Adersh Varshnei\AppData\Local\Programs\oh-my-posh\themes\probua.minimal.omp.json
+C:\Users\Adersh Varshnei\AppData\Local\Programs\oh-my-posh\themes\stelbent-compact.minimal.omp.json
+C:\Users\Adersh Varshnei\AppData\Local\Programs\oh-my-posh\themes\stelbent.minimal.omp.json
+
