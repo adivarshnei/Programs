@@ -8,6 +8,7 @@
 ---
 ## Q1.
 ### Create the following tables:
+
 ```
 Course
     course_no char(4)

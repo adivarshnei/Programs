@@ -1,5 +1,10 @@
-test_func <- function() {
-  print("123")
-}
+vec1 <- c(1, 2, 3)
+vec2 <- c(3, 2, 1)
 
-test_func()
+cat("c(1, 2, 3) < c(3, 2, 1) = ", vec1 < vec2, "\n")
+cat("c(1, 2, 3) <= c(3, 2, 1) = ", vec1 <= vec2, "\n")
+cat("c(1, 2, 3) > c(3, 2, 1) = ", vec1 > vec2, "\n")
+cat("c(1, 2, 3) >= c(3, 2, 1) = ", vec1 >= vec2, "\n")
+cat("c(1, 2, 3) == c(3, 2, 1) = ", vec1 == vec2, "\n")
+cat("c(1, 2, 3) != c(3, 2, 1) = ", vec1 != vec2, "\n")
+
