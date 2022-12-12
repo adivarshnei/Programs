@@ -1,10 +1,4 @@
 Songs:
-save alive                                        - ashe
-too damn young                                    - luke bryan
-manila                                            - george ezra
-god gave me you                                   - blake shelton
-die alone                                         - finneas
-i want it all                                     - arctic monkeys
 purpose                                           - justin bieber
 stay awake?                                       - bastille
 outgrown                                          - dermot kennedy
@@ -68,7 +62,6 @@ under control                                     - the strokes
 happy for you                                     - lukas graham
 dear first love                                   - LØLØ
 i wish you love                                   - rachel yamagata
-sparks                                            - coldplay
 good riddance                                     - green day
 definitely not no children                        - mountain goats
 hold me closer                                    - cornelia jakobs
@@ -265,7 +258,6 @@ sat in your lap                                   - kate bush
 white mountain                                    - genesis
 11th hour                                         - lamb of god
 dayvan cowboy                                     - boards of canada
-three                                             - sleeping at last
 saturation                                        - zoot woman
 particles                                         - nothing but thieves
 after dark                                        - mr. kitty
@@ -276,17 +268,6 @@ phish                                             - izabella 12/6/97
 glasshouses                                       - maribou state
 brazil                                            - declan mckenna
 luxurious                                         - gwen stefani
-snap out of it                                    - arctic monkeys
-one day                                           - lovejoy
-saturn                                            - sleeping at last
-one with the mountain                             - firewoodisland
-ditty                                             - freddie dredd
-are you there                                     - the violet sunsets
-you couldn't save me                              - enterprise earth
-copacabana                                        - barry manilow
-i                                                 - kendrick lamar
-ever dream                                        - nightwish
-shake me down                                     - cage the elephant
 yukari                                            - marginal man
 the bees knees                                    - juice wrld
 flaws and sins                                    - juice wrld
@@ -315,10 +296,8 @@ the haunting presence                             - giles corey
 before it breaks you                              - lewis & clarke
 a singer must die                                 - leonard cohen
 australia                                         - attic abasement
-how to disappear completely                       - radiohead
 the cure                                          - disintegration
 last night on earth                               - green day
-no surprises                                      - radiohead
 we are not what we say we are                     - versa
 burning red                                       - machine head
 again                                             - archive
@@ -339,8 +318,6 @@ daddy issues                                      - the neighbourhood
 money                                             - the drums
 alien blues                                       - vundabar
 lights are on                                     - tom rosenthal
-telescopes                                        - cage the elephant
-no surprises                                      - radiohead
 a different age                                   - current joys
 leaving hope                                      - NIИ
 ghosts v: together                                - NIИ
@@ -384,9 +361,7 @@ i'm not falling asleep                            - andy shauf
 ocean                                             - the velvet underground
 falling                                           - harry styles
 what does your soul look like pt. 2               - dj shadow
-pyramid song                                      - radiohead
 you want it darker                                - leonard cohen
-listen to nude                                    - radiohead
 the final cut                                     - pink floyd
 doll                                              - foo fighters
 galapagos and mayonnaise                          - smashing pumpkins
@@ -395,7 +370,6 @@ black                                             - pearl jam
 romantic homicide                                 - d4vd
 in the stars                                      - benson boone
 death is not the end                              - bad seeds
-true love waits                                   - radiohead
 gravedigger                                       - dave matthews
 son                                               - insanlar gerçek olsa
 stay                                              - rihanna, mikky ekko
@@ -406,7 +380,6 @@ the best of times                                 - sage francis
 cardinals                                         - the republik of wolves
 whiskey waters                                    - tiny moving parts
 against all odds                                  - phil collins
-exit music                                        - radiohead
 a lot                                             - anna sun
 brave as a noun                                   - ajj
 take me somewhere nice                            - mogwai
@@ -506,22 +479,20 @@ making music with one number                      - kris tias
 lotion                                            - deftones
 hemispheres                                       - rush
 remember that you will die                        - polyphia
+hard work pays off                                - future & juice wrld
+congratulations                                   - post malone and quavo
+smile back                                        - mac miller
+donald trump                                      - mac miller
+best day ever                                     - mac miller
+long long long journey                            - bill wurtz
+i don't get tired                                 - kevin gates
+try everything                                    - shakira
+hall of fame                                      - the script
+all the round objects                             - mad professor
+you can go your own way                           - fleetwood mac
 
 
 Albums:
-songs about leaving                     - carissa's wierd
-disintegration                          - the cure
-depression cherry                       - beach house
-long lost                               - lord huron
-painted from memory                     - elvis costello and burt bacharach
-the ooz                                 - king krule
-fri                                     - make a change... kill yourself
-iv                                      - make a change... kill yourself
-oblivion omitted                        - make a change... kill yourself
-a crying light                          - anthony and the johnson's
-workbook                                - bob mould
-stage four                              - touche amore
-x&y                                     - coldplay
 lady in satin                           - billie holiday
 untrue                                  - burial
 jar of flies                            - alice in chains
@@ -535,7 +506,6 @@ jacksonville city nights                - ryan adam's and the cardinals
 stranger in a strange land              - iron maiden
 red earth and pouring rain              - bears den
 if you leave                            - daughter
-ghost stories                           - coldplay
 enter a uh                              - john frusciante
 the devil's walk                        - apparat
 the holy bible                          - manic street preachers
@@ -597,6 +567,13 @@ in the court of the crimson king        - king crimson
 absolution                              - muse
 master of puppets                       - metallica
 garage inc                              - metallica
+samson                                  - regina spektor
+almost cut my hair                      - csny
+got it in you                           - the banners
+you're beautiful                        - james blunt
+buzzcut season                          - lorde
+i am not my hair                        - india arie
+hair                                    - lady gaga
 
 
 Artists:
@@ -604,7 +581,6 @@ zara larsson
 foy vance
 bon iver
 the zombies
-coldplay
 the chainsmokers
 meadows
 seafret
@@ -631,28 +607,19 @@ selena gomez
 pearl jam
 tom rosenthal
 kacey musgraves
-radiohead
 blink-182
 avril lavigne
 fink
+bailey jehl
 
 
 Links:
-https://www.reddit.com/r/spotify/comments/yqrdo7/i_need_a_sad_playlist_because_i_got_a_buzzcut_and/?%24deep_link=true&correlation_id=81140235-70d6-41f4-9d46-3b72a6589656&post_fullname=t3_yqrdo7&post_index=4&ref=email_digest&ref_campaign=email_digest&ref_source=email&utm_content=post_title&%243p=e_as&_branch_match_id=1097601144043864136&utm_medium=Email%20Amazon%20SES&_branch_referrer=H4sIAAAAAAAAA22Q0WrDMAxFvyZ7S9rGbtoOyhiM%2FYZwbSUVdWzPlunar5%2Byrm8DGw7nIl%2FhM3Mqr6tVRueIO5NS5ylcViq9Nb1W6YhgyotgzDRRMB5q9sfzMtWo96b%2FlHO9Xru%2FeRtnEVluSZFpvAmJmzFwEbx9ZRd3AgQB0YGBYhwkb26eCsMJrakFgWCKLOGp3u%2B2CgW3NCkp0w4xwbJioz44V2z6wcac0RumGICc%2BP1mo9e92ra7tRtavRl1e3B6aNVp15thuz8M20HmUpTOsXofzIzLcwqeCz4yCg6%2FJdAiMo5COBvy4GjCwg8J1szJ0BT%2BT0us2eIzE1l5BhsDy4%2BI%2Fa1hYo8%2Fp%2Fw4jokBAAA%3D
-https://open.spotify.com/track/6QrHU4qiBYvJ8Lcu1b5LTu?si=YU5T3sKyRUquVjh7a3cB_A
-https://open.spotify.com/playlist/7KVmdQLajuxcs8uH2PZj7A?si=5cf51fe962ae4d7a
 
 
 Playlists:
-https://open.spotify.com/playlist/6rxB81KbtnZKkg2IKDdLIM?si=bfb2a608293e4dae
-https://open.spotify.com/playlist/3EJFu85o2L4vjKKfkFTuZn?si=cbef888391244ee8
-https://open.spotify.com/playlist/2rwtsiaVy9Uh4qlNnGcUjC?si=c63844c2bc08403b
-https://open.spotify.com/playlist/00sAFjznqWiHk1g5Gyk0L5?si=8LzHErNoTaSt84T1ZawnkA
-https://open.spotify.com/playlist/7AkSgRhaWTNbankZ9aPYdu?si=EvwftlkARSmsr8BeiiffZw&utm_source=copy-link
-https://open.spotify.com/playlist/4cADoW1qBD4vM0z30gq9QI?si=525535c64095497d
-https://open.spotify.com/playlist/0XqCHRk0SM4GhWpPKv5r3g?si=LRCTanufTJqe3soIeBFWQw
-https://open.spotify.com/playlist/5TLsJUjGguMooyyXV8I3E5?si=12a0cc271e3e47ba
-https://open.spotify.com/playlist/1axkRoXWmUL4DLkW7MfT85?si=43370554583145ea
-https://open.spotify.com/playlist/7iSqj6TbNgZnEn2uQloFwA?si=7823054916e441e1
-https://open.spotify.com/playlist/1pKGQvJUesZbOu0YJkAP43?si=0736da63efad4b89
-https://open.spotify.com/playlist/3KaFVqz1ArmU0xNJLdthVL?si=1a19d279f59c4ce3
+https://open.spotify.com/playlist/3OawtKUdmDEpY5aaH6JT9x?si=JxRrdsp0RZaBtlOPf4Z_EA
+https://open.spotify.com/playlist/450dY667kEJwekAgXTFoYP?si=woe0PnpZSLKDA-r0ugjw8g
+https://open.spotify.com/playlist/3rllUC628XRpRNmnTGGSYw?si=d965098ae493436d
+https://open.spotify.com/playlist/5IUlpEyU2FrQ2OiMNelaNn?si=563a2f6e24b44923
+https://open.spotify.com/playlist/3dcPb5JTU5DErztrOKIyCy?si=7SNjK5p6R6qzMvT5arAItg&utm_source=copy-link
+https://open.spotify.com/playlist/5zv1CaeriEsa7LtBG5R18D?si=0CfzNFKWTP-SVsUJrXHr_g
