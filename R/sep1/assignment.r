@@ -1,7 +1,7 @@
 r.names <- c("Row 1", "Row 2", "Row 3")
 c.names <- c("Column 1", "Column 2", "Column 3")
 m.names <- c("Matrix 1", "Matrix 2")
-
+c
 v1 <- c(1, 2, 3, 4)
 v2 <- c(2, 3, 4, 5)
 

@@ -7,6 +7,6 @@ print_name <- function(name) {
 	cat("Name: ", name, "\n")
 }
 
-name <- scan(stdin)
+name <- scan("stdin", what = integer(0), n = 5)
 
 print_name(name)

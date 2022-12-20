@@ -32,13 +32,15 @@ print(length(test_array_mul_dim))
 # Using Apply Function to Add Rows and Columns
 v1 <- c(1, 2, 3, 4)
 v2 <- c(2, 3, 4, 5)
+v3 <- c(3, 4, 5, 6)
 
 arr1_2 <- array(
-  c(v1, v2),
-  dim = c(3, 3),
+  c(v1, v2, v3),
+  dim = c(3, 3, 3),
   dimnames = list(
     c("r1", "r2", "r3"),
-    c("c1", "c2", "c3")
+    c("c1", "c2", "c3"),
+    c("m1", "m2", "m3")
   )
 )
 
@@ -48,5 +50,3 @@ r_sums <- apply(arr1_2, 1, sum)
 c_sums <- apply(arr1_2, 2, sum)
 
 rbind(cbind(arr1_2, R_tot = r_sums), C_tot = c(c_sums, sum(c_sums)))
-
-
