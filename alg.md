@@ -3807,18 +3807,678 @@ Therefore, the algorithm has a time complexity of $\Theta(n^5)$.
 > 		If $dist[w]>dist[u]+adj[u,w]$
 > 			$dist[w]=dist[u]+adj[u,w]$
 > Stop
-##### Bellman-Ford's (TODO)
-#### Pseudocode (TODO)
-##### Dijkstra's (TODO)
-##### Bellman-Ford's (TODO)
-#### Code (TODO)
-##### Dijkstra's (TODO)
-##### Bellman-Ford's (TODO)
-#### Analysis (TODO)
-##### Dijkstra's (TODO)
-##### Bellman-Ford's (TODO)
-### N-Queens Backtracking (TODO)
-#### Algorithms (TODO)
-#### Pseudocode (TODO)
-#### Code (TODO)
-#### Analysis (TODO)
+##### Bellman-Ford's
+> Start $\text{BELLMAN\_FORDS\_ALGORITHM}(v,adj,dist,n)$
+> For $i=1$ to $n$ do
+> 	$dist[i]=adj[v,i]$
+> For $k=2$ to $n-1$ do
+> 	For each $u$ such that $u\neq v$ and $u$ has at least one incoming edge do
+> 		For each $(i,u)$ in the graph do
+> 			If $dist[u]>dist[i]+adj[i,u]$
+> 				$dist[u]=dist[i]+adj[i,u]$
+> Stop
+#### Pseudocode
+##### Dijkstra's
+```
+dijkstras_algorithm(adj, node_count, source)
+begin
+    For i = (0 to node_count) {
+        set[i] = false
+        distances[i] = INFINITY
+        prev[i] = NULL
+    }
+
+    distances[source] = 0
+    
+    while (len(set) < node_count) {
+        u = extract_min(distances, node_count, set)
+        set[u] = true
+        
+        for j = (0 to node_count) {
+            if (adj[u][j] != INFINITY and adj[u][j] != 0 and set[i] == false) {
+                if (distances[j] > distances[u] + adj[u][j]) {
+                    distances[j] = distances[u] + adj[u][j]
+                    prev[j] = u
+                }
+            }
+        }
+    }
+    
+    print_paths(prev, distances, source, node_count)
+end
+```
+##### Bellman-Ford's
+```
+bellman_fords_algorithm(adj, node_count, source)
+begin
+    For i = (0 to node_count) {
+        distances[i] = INFINITY
+        prev[i] = NULL
+    }
+
+    distances[source] = 0
+    
+    For i = (1 to node_count) {
+        For j = (0 to node_count) {
+            For u = (0 to node_count) {
+                If (adj[j][u] != 0 and adj[j][u] != INFINITY and distances[u] > distances[j] + adj[j][u]) {
+                    distances[u] = distances[j] + adj[j][u]
+                    prev[u] = j
+                }
+            }
+        }
+    }
+end
+```
+#### Code
+##### Dijkstra's
+```c
+// 9. Write a program to implement Dijkstra's Algorithm
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+#include <stdbool.h>
+
+#define NODE_COUNT_STR argv[1]
+#define EDGE_COUNT_STR argv[2]
+
+void matrix_print(int const** matrix, int const len);
+int  extract_min(int const* array, int const len, bool const* set);
+void print_paths(int const* prevs,
+                 int const* distances,
+                 int const  source,
+                 int const  len);
+void dijkstra(int const** adj, int const node_count, int const source);
+
+int
+main(int argc, char** argv) {
+    if ( ! NODE_COUNT_STR || ! EDGE_COUNT_STR || argc != 3 ) {
+        return 0;
+    }
+
+    int  node_count = atoi(NODE_COUNT_STR);
+    int  source     = 0;
+    int* adj[]      = {
+             (int[]) {      0,      10, INT_MAX,       5, INT_MAX},
+             (int[]) {INT_MAX,       0,       1,       2, INT_MAX},
+             (int[]) {INT_MAX, INT_MAX,       0, INT_MAX,       4},
+             (int[]) {INT_MAX,       3,       9,       0,       2},
+             (int[]) {      7, INT_MAX,       6, INT_MAX,       0},
+    };
+
+    fprintf(stdout, "Adjacency Matrix:\n");
+    matrix_print(( int const** ) adj, node_count);
+
+    dijkstra(( int const** ) adj, node_count, source);
+
+    return 0;
+}
+
+void
+matrix_print(int const** matrix, int const len) {
+    fprintf(stdout, "+");
+
+    for ( int i = -2; i < len; i++ ) {
+        if ( i == -1 ) {
+            fprintf(stdout, "+");
+        } else {
+            fprintf(stdout, "----");
+        }
+    }
+
+    fprintf(stdout, "+\n|    |");
+
+    for ( int i = 0; i < len; i++ ) {
+        fprintf(stdout, "%3d ", i);
+    }
+
+    fprintf(stdout, "|\n+");
+
+    for ( int i = -2; i < len; i++ ) {
+        if ( i == -1 ) {
+            fprintf(stdout, "+");
+        } else {
+            fprintf(stdout, "----");
+        }
+    }
+
+    fprintf(stdout, "+\n|");
+
+    for ( int i = 0; i < len; i++ ) {
+        for ( int j = -2; j < len; j++ ) {
+            if ( j == -2 ) {
+                fprintf(stdout, "%3d ", i);
+                continue;
+            } else if ( j == -1 ) {
+                fprintf(stdout, "|");
+                continue;
+            }
+
+            if ( matrix[i][j] == INT_MAX ) {
+                fprintf(stdout, "    ");
+            } else {
+                fprintf(stdout, "%3d ", matrix[i][j]);
+            }
+        }
+
+        fprintf(stdout, "|\n|");
+    }
+
+    fprintf(stdout, "\b+");
+
+    for ( int i = -2; i < len; i++ ) {
+        if ( i == -1 ) {
+            fprintf(stdout, "+");
+        } else {
+            fprintf(stdout, "----");
+        }
+    }
+
+    fprintf(stdout, "+\n");
+}
+
+int
+extract_min(int const* array, int const len, bool const* set) {
+    int min_index = -1;
+
+    for ( int i = 0; i < len; i++ ) {
+        if ( set[i] == false ) {
+            min_index = i;
+            break;
+        }
+    }
+
+    for ( int i = 1; i < len; i++ ) {
+        if ( array[min_index] > array[i] && set[i] == false ) {
+            min_index = i;
+        }
+    }
+
+    return min_index;
+}
+
+void
+print_paths(int const* prevs,
+            int const* distances,
+            int const  source,
+            int const  len) {
+    for ( int i = 0; i < len; i++ ) {
+        if ( i != source ) {
+            fprintf(stdout, "Path from %d to %d (Cost: %d): ", source, i,
+                    distances[i]);
+            int temp = prevs[i];
+            fprintf(stdout, "%d", i);
+
+            while ( temp != -1 ) {
+                fprintf(stdout, " <- %d", temp);
+                temp = prevs[temp];
+            }
+
+            fprintf(stdout, "\n");
+        }
+    }
+}
+
+void
+dijkstra(int const** adj, int const node_count, int const source) {
+    int   set_size  = 0;
+    bool* set       = ( bool* ) malloc(node_count * sizeof(bool));
+    int*  distances = ( int* ) malloc(node_count * sizeof(int));
+    int*  prev      = ( int* ) malloc(node_count * sizeof(int));
+
+    for ( int i = 0; i < node_count; i++ ) {
+        set[i]       = false;
+        distances[i] = INT_MAX;
+        prev[i]      = -1;
+    }
+
+    distances[source] = 0;
+
+    fprintf(stdout, "\n");
+
+    while ( set_size < node_count ) {
+        int u  = extract_min(distances, node_count, set);
+        set[u] = true;
+        set_size++;
+
+        for ( int j = 0; j < node_count; j++ ) {
+            if ( adj[u][j] != INT_MAX && adj[u][j] != 0 && set[j] == false ) {
+                if ( distances[j] > distances[u] + adj[u][j] ) {
+                    distances[j] = distances[u] + adj[u][j];
+                    prev[j]      = u;
+                }
+            }
+        }
+    }
+
+    fprintf(stdout, "Source: %d\n", source);
+    fprintf(stdout, "Distance Array: ");
+
+    for ( int k = 0; k < node_count; k++ ) {
+        if ( distances[k] == INT_MAX ) {
+            fprintf(stdout, "%c\t", 'I');
+        } else {
+            fprintf(stdout, "%d\t", distances[k]);
+        }
+    }
+
+    fprintf(stdout, "\nPrevious Array: ");
+
+    for ( int k = 0; k < node_count; k++ ) {
+        fprintf(stdout, "%d\t", prev[k]);
+    }
+
+    fprintf(stdout, "\n\n");
+    print_paths(prev, distances, source, node_count);
+
+    free(set);
+    free(distances);
+    free(prev);
+}
+```
+##### Bellman-Ford's
+```c
+// 9-2. Write a program to implement Bellman-Ford Algorithm
+
+#include <limits.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+#define NODE_COUNT_STR argv[1]  // Command line argument for number of nodes
+#define EDGE_COUNT_STR argv[2]  // Command line argument for number of edges
+
+void matrix_print(int const** matrix, int const len);
+bool has_incoming(int const** adj, int const node_count, int const vertex);
+void print_paths(int const* prevs,
+                 int const* distances,
+                 int const  source,
+                 int const  len);
+void bellman_ford(int const** adj, int const node_count, int const source);
+
+int
+main(int argc, char** argv) {
+    if ( ! NODE_COUNT_STR || ! EDGE_COUNT_STR || argc != 3 ) {
+        return 0;
+    }
+
+    int  node_count = atoi(NODE_COUNT_STR);
+    int  source     = 0;
+    int* adj[]      = {
+             (int[]) {      0,       6, INT_MAX,       7, INT_MAX},
+             (int[]) {INT_MAX,       0,       5,       8,      -4},
+             (int[]) {INT_MAX,      -2,       0, INT_MAX, INT_MAX},
+             (int[]) {INT_MAX, INT_MAX,      -3,       0,       9},
+             (int[]) {      2, INT_MAX,       7, INT_MAX,       0},
+    };
+
+    fprintf(stdout, "Adjacency Matrix:\n");
+    matrix_print(( int const** ) adj, node_count);
+
+    bellman_ford(( int const** ) adj, node_count, source);
+
+    return 0;
+}
+
+void
+matrix_print(int const** matrix, int const len) {
+    fprintf(stdout, "+");
+
+    for ( int i = -2; i < len; i++ ) {
+        if ( i == -1 ) {
+            fprintf(stdout, "+");
+        } else {
+            fprintf(stdout, "----");
+        }
+    }
+
+    fprintf(stdout, "+\n|    |");
+
+    for ( int i = 0; i < len; i++ ) {
+        fprintf(stdout, "%3d ", i);
+    }
+
+    fprintf(stdout, "|\n+");
+
+    for ( int i = -2; i < len; i++ ) {
+        if ( i == -1 ) {
+            fprintf(stdout, "+");
+        } else {
+            fprintf(stdout, "----");
+        }
+    }
+
+    fprintf(stdout, "+\n|");
+
+    for ( int i = 0; i < len; i++ ) {
+        for ( int j = -2; j < len; j++ ) {
+            if ( j == -2 ) {
+                fprintf(stdout, "%3d ", i);
+                continue;
+            } else if ( j == -1 ) {
+                fprintf(stdout, "|");
+                continue;
+            }
+
+            if ( matrix[i][j] == INT_MAX ) {
+                fprintf(stdout, "    ");
+            } else {
+                fprintf(stdout, "%3d ", matrix[i][j]);
+            }
+        }
+
+        fprintf(stdout, "|\n|");
+    }
+
+    fprintf(stdout, "\b+");
+
+    for ( int i = -2; i < len; i++ ) {
+        if ( i == -1 ) {
+            fprintf(stdout, "+");
+        } else {
+            fprintf(stdout, "----");
+        }
+    }
+
+    fprintf(stdout, "+\n");
+}
+
+void
+print_paths(int const* prevs,
+            int const* distances,
+            int const  source,
+            int const  len) {
+    for ( int i = 0; i < len; i++ ) {
+        if ( i != source ) {
+            fprintf(stdout, "Path from %d to %d (Cost: %d): ", source, i,
+                    distances[i]);
+            int temp = prevs[i];
+            fprintf(stdout, "%d", i);
+
+            while ( temp != -1 ) {
+                fprintf(stdout, " <- %d", temp);
+                temp = prevs[temp];
+            }
+
+            fprintf(stdout, "\n");
+        }
+    }
+}
+
+void
+bellman_ford(int const** adj, int const node_count, int const source) {
+    int* distances = ( int* ) malloc(node_count * sizeof(int));
+    int* prev      = ( int* ) malloc(node_count * sizeof(int));
+
+    for ( int i = 0; i < node_count; i++ ) {
+        distances[i] = INT_MAX;
+        prev[i]      = -1;
+    }
+
+    distances[source] = 0;
+
+    for ( int i = 1; i <= node_count - 1; i++ ) {
+        for ( int j = 0; j < node_count; j++ ) {
+            for ( int u = 0; u < node_count; u++ ) {
+                if ( adj[j][u] != 0 && adj[j][u] != INT_MAX &&
+                     distances[u] > distances[j] + adj[j][u] ) {
+                    distances[u] = distances[j] + adj[j][u];
+                    prev[u]      = j;
+                }
+            }
+        }
+    }
+
+    fprintf(stdout, "Source: %d\n", source);
+    fprintf(stdout, "Distance Array: ");
+
+    for ( int k = 0; k < node_count; k++ ) {
+        if ( distances[k] == INT_MAX ) {
+            fprintf(stdout, "%c\t", 'I');
+        } else {
+            fprintf(stdout, "%d\t", distances[k]);
+        }
+    }
+
+    fprintf(stdout, "\nParent Array: ");
+
+    for ( int k = 0; k < node_count; k++ ) {
+        fprintf(stdout, "%d\t", prev[k]);
+    }
+
+    fprintf(stdout, "\n\n");
+
+    print_paths(prev, distances, source, node_count);
+
+    free(distances);
+    free(prev);
+}
+```
+#### Analysis
+##### Dijkstra's
+Say the algorithm takes $T(n)$ time. The implementation of Dijkstra’s algorithm used here starts with initializing the $set$, $distances$ and $prev$ arrays in $\Theta(n)$ time. We set the distance of the source node to be $0$ in $\Theta(1)$ time.  We loop over the nodes twice in a nested manner to populate the $distance$ and $prev$ arrays, taking $\Theta(n^2)$ time. Therefore, we can conclude:
+$$
+T(n)=\Theta(n)+\Theta(1)+\Theta(n^2)=\Theta(n^2)
+$$
+Therefore, the algorithm has a time complexity of $\Theta(n^2)$.
+##### Bellman-Ford's
+Say the algorithm takes $T(n)$ time. The implementation of Bellman-Ford’s algorithm used here starts with initializing the $distances$ and $prev$ arrays in $\Theta(n)$ time. The distance of the source node is set to be $0$ in $\Theta(1)$ time. We then use a triple nested loop to set values $distances$ and $prev$ in which we repeatedly iterate through the edges, constantly updating $distances$ and $prev$, taking $\Theta(n^3)$ time. Therefore, we can conclude:
+$$
+T(n)=\Theta(n)+\Theta(1)+\Theta(n^3)=\Theta(n^3)
+$$
+Therefore, the algorithm has a time complexity of $\Theta(n^3)$.
+### N-Queens Backtracking
+#### Algorithm
+> Start $\text{N\_QUEENS}(k,n)$
+> For $i=0$ to $n$ do
+> 	If $\text{PLACE}(k,i)$
+> 		Then $x[k]=i$
+> 		If ($k=n$)
+> 			Then $\text{write}(x[1:n])$
+> 		Else
+> 			$\text{N\_QUEENS}(k+1,n)$
+> Stop
+
+> Start $\text{PLACE}(k,i)$
+> For $j=1$ to $k=1$ do
+> 	If $x[j]=i$ or $|x[j]-1| = |j-k|$
+> 		Then return $\text{FALSE}$
+> Return $TRUE$
+> Stop
+#### Pseudocode
+```
+n_queen(positions, row)
+begin
+    For i = (0 to len(positions)) {
+        positions[row].x = row
+        positions[row].y = i
+        positions[row].active = true
+        
+        if (valid(positions, row + 1)) {
+            if (row < len(positions) – 1) {
+            n_queen(positions, row + 1)
+        } else {
+            print(board_init(positions))
+        }
+        
+        positions[row].active = false
+    }
+end
+```
+#### Code
+```c
+// 10. Write a program to solve the N-Queens Problem using Backtracking Approach
+
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define N_STR argv[1]
+
+struct Position {
+    int  x;
+    int  y;
+    bool active;
+};
+
+int** board_init(struct Position const* positions, int const len);
+void  board_dealloc(int** board, int const len);
+void  matrix_print(int** board, int const len);
+bool  place_check(int const i, int const j, int const k, int const l);
+bool  check_valid(struct Position const* positions, int const len);
+int   n_queen_init(int const len);
+void  n_queen(struct Position* positions,
+              int const        row,
+              int const        len,
+              int*             solncount);
+
+int
+main(int argc, char** argv) {
+    if ( argc != 2 ) {
+        return 0;
+    }
+
+    int len = atoi(N_STR);
+
+    fprintf(stdout, "Solution boards for %d-queen problem:\n", len);
+    int solncount = n_queen_init(len);
+    fprintf(stdout, "Number of solutions with %d queens: %d\n", len, solncount);
+
+    return 0;
+}
+
+int**
+board_init(struct Position const* positions, int const len) {
+    int** board = ( int** ) malloc(len * sizeof(int*));
+
+    for ( int i = 0; i < len; i++ ) {
+        board[i] = ( int* ) malloc(len * sizeof(int));
+
+        for ( int j = 0; j < len; j++ ) {
+            board[i][j] = 0;
+        }
+    }
+
+    for ( int i = 0; i < len; i++ ) {
+        board[positions[i].x][positions[i].y] = 1;
+    }
+
+    return board;
+}
+
+void
+board_dealloc(int** board, int const len) {
+    for ( int i = 0; i < len; i++ ) {
+        free(board[i]);
+    }
+
+    free(board);
+}
+
+void
+matrix_print(int** board, int const len) {
+    for ( int i = -1; i < len * 4; i++ ) {
+        fprintf(stdout, "-");
+    }
+
+    fprintf(stdout, "\n");
+
+    for ( int i = 0; i < len; i++ ) {
+        for ( int j = 0; j < len; j++ ) {
+            fprintf(stdout, "| %c ", (board[i][j] == 1) ? 'Q' : ' ');
+        }
+
+        fprintf(stdout, "|\n");
+
+        for ( int i = -1; i < len * 4; i++ ) {
+            fprintf(stdout, "-");
+        }
+
+        fprintf(stdout, "\n");
+    }
+}
+
+bool
+place_check(int const i, int const j, int const k, int const l) {
+    if ( i == k ) {
+        return false;
+    } else if ( j == l ) {
+        return false;
+    } else if ( (i + j) == (k + l) ) {
+        return false;
+    } else if ( (i - j) == (k - l) ) {
+        return false;
+    }
+
+    return true;
+}
+
+bool
+check_valid(struct Position const* positions, int const elements) {
+    for ( int i = 0; i < elements; i++ ) {
+        struct Position p1 = positions[i];
+
+        for ( int j = i + 1; j < elements; j++ ) {
+            struct Position p2 = positions[j];
+
+            if ( p2.active == false && elements == 1 ) {
+                return true;
+            }
+
+            if ( place_check(p1.x, p1.y, p2.x, p2.y) == false ) {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
+int
+n_queen_init(int const len) {
+    int              row       = 0;
+    int              solncount = 0;
+    struct Position* positions =
+        ( struct Position* ) calloc(len, sizeof(struct Position));
+
+    n_queen(positions, row, len, &solncount);
+    free(positions);
+
+    return solncount;
+}
+
+void
+n_queen(struct Position* positions,
+        int const        row,
+        int const        len,
+        int*             solncount) {
+    for ( int i = 0; i < len; i++ ) {
+        positions[row].x      = row;
+        positions[row].y      = i;
+        positions[row].active = true;
+
+        if ( check_valid(positions, row + 1) == true ) {
+            if ( row < len - 1 ) {
+                n_queen(positions, row + 1, len, solncount);
+            } else {
+                int** board = board_init(positions, len);
+                matrix_print(board, len);
+
+                (*solncount) += 1;
+
+                board_dealloc(board, len);
+            }
+        }
+
+        positions[row].active = false;
+    }
+}
+```
+#### Analysis
+Say the solution to the $n$-queens problem takes $T(n)$ time. The $n$-queens problem solution used here is much more effective than the brute force approach. Consider an $8$-queen problem. There are ${}^{64}C_8$ possible ways to place $8$ pieces, or approximately $4.4$ billion $8$-tuples to examine. However, by allowing only placement of queens on distinct rows and columns, we require the examination of at most $8!$, or only $40320$ 8 tuples. Therefore, we can conclude:
+$$
+T(n)=\Theta(n!)
+$$
+Therefore, the algorithm has a worst case time complexity of $T(n)=\Theta(n!)$.
