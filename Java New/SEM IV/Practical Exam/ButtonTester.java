@@ -1,4 +1,3 @@
-
 // Abstract Window Toolkit packages
 // Package required for various components
 import java.awt.Button;
